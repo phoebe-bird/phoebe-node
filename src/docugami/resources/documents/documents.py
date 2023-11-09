@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import Document, DocumentListResponse, document_list_params
+from ...types import Document, DocumentList2Response, document_list2_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from .contents import (
@@ -66,11 +66,43 @@ class Documents(SyncAPIResource):
             cast_to=Document,
         )
 
-    def list(
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Delete a document
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            f"/documents/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    def list2(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
+        docset: document_list2_params.Docset | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         max_pages: int | NotGiven = NOT_GIVEN,
         max_size: int | NotGiven = NOT_GIVEN,
@@ -86,7 +118,7 @@ class Documents(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentListResponse:
+    ) -> DocumentList2Response:
         """
         List documents
 
@@ -141,42 +173,10 @@ class Documents(SyncAPIResource):
                         "samples": samples,
                         "status": status,
                     },
-                    document_list_params.DocumentListParams,
+                    document_list2_params.DocumentList2Params,
                 ),
             ),
-            cast_to=DocumentListResponse,
-        )
-
-    def delete(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Delete a document
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            f"/documents/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
+            cast_to=DocumentList2Response,
         )
 
 
@@ -220,11 +220,43 @@ class AsyncDocuments(AsyncAPIResource):
             cast_to=Document,
         )
 
-    async def list(
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Delete a document
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            f"/documents/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+    async def list2(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
+        docset: document_list2_params.Docset | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         max_pages: int | NotGiven = NOT_GIVEN,
         max_size: int | NotGiven = NOT_GIVEN,
@@ -240,7 +272,7 @@ class AsyncDocuments(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentListResponse:
+    ) -> DocumentList2Response:
         """
         List documents
 
@@ -295,42 +327,10 @@ class AsyncDocuments(AsyncAPIResource):
                         "samples": samples,
                         "status": status,
                     },
-                    document_list_params.DocumentListParams,
+                    document_list2_params.DocumentList2Params,
                 ),
             ),
-            cast_to=DocumentListResponse,
-        )
-
-    async def delete(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Delete a document
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            f"/documents/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
+            cast_to=DocumentList2Response,
         )
 
 
@@ -341,11 +341,11 @@ class DocumentsWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             documents.retrieve,
         )
-        self.list = to_raw_response_wrapper(
-            documents.list,
-        )
         self.delete = to_raw_response_wrapper(
             documents.delete,
+        )
+        self.list2 = to_raw_response_wrapper(
+            documents.list2,
         )
 
 
@@ -356,9 +356,9 @@ class AsyncDocumentsWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             documents.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
-            documents.list,
-        )
         self.delete = async_to_raw_response_wrapper(
             documents.delete,
+        )
+        self.list2 = async_to_raw_response_wrapper(
+            documents.list2,
         )

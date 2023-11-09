@@ -28,8 +28,8 @@ client = Docugami(
     api_key="My API Key",
 )
 
-document_list_response = client.documents.list()
-print(document_list_response.documents)
+document_list2_response = client.documents.list2()
+print(document_list2_response.documents)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -52,8 +52,8 @@ client = AsyncDocugami(
 
 
 async def main() -> None:
-    document_list_response = await client.documents.list()
-    print(document_list_response.documents)
+    document_list2_response = await client.documents.list2()
+    print(document_list2_response.documents)
 
 
 asyncio.run(main())
@@ -83,7 +83,7 @@ from docugami import Docugami
 client = Docugami()
 
 try:
-    client.documents.list()
+    client.documents.list2()
 except docugami.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -126,7 +126,7 @@ client = Docugami(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).documents.list()
+client.with_options(max_retries=5).documents.list2()
 ```
 
 ### Timeouts
@@ -149,7 +149,7 @@ client = Docugami(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).documents.list()
+client.with_options(timeout=5 * 1000).documents.list2()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -188,10 +188,10 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from docugami import Docugami
 
 client = Docugami()
-response = client.documents.with_raw_response.list()
+response = client.documents.with_raw_response.list2()
 print(response.headers.get('X-My-Header'))
 
-document = response.parse()  # get the object that `documents.list()` would have returned
+document = response.parse()  # get the object that `documents.list2()` would have returned
 print(document.documents)
 ```
 
