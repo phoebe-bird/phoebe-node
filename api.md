@@ -3,14 +3,14 @@
 Types:
 
 ```python
-from docugami.types import Document, DocumentList2Response
+from docugami.types import Document, DocumentListResponse
 ```
 
 Methods:
 
 - <code title="get /documents/{id}">client.documents.<a href="./src/docugami/resources/documents/documents.py">retrieve</a>(id) -> <a href="./src/docugami/types/document.py">Document</a></code>
+- <code title="get /documents">client.documents.<a href="./src/docugami/resources/documents/documents.py">list</a>(\*\*<a href="src/docugami/types/document_list_params.py">params</a>) -> <a href="./src/docugami/types/document_list_response.py">DocumentListResponse</a></code>
 - <code title="delete /documents/{id}">client.documents.<a href="./src/docugami/resources/documents/documents.py">delete</a>(id) -> None</code>
-- <code title="get /documents">client.documents.<a href="./src/docugami/resources/documents/documents.py">list2</a>(\*\*<a href="src/docugami/types/document_list2_params.py">params</a>) -> <a href="./src/docugami/types/document_list2_response.py">DocumentList2Response</a></code>
 
 ## Contents
 

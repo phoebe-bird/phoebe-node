@@ -1,18 +1,18 @@
 from __future__ import annotations
 
 import inspect
-from typing import TYPE_CHECKING, Any, Type, Union, Generic, TypeVar, Callable, cast
+from typing import TYPE_CHECKING, Any, Callable, Type, Union, Generic, TypeVar, cast
 from datetime import date, datetime
 from typing_extensions import (
-    Unpack,
-    Literal,
     ClassVar,
+    TypedDict,
+    Unpack,
     Protocol,
     Required,
-    TypedDict,
+    Literal,
     final,
-    override,
     runtime_checkable,
+    override,
 )
 
 import pydantic
@@ -30,14 +30,8 @@ from ._types import (
     AnyMapping,
     HttpxRequestFiles,
 )
-from ._utils import (
-    is_list,
-    is_given,
-    is_mapping,
-    parse_date,
-    parse_datetime,
-    strip_not_given,
-)
+from ._utils import is_list, is_mapping, parse_date, parse_datetime, strip_not_given, is_given
+from ._constants import RAW_RESPONSE_HEADER
 from ._compat import PYDANTIC_V2, ConfigDict
 from ._compat import GenericModel as BaseGenericModel
 from ._compat import (
@@ -50,7 +44,6 @@ from ._compat import (
     get_model_fields,
     field_get_default,
 )
-from ._constants import RAW_RESPONSE_HEADER
 
 __all__ = ["BaseModel", "GenericModel"]
 
@@ -121,6 +114,7 @@ class BaseModel(pydantic.BaseModel):
                 if PYDANTIC_V2:
                     _extra[key] = value
                 else:
+                    _fields_set.add(key)
                     fields_values[key] = value
 
         object.__setattr__(m, "__dict__", fields_values)

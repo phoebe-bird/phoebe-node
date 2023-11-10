@@ -2,14 +2,21 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Annotated, TypedDict
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
+
+from typing_extensions import TypedDict, Annotated, Literal
 
 from .._utils import PropertyInfo
 
-__all__ = ["DocumentList2Params", "Docset"]
+from . import _utils
 
+__all__ = ["DocumentListParams", "Docset"]
 
-class DocumentList2Params(TypedDict, total=False):
+class DocumentListParams(TypedDict, total=False):
     cursor: str
     """
     Opaque continuation token used to get additional items when a previous query
@@ -44,7 +51,6 @@ class DocumentList2Params(TypedDict, total=False):
 
     status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"]
     """Filters documents by status."""
-
 
 class Docset(TypedDict, total=False):
     id: str

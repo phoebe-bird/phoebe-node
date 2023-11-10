@@ -28,8 +28,8 @@ client = Docugami(
     api_key="My API Key",
 )
 
-document_list2_response = client.documents.list2()
-print(document_list2_response.documents)
+document_list_response = client.documents.list()
+print(document_list_response.documents)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -50,11 +50,9 @@ client = AsyncDocugami(
     api_key="My API Key",
 )
 
-
 async def main() -> None:
-    document_list2_response = await client.documents.list2()
-    print(document_list2_response.documents)
-
+  document_list_response = await client.documents.list()
+  print(document_list_response.documents)
 
 asyncio.run(main())
 ```
@@ -83,10 +81,10 @@ from docugami import Docugami
 client = Docugami()
 
 try:
-    client.documents.list2()
+    client.documents.list()
 except docugami.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+    print(e.__cause__) # an underlying Exception, likely raised within httpx.
 except docugami.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except docugami.APIStatusError as e:
@@ -126,7 +124,7 @@ client = Docugami(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).documents.list2()
+client.with_options(max_retries = 5).documents.list()
 ```
 
 ### Timeouts
@@ -149,7 +147,7 @@ client = Docugami(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).documents.list2()
+client.with_options(timeout = 5 * 1000).documents.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -188,10 +186,10 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from docugami import Docugami
 
 client = Docugami()
-response = client.documents.with_raw_response.list2()
+response = client.documents.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
-document = response.parse()  # get the object that `documents.list2()` would have returned
+document = response.parse()  # get the object that `documents.list()` would have returned
 print(document.documents)
 ```
 
@@ -211,10 +209,7 @@ from docugami import Docugami
 
 client = Docugami(
     base_url="http://my.test.server.example.com:8083",
-    http_client=httpx.Client(
-        proxies="http://my.test.proxy.example.com",
-        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
-    ),
+    http_client=httpx.Client(proxies="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
 )
 ```
 

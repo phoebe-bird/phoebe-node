@@ -6,16 +6,16 @@ from pydantic import Field as FieldInfo
 from .._models import BaseModel
 from ..types import shared
 
-from .docset import Docset
+from .document import Document
 
 from typing import List, Optional
 
-from . import docset
+from . import document
 
-__all__ = ["DocsetListResponse"]
+__all__ = ["DocumentListResponse"]
 
-class DocsetListResponse(BaseModel):
-    docsets: List[Docset]
+class DocumentListResponse(BaseModel):
+    documents: List[Document]
 
     next: Optional[str] = None
     """URL to get the next page of results.

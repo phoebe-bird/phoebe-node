@@ -1,22 +1,22 @@
 from __future__ import annotations
 
-from typing import Any, List, Mapping, TypeVar, cast
 from datetime import date, datetime
-from typing_extensions import Literal, get_args, override, get_type_hints
+from typing import Any, Mapping, List, TypeVar, cast
+from typing_extensions import Literal, get_args, get_type_hints, override
 
 import pydantic
 
 from ._utils import (
-    is_list,
-    is_mapping,
-    is_list_type,
-    is_union_type,
-    extract_type_arg,
-    is_required_type,
     is_annotated_type,
     strip_annotated_type,
+    is_list_type,
+    is_required_type,
+    is_union_type,
+    extract_type_arg,
+    is_mapping,
+    is_list,
 )
-from .._compat import model_dump, is_typeddict
+from .._compat import is_typeddict, model_dump
 
 _T = TypeVar("_T")
 
@@ -168,7 +168,7 @@ def _transform_recursive(
         return data
 
     if isinstance(data, pydantic.BaseModel):
-        return model_dump(data, exclude_unset=True, exclude_defaults=True)
+        return model_dump(data, exclude_unset=True)
 
     return _transform_value(data, annotation)
 

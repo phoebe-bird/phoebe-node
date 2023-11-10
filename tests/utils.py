@@ -1,14 +1,20 @@
 from __future__ import annotations
 
 import traceback
-from typing import Any, TypeVar, cast
 from datetime import date, datetime
-from typing_extensions import Literal, get_args, get_origin, assert_type
+from typing import TypeVar, Any, cast
+from typing_extensions import Literal, assert_type, get_args, get_origin
 
-from docugami._types import NoneType
-from docugami._utils import is_dict, is_list, is_list_type, is_union_type
-from docugami._compat import PYDANTIC_V2, field_outer_type, get_model_fields
 from docugami._models import BaseModel
+from docugami._types import NoneType
+from docugami._utils import (
+    is_list_type,
+    is_list,
+    is_union_type,
+    is_dict,
+)
+from docugami._compat import PYDANTIC_V2, get_model_fields, field_outer_type
+
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 

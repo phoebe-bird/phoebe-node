@@ -1,40 +1,40 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional, Union, List, Dict, Any
+from typing_extensions import Literal
+from pydantic import Field as FieldInfo
+from .._models import BaseModel
+from ..types import shared
+
 from typing import Optional
+
 from datetime import datetime
+
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
-from .._models import BaseModel
-
 __all__ = ["Workspace", "Quota", "QuotaPage", "QuotaUser"]
-
 
 class QuotaPage(BaseModel):
     max: int
 
     used: int
 
-    max_per_document: Optional[int] = FieldInfo(alias="maxPerDocument", default=None)
-
+    max_per_document: Optional[int] = FieldInfo(alias = "maxPerDocument", default = None)
 
 class QuotaUser(BaseModel):
     max: int
 
     used: int
 
-
 class Quota(BaseModel):
     page: Optional[QuotaPage] = None
 
     user: Optional[QuotaUser] = None
 
-
 class Workspace(BaseModel):
     id: str
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: datetime = FieldInfo(alias = "createdAt")
 
     name: str
 
@@ -42,6 +42,6 @@ class Workspace(BaseModel):
 
     expired: Optional[bool] = None
 
-    expires_at: Optional[str] = FieldInfo(alias="expiresAt", default=None)
+    expires_at: Optional[str] = FieldInfo(alias = "expiresAt", default = None)
 
     quota: Optional[Quota] = None

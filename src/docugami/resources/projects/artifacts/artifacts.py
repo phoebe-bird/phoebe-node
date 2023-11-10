@@ -2,32 +2,30 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
+from ...._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from ...._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes, BinaryResponseContent
+from ...._base_client import AsyncPaginator, make_request_options, HttpxBinaryResponseContent
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._base_client import SyncAPIClient, AsyncAPIClient, _merge_mappings
+from ....types import shared_params
+from ....types.projects import artifact_retrieve_params
+from .contents import Contents, AsyncContents, ContentsWithRawResponse, AsyncContentsWithRawResponse
 
 import httpx
 
-from .contents import (
-    Contents,
-    AsyncContents,
-    ContentsWithRawResponse,
-    AsyncContentsWithRawResponse,
-)
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ...._utils import maybe_transform
-from ...._resource import SyncAPIResource, AsyncAPIResource
+from ....types.projects import ArtifactRetrieveResponse, Artifact, artifact_retrieve_response, artifact_retrieve_params, artifact
+
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ...._base_client import make_request_options
-from ....types.projects import (
-    Artifact,
-    ArtifactRetrieveResponse,
-    artifact_retrieve_params,
-)
+
+from ... import _response
 
 if TYPE_CHECKING:
-    from ...._client import Docugami, AsyncDocugami
+  from ...._client import AsyncDocugami, Docugami
 
 __all__ = ["Artifacts", "AsyncArtifacts"]
-
 
 class Artifacts(SyncAPIResource):
     contents: Contents
@@ -38,25 +36,23 @@ class Artifacts(SyncAPIResource):
         self.contents = Contents(client)
         self.with_raw_response = ArtifactsWithRawResponse(self)
 
-    def retrieve(
-        self,
-        version: str | NotGiven = NOT_GIVEN,
-        *,
-        project_id: str,
-        cursor: str | NotGiven = NOT_GIVEN,
-        document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
-        is_read_only: bool | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        max_size: int | NotGiven = NOT_GIVEN,
-        min_size: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactRetrieveResponse:
+    def retrieve(self,
+    version: str | NotGiven = NOT_GIVEN,
+    *,
+    project_id: str,
+    cursor: str | NotGiven = NOT_GIVEN,
+    document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
+    is_read_only: bool | NotGiven = NOT_GIVEN,
+    limit: int | NotGiven = NOT_GIVEN,
+    max_size: int | NotGiven = NOT_GIVEN,
+    min_size: int | NotGiven = NOT_GIVEN,
+    name: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArtifactRetrieveResponse:
         """
         List artifacts
 
@@ -84,40 +80,29 @@ class Artifacts(SyncAPIResource):
         """
         return self._get(
             f"/projects/{project_id}/artifacts/{version}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "document": document,
-                        "is_read_only": is_read_only,
-                        "limit": limit,
-                        "max_size": max_size,
-                        "min_size": min_size,
-                        "name": name,
-                    },
-                    artifact_retrieve_params.ArtifactRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "cursor": cursor,
+                "document": document,
+                "is_read_only": is_read_only,
+                "limit": limit,
+                "max_size": max_size,
+                "min_size": min_size,
+                "name": name,
+            }, artifact_retrieve_params.ArtifactRetrieveParams)),
             cast_to=ArtifactRetrieveResponse,
         )
 
-    def delete(
-        self,
-        artifact_id: str,
-        *,
-        project_id: str,
-        version: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    def delete(self,
+    artifact_id: str,
+    *,
+    project_id: str,
+    version: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
         """
         Read-only artifacts cannot be deleted.
 
@@ -133,25 +118,21 @@ class Artifacts(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=NoneType,
         )
 
-    def get(
-        self,
-        artifact_id: str,
-        *,
-        project_id: str,
-        version: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Artifact:
+    def get(self,
+    artifact_id: str,
+    *,
+    project_id: str,
+    version: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Artifact:
         """
         Get an artifact
 
@@ -166,12 +147,9 @@ class Artifacts(SyncAPIResource):
         """
         return self._get(
             f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=Artifact,
         )
-
 
 class AsyncArtifacts(AsyncAPIResource):
     contents: AsyncContents
@@ -182,25 +160,23 @@ class AsyncArtifacts(AsyncAPIResource):
         self.contents = AsyncContents(client)
         self.with_raw_response = AsyncArtifactsWithRawResponse(self)
 
-    async def retrieve(
-        self,
-        version: str | NotGiven = NOT_GIVEN,
-        *,
-        project_id: str,
-        cursor: str | NotGiven = NOT_GIVEN,
-        document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
-        is_read_only: bool | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        max_size: int | NotGiven = NOT_GIVEN,
-        min_size: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactRetrieveResponse:
+    async def retrieve(self,
+    version: str | NotGiven = NOT_GIVEN,
+    *,
+    project_id: str,
+    cursor: str | NotGiven = NOT_GIVEN,
+    document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
+    is_read_only: bool | NotGiven = NOT_GIVEN,
+    limit: int | NotGiven = NOT_GIVEN,
+    max_size: int | NotGiven = NOT_GIVEN,
+    min_size: int | NotGiven = NOT_GIVEN,
+    name: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArtifactRetrieveResponse:
         """
         List artifacts
 
@@ -228,40 +204,29 @@ class AsyncArtifacts(AsyncAPIResource):
         """
         return await self._get(
             f"/projects/{project_id}/artifacts/{version}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "document": document,
-                        "is_read_only": is_read_only,
-                        "limit": limit,
-                        "max_size": max_size,
-                        "min_size": min_size,
-                        "name": name,
-                    },
-                    artifact_retrieve_params.ArtifactRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "cursor": cursor,
+                "document": document,
+                "is_read_only": is_read_only,
+                "limit": limit,
+                "max_size": max_size,
+                "min_size": min_size,
+                "name": name,
+            }, artifact_retrieve_params.ArtifactRetrieveParams)),
             cast_to=ArtifactRetrieveResponse,
         )
 
-    async def delete(
-        self,
-        artifact_id: str,
-        *,
-        project_id: str,
-        version: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    async def delete(self,
+    artifact_id: str,
+    *,
+    project_id: str,
+    version: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
         """
         Read-only artifacts cannot be deleted.
 
@@ -277,25 +242,21 @@ class AsyncArtifacts(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=NoneType,
         )
 
-    async def get(
-        self,
-        artifact_id: str,
-        *,
-        project_id: str,
-        version: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Artifact:
+    async def get(self,
+    artifact_id: str,
+    *,
+    project_id: str,
+    version: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Artifact:
         """
         Get an artifact
 
@@ -310,12 +271,9 @@ class AsyncArtifacts(AsyncAPIResource):
         """
         return await self._get(
             f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=Artifact,
         )
-
 
 class ArtifactsWithRawResponse:
     def __init__(self, artifacts: Artifacts) -> None:
@@ -330,7 +288,6 @@ class ArtifactsWithRawResponse:
         self.get = to_raw_response_wrapper(
             artifacts.get,
         )
-
 
 class AsyncArtifactsWithRawResponse:
     def __init__(self, artifacts: AsyncArtifacts) -> None:

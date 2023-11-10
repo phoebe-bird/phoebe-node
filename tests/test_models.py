@@ -1,14 +1,14 @@
 import json
-from typing import Any, Dict, List, Union, Optional, cast
 from datetime import datetime, timezone
+from typing import Any, Dict, List, Union, Optional, cast
 from typing_extensions import Literal
 
 import pytest
 import pydantic
 from pydantic import Field
 
-from docugami._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
 from docugami._models import BaseModel
+from docugami._compat import PYDANTIC_V2, model_json, parse_obj, model_dump
 
 
 class BasicModel(BaseModel):

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from os import PathLike
-from abc import ABC, abstractmethod
 from typing import (
     IO,
     TYPE_CHECKING,
@@ -11,25 +10,19 @@ from typing import (
     Type,
     Tuple,
     Union,
+    Iterator,
+    AsyncIterator,
     Mapping,
     TypeVar,
     Callable,
-    Iterator,
     Optional,
     Sequence,
-    AsyncIterator,
 )
-from typing_extensions import (
-    Literal,
-    Protocol,
-    TypeAlias,
-    TypedDict,
-    override,
-    runtime_checkable,
-)
+from typing_extensions import TypeAlias, TypedDict, Literal, Protocol, runtime_checkable, override
 
 import pydantic
 from httpx import URL, Proxy, Timeout, Response, BaseTransport, AsyncBaseTransport
+from abc import ABC, abstractmethod
 
 if TYPE_CHECKING:
     from ._models import BaseModel

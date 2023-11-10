@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 import time
 import asyncio
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ._client import Docugami, AsyncDocugami
-
+  from ._client import AsyncDocugami, Docugami
 
 class SyncAPIResource:
     _client: Docugami
@@ -23,8 +22,7 @@ class SyncAPIResource:
         self._get_api_list = client.get_api_list
 
     def _sleep(self, seconds: float) -> None:
-        time.sleep(seconds)
-
+      time.sleep(seconds)
 
 class AsyncAPIResource:
     _client: AsyncDocugami
@@ -39,4 +37,4 @@ class AsyncAPIResource:
         self._get_api_list = client.get_api_list
 
     async def _sleep(self, seconds: float) -> None:
-        await asyncio.sleep(seconds)
+      await asyncio.sleep(seconds)

@@ -3,7 +3,5 @@
 from __future__ import annotations
 
 from .artifact import Artifact as Artifact
+from .artifact_retrieve_response import ArtifactRetrieveResponse as ArtifactRetrieveResponse
 from .artifact_retrieve_params import ArtifactRetrieveParams as ArtifactRetrieveParams
-from .artifact_retrieve_response import (
-    ArtifactRetrieveResponse as ArtifactRetrieveResponse,
-)

@@ -2,29 +2,32 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+import warnings
+from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
 from typing_extensions import Literal
+from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes, BinaryResponseContent
+from ..._base_client import AsyncPaginator, make_request_options, HttpxBinaryResponseContent
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._base_client import SyncAPIClient, AsyncAPIClient, _merge_mappings
+from ...types import shared_params
+from ...types import project_list_params
+from .artifacts import Artifacts, AsyncArtifacts, ArtifactsWithRawResponse, AsyncArtifactsWithRawResponse
 
 import httpx
 
-from ...types import Project, ProjectListResponse, project_list_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
-from ..._utils import maybe_transform
-from .artifacts import (
-    Artifacts,
-    AsyncArtifacts,
-    ArtifactsWithRawResponse,
-    AsyncArtifactsWithRawResponse,
-)
-from ..._resource import SyncAPIResource, AsyncAPIResource
+from ...types import Project, ProjectListResponse, project, project_list_response, project_list_params
+
+from typing_extensions import Literal
+
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
+
+from .. import _response
 
 if TYPE_CHECKING:
-    from ..._client import Docugami, AsyncDocugami
+  from ..._client import AsyncDocugami, Docugami
 
 __all__ = ["Projects", "AsyncProjects"]
-
 
 class Projects(SyncAPIResource):
     artifacts: Artifacts
@@ -35,17 +38,15 @@ class Projects(SyncAPIResource):
         self.artifacts = Artifacts(client)
         self.with_raw_response = ProjectsWithRawResponse(self)
 
-    def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Project:
+    def retrieve(self,
+    id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Project:
         """
         Get a project
 
@@ -60,42 +61,23 @@ class Projects(SyncAPIResource):
         """
         return self._get(
             f"/projects/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=Project,
         )
 
-    def list(
-        self,
-        *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        docset: project_list_params.Docset | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        type: Literal[
-            "TabularReport",
-            "Abstract",
-            "ExcelExport",
-            "AssistedAuthoring",
-            "AutomationAnywhereDocumentAssembly",
-            "AutomationAnywhereWorkFlow",
-            "ZapierWorkFlow",
-            "UiPathWorkFlow",
-            "UiPathDocumentAssembly",
-            "PowerAutomateWorkFlow",
-            "SmartsheetExport",
-            "DiligenceReport",
-            "Chat",
-        ]
-        | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectListResponse:
+    def list(self,
+    *,
+    cursor: str | NotGiven = NOT_GIVEN,
+    docset: project_list_params.Docset | NotGiven = NOT_GIVEN,
+    limit: int | NotGiven = NOT_GIVEN,
+    name: str | NotGiven = NOT_GIVEN,
+    type: Literal["TabularReport", "Abstract", "ExcelExport", "AssistedAuthoring", "AutomationAnywhereDocumentAssembly", "AutomationAnywhereWorkFlow", "ZapierWorkFlow", "UiPathWorkFlow", "UiPathDocumentAssembly", "PowerAutomateWorkFlow", "SmartsheetExport", "DiligenceReport", "Chat"] | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ProjectListResponse:
         """
         List projects
 
@@ -119,36 +101,25 @@ class Projects(SyncAPIResource):
         """
         return self._get(
             "/projects",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "docset": docset,
-                        "limit": limit,
-                        "name": name,
-                        "type": type,
-                    },
-                    project_list_params.ProjectListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "cursor": cursor,
+                "docset": docset,
+                "limit": limit,
+                "name": name,
+                "type": type,
+            }, project_list_params.ProjectListParams)),
             cast_to=ProjectListResponse,
         )
 
-    def delete(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    def delete(self,
+    id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
         """
         Delete a project
 
@@ -164,12 +135,9 @@ class Projects(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/projects/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=NoneType,
         )
-
 
 class AsyncProjects(AsyncAPIResource):
     artifacts: AsyncArtifacts
@@ -180,17 +148,15 @@ class AsyncProjects(AsyncAPIResource):
         self.artifacts = AsyncArtifacts(client)
         self.with_raw_response = AsyncProjectsWithRawResponse(self)
 
-    async def retrieve(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Project:
+    async def retrieve(self,
+    id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Project:
         """
         Get a project
 
@@ -205,42 +171,23 @@ class AsyncProjects(AsyncAPIResource):
         """
         return await self._get(
             f"/projects/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=Project,
         )
 
-    async def list(
-        self,
-        *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        docset: project_list_params.Docset | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        type: Literal[
-            "TabularReport",
-            "Abstract",
-            "ExcelExport",
-            "AssistedAuthoring",
-            "AutomationAnywhereDocumentAssembly",
-            "AutomationAnywhereWorkFlow",
-            "ZapierWorkFlow",
-            "UiPathWorkFlow",
-            "UiPathDocumentAssembly",
-            "PowerAutomateWorkFlow",
-            "SmartsheetExport",
-            "DiligenceReport",
-            "Chat",
-        ]
-        | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectListResponse:
+    async def list(self,
+    *,
+    cursor: str | NotGiven = NOT_GIVEN,
+    docset: project_list_params.Docset | NotGiven = NOT_GIVEN,
+    limit: int | NotGiven = NOT_GIVEN,
+    name: str | NotGiven = NOT_GIVEN,
+    type: Literal["TabularReport", "Abstract", "ExcelExport", "AssistedAuthoring", "AutomationAnywhereDocumentAssembly", "AutomationAnywhereWorkFlow", "ZapierWorkFlow", "UiPathWorkFlow", "UiPathDocumentAssembly", "PowerAutomateWorkFlow", "SmartsheetExport", "DiligenceReport", "Chat"] | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ProjectListResponse:
         """
         List projects
 
@@ -264,36 +211,25 @@ class AsyncProjects(AsyncAPIResource):
         """
         return await self._get(
             "/projects",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "docset": docset,
-                        "limit": limit,
-                        "name": name,
-                        "type": type,
-                    },
-                    project_list_params.ProjectListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "cursor": cursor,
+                "docset": docset,
+                "limit": limit,
+                "name": name,
+                "type": type,
+            }, project_list_params.ProjectListParams)),
             cast_to=ProjectListResponse,
         )
 
-    async def delete(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    async def delete(self,
+    id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
         """
         Delete a project
 
@@ -309,12 +245,9 @@ class AsyncProjects(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/projects/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=NoneType,
         )
-
 
 class ProjectsWithRawResponse:
     def __init__(self, projects: Projects) -> None:
@@ -329,7 +262,6 @@ class ProjectsWithRawResponse:
         self.delete = to_raw_response_wrapper(
             projects.delete,
         )
-
 
 class AsyncProjectsWithRawResponse:
     def __init__(self, projects: AsyncProjects) -> None:
