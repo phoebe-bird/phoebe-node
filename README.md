@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [here](https://www.docugami.com/contact-us).
+The API documentation can be found [here](https://api-docs.docugami.com).
 
 ## Installation
 
@@ -18,7 +18,7 @@ pip install docugami
 
 ## Usage
 
-The full API of this library can be found in [api.md](https://www.github.com/docugami/docugami-python/blob/main/api.md).
+<!-- The full API of this library can be found in [api.md](https://www.github.com/docugami/docugami-python/blob/main/api.md). -->
 
 ```python
 from docugami import Docugami
