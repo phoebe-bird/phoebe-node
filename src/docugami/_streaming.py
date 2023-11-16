@@ -2,14 +2,12 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Generic, Iterator, AsyncIterator, TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, Generic, Iterator, AsyncIterator
 from typing_extensions import override
 
 import httpx
 
 from ._types import ResponseT
-from ._utils import is_mapping
-from ._exceptions import APIError
 
 if TYPE_CHECKING:
     from ._base_client import SyncAPIClient, AsyncAPIClient
@@ -41,19 +39,17 @@ class Stream(Generic[ResponseT]):
             yield item
 
     def _iter_events(self) -> Iterator[ServerSentEvent]:
-        yield from self._decoder.iter(
-self.response.iter_lines()
-        )
+        yield from self._decoder.iter(self.response.iter_lines())
 
     def __stream__(self) -> Iterator[ResponseT]:
         cast_to = self._cast_to
         response = self.response
         process_data = self._client._process_response_data
         iterator = self._iter_events()
-        
+
         for sse in iterator:
             yield process_data(data=sse.json(), cast_to=cast_to, response=response)
-        
+
         # Ensure the entire stream is consumed
         for sse in iterator:
             ...
@@ -85,9 +81,7 @@ class AsyncStream(Generic[ResponseT]):
             yield item
 
     async def _iter_events(self) -> AsyncIterator[ServerSentEvent]:
-        async for sse in self._decoder.aiter(
-self.response.aiter_lines()
-        ):
+        async for sse in self._decoder.aiter(self.response.aiter_lines()):
             yield sse
 
     async def __stream__(self) -> AsyncIterator[ResponseT]:
@@ -95,10 +89,10 @@ self.response.aiter_lines()
         response = self.response
         process_data = self._client._process_response_data
         iterator = self._iter_events()
-        
+
         async for sse in iterator:
             yield process_data(data=sse.json(), cast_to=cast_to, response=response)
-        
+
         # Ensure the entire stream is consumed
         async for sse in iterator:
             ...
@@ -220,6 +214,3 @@ class SSEDecoder:
             pass  # Field is ignored.
 
         return None
-
-
-

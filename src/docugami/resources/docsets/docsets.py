@@ -2,33 +2,33 @@
 
 from __future__ import annotations
 
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
-from typing_extensions import Literal
-from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes, BinaryResponseContent
-from ..._base_client import AsyncPaginator, make_request_options, HttpxBinaryResponseContent
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._base_client import SyncAPIClient, AsyncAPIClient, _merge_mappings
-from ...types import shared_params
-from ...types import docset_create_params
-from ...types import docset_list_params
-from .documents import Documents, AsyncDocuments, DocumentsWithRawResponse, AsyncDocumentsWithRawResponse
+from typing import TYPE_CHECKING, List
 
 import httpx
 
-from ...types import Docset, DocsetListResponse, docset, docset_list_response
-
-from typing import List
-
+from ...types import (
+    Docset,
+    DocsetListResponse,
+    docset_list_params,
+    docset_create_params,
+)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import maybe_transform
+from .documents import (
+    Documents,
+    AsyncDocuments,
+    DocumentsWithRawResponse,
+    AsyncDocumentsWithRawResponse,
+)
+from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-
-from .. import _response
+from ..._base_client import make_request_options
 
 if TYPE_CHECKING:
-  from ..._client import AsyncDocugami, Docugami
+    from ..._client import Docugami, AsyncDocugami
 
 __all__ = ["Docsets", "AsyncDocsets"]
+
 
 class Docsets(SyncAPIResource):
     documents: Documents
@@ -39,16 +39,18 @@ class Docsets(SyncAPIResource):
         self.documents = Documents(client)
         self.with_raw_response = DocsetsWithRawResponse(self)
 
-    def create(self,
-    *,
-    name: str,
-    documents: List[str] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Docset:
+    def create(
+        self,
+        *,
+        name: str,
+        documents: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Docset:
         """
         Create a docset
 
@@ -68,23 +70,30 @@ class Docsets(SyncAPIResource):
         """
         return self._post(
             "/docsets",
-            body=maybe_transform({
-                "name": name,
-                "documents": documents,
-            }, docset_create_params.DocsetCreateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "documents": documents,
+                },
+                docset_create_params.DocsetCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Docset,
         )
 
-    def retrieve(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Docset:
+    def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Docset:
         """
         Get a docset
 
@@ -99,24 +108,28 @@ class Docsets(SyncAPIResource):
         """
         return self._get(
             f"/docsets/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Docset,
         )
 
-    def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    max_documents: int | NotGiven = NOT_GIVEN,
-    min_documents: int | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    samples: bool | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> DocsetListResponse:
+    def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        max_documents: int | NotGiven = NOT_GIVEN,
+        min_documents: int | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        samples: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DocsetListResponse:
         """
         List docsets
 
@@ -144,26 +157,37 @@ class Docsets(SyncAPIResource):
         """
         return self._get(
             "/docsets",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "limit": limit,
-                "max_documents": max_documents,
-                "min_documents": min_documents,
-                "name": name,
-                "samples": samples,
-            }, docset_list_params.DocsetListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "max_documents": max_documents,
+                        "min_documents": min_documents,
+                        "name": name,
+                        "samples": samples,
+                    },
+                    docset_list_params.DocsetListParams,
+                ),
+            ),
             cast_to=DocsetListResponse,
         )
 
-    def delete(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
         """
         Deleting a docset does _not_ delete any documents it contains.
 
@@ -179,9 +203,12 @@ class Docsets(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/docsets/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=NoneType,
         )
+
 
 class AsyncDocsets(AsyncAPIResource):
     documents: AsyncDocuments
@@ -192,16 +219,18 @@ class AsyncDocsets(AsyncAPIResource):
         self.documents = AsyncDocuments(client)
         self.with_raw_response = AsyncDocsetsWithRawResponse(self)
 
-    async def create(self,
-    *,
-    name: str,
-    documents: List[str] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Docset:
+    async def create(
+        self,
+        *,
+        name: str,
+        documents: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Docset:
         """
         Create a docset
 
@@ -221,23 +250,30 @@ class AsyncDocsets(AsyncAPIResource):
         """
         return await self._post(
             "/docsets",
-            body=maybe_transform({
-                "name": name,
-                "documents": documents,
-            }, docset_create_params.DocsetCreateParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "documents": documents,
+                },
+                docset_create_params.DocsetCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Docset,
         )
 
-    async def retrieve(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Docset:
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Docset:
         """
         Get a docset
 
@@ -252,24 +288,28 @@ class AsyncDocsets(AsyncAPIResource):
         """
         return await self._get(
             f"/docsets/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Docset,
         )
 
-    async def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    max_documents: int | NotGiven = NOT_GIVEN,
-    min_documents: int | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    samples: bool | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> DocsetListResponse:
+    async def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        max_documents: int | NotGiven = NOT_GIVEN,
+        min_documents: int | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        samples: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DocsetListResponse:
         """
         List docsets
 
@@ -297,26 +337,37 @@ class AsyncDocsets(AsyncAPIResource):
         """
         return await self._get(
             "/docsets",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "limit": limit,
-                "max_documents": max_documents,
-                "min_documents": min_documents,
-                "name": name,
-                "samples": samples,
-            }, docset_list_params.DocsetListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "max_documents": max_documents,
+                        "min_documents": min_documents,
+                        "name": name,
+                        "samples": samples,
+                    },
+                    docset_list_params.DocsetListParams,
+                ),
+            ),
             cast_to=DocsetListResponse,
         )
 
-    async def delete(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
         """
         Deleting a docset does _not_ delete any documents it contains.
 
@@ -332,9 +383,12 @@ class AsyncDocsets(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/docsets/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=NoneType,
         )
+
 
 class DocsetsWithRawResponse:
     def __init__(self, docsets: Docsets) -> None:
@@ -352,6 +406,7 @@ class DocsetsWithRawResponse:
         self.delete = to_raw_response_wrapper(
             docsets.delete,
         )
+
 
 class AsyncDocsetsWithRawResponse:
     def __init__(self, docsets: AsyncDocsets) -> None:

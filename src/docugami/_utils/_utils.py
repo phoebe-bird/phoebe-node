@@ -4,15 +4,24 @@ import os
 import re
 import inspect
 import functools
-from typing import Any, Tuple, Mapping, TypeVar, Callable, Iterable, Sequence, cast, overload
+from typing import (
+    Any,
+    Tuple,
+    Mapping,
+    TypeVar,
+    Callable,
+    Iterable,
+    Sequence,
+    cast,
+    overload,
+)
 from pathlib import Path
 from typing_extensions import Required, Annotated, TypeGuard, get_args, get_origin
 
-from .._types import HeadersLike, Headers, NotGiven, NotGivenOr, FileTypes
+from .._types import Headers, NotGiven, FileTypes, NotGivenOr, HeadersLike
 from .._compat import is_union as _is_union
 from .._compat import parse_date as parse_date
 from .._compat import parse_datetime as parse_datetime
-
 
 _T = TypeVar("_T")
 _TupleT = TypeVar("_TupleT", bound=Tuple[object, ...])
@@ -332,23 +341,27 @@ def coerce_float(val: str) -> float:
     return float(val)
 
 
-def coerce_boolean(val: str ) -> bool:
+def coerce_boolean(val: str) -> bool:
     return val == "true" or val == "1" or val == "on"
+
 
 def maybe_coerce_integer(val: str | None) -> int | None:
     if val is None:
         return None
     return coerce_integer(val)
 
+
 def maybe_coerce_float(val: str | None) -> float | None:
     if val is None:
         return None
     return coerce_float(val)
 
+
 def maybe_coerce_boolean(val: str | None) -> bool | None:
     if val is None:
         return None
     return coerce_boolean(val)
+
 
 def removeprefix(string: str, prefix: str) -> str:
     """Remove a prefix from a string.
@@ -385,7 +398,7 @@ def get_required_header(headers: HeadersLike, header: str) -> str:
                 return v
 
     """ to deal with the case where the header looks like Stainless-Event-Id """
-    intercaps_header = re.sub(r'([^\w])(\w)', lambda pat: pat.group(1) + pat.group(2).upper(), header.capitalize())
+    intercaps_header = re.sub(r"([^\w])(\w)", lambda pat: pat.group(1) + pat.group(2).upper(), header.capitalize())
 
     for normalized_header in [header, lower_header, header.upper(), intercaps_header]:
         value = headers.get(normalized_header)

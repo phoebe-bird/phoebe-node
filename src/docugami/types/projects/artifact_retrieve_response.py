@@ -1,18 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
-from typing_extensions import Literal
-from pydantic import Field as FieldInfo
-from ..._models import BaseModel
-from ...types import shared
-
-from .artifact import Artifact
-
 from typing import List, Optional
 
-from . import artifact
+from .artifact import Artifact
+from ..._models import BaseModel
 
 __all__ = ["ArtifactRetrieveResponse"]
+
 
 class ArtifactRetrieveResponse(BaseModel):
     artifacts: List[Artifact]

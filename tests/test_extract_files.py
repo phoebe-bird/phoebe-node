@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Sequence
 
 import pytest
+
 from docugami._types import FileTypes
 from docugami._utils import extract_files
 

@@ -7,8 +7,8 @@ from typing_extensions import Required, Annotated, TypedDict
 import pytest
 
 from docugami._utils import PropertyInfo, transform, parse_datetime
-from docugami._models import BaseModel
 from docugami._compat import PYDANTIC_V2
+from docugami._models import BaseModel
 
 
 class Foo1(TypedDict):

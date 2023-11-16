@@ -1,7 +1,6 @@
 import os
 import logging
 
-
 logger: logging.Logger = logging.getLogger("docugami")
 httpx_logger: logging.Logger = logging.getLogger("httpx")
 

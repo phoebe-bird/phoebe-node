@@ -1,18 +1,18 @@
 from __future__ import annotations
 
 import inspect
-from typing import TYPE_CHECKING, Any, Callable, Type, Union, Generic, TypeVar, cast
+from typing import TYPE_CHECKING, Any, Type, Union, Generic, TypeVar, Callable, cast
 from datetime import date, datetime
 from typing_extensions import (
-    ClassVar,
-    TypedDict,
     Unpack,
+    Literal,
+    ClassVar,
     Protocol,
     Required,
-    Literal,
+    TypedDict,
     final,
-    runtime_checkable,
     override,
+    runtime_checkable,
 )
 
 import pydantic
@@ -30,8 +30,14 @@ from ._types import (
     AnyMapping,
     HttpxRequestFiles,
 )
-from ._utils import is_list, is_mapping, parse_date, parse_datetime, strip_not_given, is_given
-from ._constants import RAW_RESPONSE_HEADER
+from ._utils import (
+    is_list,
+    is_given,
+    is_mapping,
+    parse_date,
+    parse_datetime,
+    strip_not_given,
+)
 from ._compat import PYDANTIC_V2, ConfigDict
 from ._compat import GenericModel as BaseGenericModel
 from ._compat import (
@@ -44,6 +50,7 @@ from ._compat import (
     get_model_fields,
     field_get_default,
 )
+from ._constants import RAW_RESPONSE_HEADER
 
 __all__ = ["BaseModel", "GenericModel"]
 
@@ -142,7 +149,7 @@ class BaseModel(pydantic.BaseModel):
     if not PYDANTIC_V2:
         # we define aliases for some of the new pydantic v2 methods so
         # that we can just document these methods without having to specify
-        # a specifc pydantic version as some users may not know which
+        # a specific pydantic version as some users may not know which
         # pydantic version they are currently using
 
         @override

@@ -2,19 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
-
-from typing_extensions import TypedDict, Annotated
+from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
-
-from . import _utils
 
 __all__ = ["DocsetListParams"]
+
 
 class DocsetListParams(TypedDict, total=False):
     cursor: str

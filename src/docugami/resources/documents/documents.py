@@ -2,32 +2,29 @@
 
 from __future__ import annotations
 
-import warnings
-from typing import TYPE_CHECKING, Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
-from ..._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes, BinaryResponseContent
-from ..._base_client import AsyncPaginator, make_request_options, HttpxBinaryResponseContent
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._base_client import SyncAPIClient, AsyncAPIClient, _merge_mappings
-from ...types import shared_params
-from ...types import document_list_params
-from .contents import Contents, AsyncContents, ContentsWithRawResponse, AsyncContentsWithRawResponse
 
 import httpx
 
-from ...types import Document, DocumentListResponse, document, document_list_response, document_list_params
-
-from typing_extensions import Literal
-
+from ...types import Document, DocumentListResponse, document_list_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._utils import maybe_transform
+from .contents import (
+    Contents,
+    AsyncContents,
+    ContentsWithRawResponse,
+    AsyncContentsWithRawResponse,
+)
+from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-
-from .. import _response
+from ..._base_client import make_request_options
 
 if TYPE_CHECKING:
-  from ..._client import AsyncDocugami, Docugami
+    from ..._client import Docugami, AsyncDocugami
 
 __all__ = ["Documents", "AsyncDocuments"]
+
 
 class Documents(SyncAPIResource):
     contents: Contents
@@ -38,15 +35,17 @@ class Documents(SyncAPIResource):
         self.contents = Contents(client)
         self.with_raw_response = DocumentsWithRawResponse(self)
 
-    def retrieve(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Document:
+    def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Document:
         """
         Get a document
 
@@ -61,29 +60,33 @@ class Documents(SyncAPIResource):
         """
         return self._get(
             f"/documents/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Document,
         )
 
-    def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    max_pages: int | NotGiven = NOT_GIVEN,
-    max_size: int | NotGiven = NOT_GIVEN,
-    min_pages: int | NotGiven = NOT_GIVEN,
-    min_size: int | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    prefix: str | NotGiven = NOT_GIVEN,
-    samples: bool | NotGiven = NOT_GIVEN,
-    status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> DocumentListResponse:
+    def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        max_pages: int | NotGiven = NOT_GIVEN,
+        max_size: int | NotGiven = NOT_GIVEN,
+        min_pages: int | NotGiven = NOT_GIVEN,
+        min_size: int | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        samples: bool | NotGiven = NOT_GIVEN,
+        status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DocumentListResponse:
         """
         List documents
 
@@ -119,31 +122,42 @@ class Documents(SyncAPIResource):
         """
         return self._get(
             "/documents",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "docset": docset,
-                "limit": limit,
-                "max_pages": max_pages,
-                "max_size": max_size,
-                "min_pages": min_pages,
-                "min_size": min_size,
-                "name": name,
-                "prefix": prefix,
-                "samples": samples,
-                "status": status,
-            }, document_list_params.DocumentListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "docset": docset,
+                        "limit": limit,
+                        "max_pages": max_pages,
+                        "max_size": max_size,
+                        "min_pages": min_pages,
+                        "min_size": min_size,
+                        "name": name,
+                        "prefix": prefix,
+                        "samples": samples,
+                        "status": status,
+                    },
+                    document_list_params.DocumentListParams,
+                ),
+            ),
             cast_to=DocumentListResponse,
         )
 
-    def delete(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
+    def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
         """
         Delete a document
 
@@ -159,9 +173,12 @@ class Documents(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/documents/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=NoneType,
         )
+
 
 class AsyncDocuments(AsyncAPIResource):
     contents: AsyncContents
@@ -172,15 +189,17 @@ class AsyncDocuments(AsyncAPIResource):
         self.contents = AsyncContents(client)
         self.with_raw_response = AsyncDocumentsWithRawResponse(self)
 
-    async def retrieve(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> Document:
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Document:
         """
         Get a document
 
@@ -195,29 +214,33 @@ class AsyncDocuments(AsyncAPIResource):
         """
         return await self._get(
             f"/documents/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=Document,
         )
 
-    async def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    max_pages: int | NotGiven = NOT_GIVEN,
-    max_size: int | NotGiven = NOT_GIVEN,
-    min_pages: int | NotGiven = NOT_GIVEN,
-    min_size: int | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    prefix: str | NotGiven = NOT_GIVEN,
-    samples: bool | NotGiven = NOT_GIVEN,
-    status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> DocumentListResponse:
+    async def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        docset: document_list_params.Docset | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        max_pages: int | NotGiven = NOT_GIVEN,
+        max_size: int | NotGiven = NOT_GIVEN,
+        min_pages: int | NotGiven = NOT_GIVEN,
+        min_size: int | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        samples: bool | NotGiven = NOT_GIVEN,
+        status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DocumentListResponse:
         """
         List documents
 
@@ -253,31 +276,42 @@ class AsyncDocuments(AsyncAPIResource):
         """
         return await self._get(
             "/documents",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "cursor": cursor,
-                "docset": docset,
-                "limit": limit,
-                "max_pages": max_pages,
-                "max_size": max_size,
-                "min_pages": min_pages,
-                "min_size": min_size,
-                "name": name,
-                "prefix": prefix,
-                "samples": samples,
-                "status": status,
-            }, document_list_params.DocumentListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "docset": docset,
+                        "limit": limit,
+                        "max_pages": max_pages,
+                        "max_size": max_size,
+                        "min_pages": min_pages,
+                        "min_size": min_size,
+                        "name": name,
+                        "prefix": prefix,
+                        "samples": samples,
+                        "status": status,
+                    },
+                    document_list_params.DocumentListParams,
+                ),
+            ),
             cast_to=DocumentListResponse,
         )
 
-    async def delete(self,
-    id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> None:
+    async def delete(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
         """
         Delete a document
 
@@ -293,9 +327,12 @@ class AsyncDocuments(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/documents/{id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=NoneType,
         )
+
 
 class DocumentsWithRawResponse:
     def __init__(self, documents: Documents) -> None:
@@ -310,6 +347,7 @@ class DocumentsWithRawResponse:
         self.delete = to_raw_response_wrapper(
             documents.delete,
         )
+
 
 class AsyncDocumentsWithRawResponse:
     def __init__(self, documents: AsyncDocuments) -> None:

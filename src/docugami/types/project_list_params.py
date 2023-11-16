@@ -2,15 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
-
-from typing_extensions import TypedDict, Literal
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["ProjectListParams", "Docset"]
+
 
 class ProjectListParams(TypedDict, total=False):
     cursor: str
@@ -27,8 +22,23 @@ class ProjectListParams(TypedDict, total=False):
     name: str
     """Filters projects by name."""
 
-    type: Literal["TabularReport", "Abstract", "ExcelExport", "AssistedAuthoring", "AutomationAnywhereDocumentAssembly", "AutomationAnywhereWorkFlow", "ZapierWorkFlow", "UiPathWorkFlow", "UiPathDocumentAssembly", "PowerAutomateWorkFlow", "SmartsheetExport", "DiligenceReport", "Chat"]
+    type: Literal[
+        "TabularReport",
+        "Abstract",
+        "ExcelExport",
+        "AssistedAuthoring",
+        "AutomationAnywhereDocumentAssembly",
+        "AutomationAnywhereWorkFlow",
+        "ZapierWorkFlow",
+        "UiPathWorkFlow",
+        "UiPathDocumentAssembly",
+        "PowerAutomateWorkFlow",
+        "SmartsheetExport",
+        "DiligenceReport",
+        "Chat",
+    ]
     """Filters projects by type."""
+
 
 class Docset(TypedDict, total=False):
     id: str

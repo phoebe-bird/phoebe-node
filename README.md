@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [here](https://api-docs.docugami.com).
+The API documentation can be found [here](https://www.docugami.com/contact-us).
 
 ## Installation
 
@@ -18,7 +18,7 @@ pip install docugami
 
 ## Usage
 
-<!-- The full API of this library can be found in [api.md](https://www.github.com/docugami/docugami-python/blob/main/api.md). -->
+The full API of this library can be found in [api.md](https://www.github.com/docugami/docugami-python/blob/main/api.md).
 
 ```python
 from docugami import Docugami
@@ -50,9 +50,11 @@ client = AsyncDocugami(
     api_key="My API Key",
 )
 
+
 async def main() -> None:
-  document_list_response = await client.documents.list()
-  print(document_list_response.documents)
+    document_list_response = await client.documents.list()
+    print(document_list_response.documents)
+
 
 asyncio.run(main())
 ```
@@ -84,7 +86,7 @@ try:
     client.documents.list()
 except docugami.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__) # an underlying Exception, likely raised within httpx.
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
 except docugami.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except docugami.APIStatusError as e:
@@ -124,7 +126,7 @@ client = Docugami(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries = 5).documents.list()
+client.with_options(max_retries=5).documents.list()
 ```
 
 ### Timeouts
@@ -147,7 +149,7 @@ client = Docugami(
 )
 
 # Override per-request:
-client.with_options(timeout = 5 * 1000).documents.list()
+client.with_options(timeout=5 * 1000).documents.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -208,8 +210,12 @@ import httpx
 from docugami import Docugami
 
 client = Docugami(
+    # Or use the `DOCUGAMI_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
-    http_client=httpx.Client(proxies="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
+    http_client=httpx.Client(
+        proxies="http://my.test.proxy.example.com",
+        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
+    ),
 )
 ```
 

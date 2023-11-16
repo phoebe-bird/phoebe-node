@@ -2,19 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
-
-from typing_extensions import TypedDict, Annotated, Literal
+from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-
-from . import _utils
 
 __all__ = ["DocumentListParams", "Docset"]
+
 
 class DocumentListParams(TypedDict, total=False):
     cursor: str
@@ -51,6 +44,7 @@ class DocumentListParams(TypedDict, total=False):
 
     status: Literal["New", "Ingesting", "Ingested", "Processing", "Ready", "Error"]
     """Filters documents by status."""
+
 
 class Docset(TypedDict, total=False):
     id: str

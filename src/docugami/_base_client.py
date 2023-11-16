@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import json
 import os
+import json
 import time
 import uuid
 import email
@@ -30,7 +30,7 @@ from typing import (
     overload,
 )
 from functools import lru_cache
-from typing_extensions import Literal, get_origin, override
+from typing_extensions import Literal, override
 
 import anyio
 import httpx
@@ -41,6 +41,7 @@ from pydantic import PrivateAttr
 
 from . import _exceptions
 from ._qs import Querystring
+from ._files import to_httpx_files, async_to_httpx_files
 from ._types import (
     NOT_GIVEN,
     Body,
@@ -52,8 +53,8 @@ from ._types import (
     NotGiven,
     ResponseT,
     Transport,
-    PostParser,
     AnyMapping,
+    PostParser,
     ProxiesTypes,
     RequestFiles,
     AsyncTransport,
@@ -73,13 +74,7 @@ from ._constants import (
     RAW_RESPONSE_HEADER,
 )
 from ._streaming import Stream, AsyncStream
-from ._exceptions import (
-    APIStatusError,
-    APITimeoutError,
-    APIConnectionError,
-    APIResponseValidationError,
-)
-from ._files import to_httpx_files, async_to_httpx_files
+from ._exceptions import APIStatusError, APITimeoutError, APIConnectionError
 
 log: logging.Logger = logging.getLogger(__name__)
 
@@ -883,13 +878,21 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
         except httpx.TimeoutException as err:
             if retries > 0:
                 return self._retry_request(
-                    options, cast_to, retries, stream=stream, stream_cls=stream_cls,
+                    options,
+                    cast_to,
+                    retries,
+                    stream=stream,
+                    stream_cls=stream_cls,
                 )
             raise APITimeoutError(request=request) from err
         except Exception as err:
             if retries > 0:
                 return self._retry_request(
-                    options, cast_to, retries, stream=stream, stream_cls=stream_cls,
+                    options,
+                    cast_to,
+                    retries,
+                    stream=stream,
+                    stream_cls=stream_cls,
                 )
             raise APIConnectionError(request=request) from err
 
@@ -1315,27 +1318,15 @@ class AsyncAPIClient(BaseClient[httpx.AsyncClient, AsyncStream[Any]]):
             raise self._make_status_error_from_response(err.response) from None
         except httpx.ConnectTimeout as err:
             if retries > 0:
-                return await self._retry_request(
-                    options, cast_to, retries, stream=stream, stream_cls=stream_cls
-                )
+                return await self._retry_request(options, cast_to, retries, stream=stream, stream_cls=stream_cls)
             raise APITimeoutError(request=request) from err
-        except httpx.ReadTimeout as err:
-            # We explicitly do not retry on ReadTimeout errors as this means
-            # that the server processing the request has taken 60 seconds
-            # (our default timeout). This likely indicates that something
-            # is not working as expected on the server side.
-            raise
         except httpx.TimeoutException as err:
             if retries > 0:
-                return await self._retry_request(
-                    options, cast_to, retries, stream=stream, stream_cls=stream_cls
-                )
+                return await self._retry_request(options, cast_to, retries, stream=stream, stream_cls=stream_cls)
             raise APITimeoutError(request=request) from err
         except Exception as err:
             if retries > 0:
-                return await self._retry_request(
-                    options, cast_to, retries, stream=stream, stream_cls=stream_cls
-                )
+                return await self._retry_request(options, cast_to, retries, stream=stream, stream_cls=stream_cls)
             raise APIConnectionError(request=request) from err
 
         return self._process_response(
@@ -1714,15 +1705,11 @@ class HttpxBinaryResponseContent(BinaryResponseContent):
         return self.response.read()
 
     @override
-    def iter_bytes(
-        self, chunk_size: Optional[int] = None
-    ) -> Iterator[bytes]:
+    def iter_bytes(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
         return self.response.iter_bytes(chunk_size)
 
     @override
-    def iter_text(
-        self, chunk_size: Optional[int] = None
-    ) -> Iterator[str]:
+    def iter_text(self, chunk_size: Optional[int] = None) -> Iterator[str]:
         return self.response.iter_text(chunk_size)
 
     @override
@@ -1730,9 +1717,7 @@ class HttpxBinaryResponseContent(BinaryResponseContent):
         return self.response.iter_lines()
 
     @override
-    def iter_raw(
-        self, chunk_size: Optional[int] = None
-    ) -> Iterator[bytes]:
+    def iter_raw(self, chunk_size: Optional[int] = None) -> Iterator[bytes]:
         return self.response.iter_raw(chunk_size)
 
     @override
@@ -1755,15 +1740,11 @@ class HttpxBinaryResponseContent(BinaryResponseContent):
         return await self.response.aread()
 
     @override
-    async def aiter_bytes(
-        self, chunk_size: Optional[int] = None
-    ) -> AsyncIterator[bytes]:
+    async def aiter_bytes(self, chunk_size: Optional[int] = None) -> AsyncIterator[bytes]:
         return self.response.aiter_bytes(chunk_size)
 
     @override
-    async def aiter_text(
-        self, chunk_size: Optional[int] = None
-    ) -> AsyncIterator[str]:
+    async def aiter_text(self, chunk_size: Optional[int] = None) -> AsyncIterator[str]:
         return self.response.aiter_text(chunk_size)
 
     @override
@@ -1771,9 +1752,7 @@ class HttpxBinaryResponseContent(BinaryResponseContent):
         return self.response.aiter_lines()
 
     @override
-    async def aiter_raw(
-        self, chunk_size: Optional[int] = None
-    ) -> AsyncIterator[bytes]:
+    async def aiter_raw(self, chunk_size: Optional[int] = None) -> AsyncIterator[bytes]:
         return self.response.aiter_raw(chunk_size)
 
     @override

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from os import PathLike
+from abc import ABC, abstractmethod
 from typing import (
     IO,
     TYPE_CHECKING,
@@ -10,19 +11,25 @@ from typing import (
     Type,
     Tuple,
     Union,
-    Iterator,
-    AsyncIterator,
     Mapping,
     TypeVar,
     Callable,
+    Iterator,
     Optional,
     Sequence,
+    AsyncIterator,
 )
-from typing_extensions import TypeAlias, TypedDict, Literal, Protocol, runtime_checkable, override
+from typing_extensions import (
+    Literal,
+    Protocol,
+    TypeAlias,
+    TypedDict,
+    override,
+    runtime_checkable,
+)
 
 import pydantic
 from httpx import URL, Proxy, Timeout, Response, BaseTransport, AsyncBaseTransport
-from abc import ABC, abstractmethod
 
 if TYPE_CHECKING:
     from ._models import BaseModel
@@ -272,8 +279,8 @@ class NotGiven:
     ```py
     def get(timeout: Union[int, NotGiven, None] = NotGiven()) -> Response: ...
 
-    get(timout=1) # 1s timeout
-    get(timout=None) # No timeout
+    get(timeout=1) # 1s timeout
+    get(timeout=None) # No timeout
     get() # Default timeout behavior, which may not be statically known at the method definition.
     ```
     """

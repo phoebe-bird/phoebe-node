@@ -4,20 +4,20 @@ import inspect
 import datetime
 import functools
 from typing import TYPE_CHECKING, Any, Union, Generic, TypeVar, Callable, cast
-from typing_extensions import Awaitable, ParamSpec, get_args, get_origin, override
+from typing_extensions import Awaitable, ParamSpec, get_args, override, get_origin
 
 import httpx
 import pydantic
 
 from ._types import NoneType, UnknownResponse, BinaryResponseContent
-from ._models import BaseModel
 from ._utils import is_given
-from ._exceptions import APIResponseValidationError
+from ._models import BaseModel
 from ._constants import RAW_RESPONSE_HEADER
+from ._exceptions import APIResponseValidationError
 
 if TYPE_CHECKING:
-    from ._base_client import Stream, BaseClient, AsyncStream
     from ._models import FinalRequestOptions
+    from ._base_client import Stream, BaseClient, AsyncStream
 
 
 P = ParamSpec("P")
@@ -136,7 +136,7 @@ class APIResponse(Generic[R]):
         origin = get_origin(cast_to) or cast_to
 
         if inspect.isclass(origin) and issubclass(origin, BinaryResponseContent):
-            return cast(R, cast_to(response)) # type: ignore
+            return cast(R, cast_to(response))  # type: ignore
 
         if origin == APIResponse:
             raise RuntimeError("Unexpected state - cast_to is `APIResponse`")

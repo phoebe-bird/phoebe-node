@@ -1,20 +1,16 @@
 from __future__ import annotations
 
+import os
 import traceback
+import contextlib
+from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
-from typing import TypeVar, Any, cast
-from typing_extensions import Literal, assert_type, get_args, get_origin
+from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from docugami._models import BaseModel
 from docugami._types import NoneType
-from docugami._utils import (
-    is_list_type,
-    is_list,
-    is_union_type,
-    is_dict,
-)
-from docugami._compat import PYDANTIC_V2, get_model_fields, field_outer_type
-
+from docugami._utils import is_dict, is_list, is_list_type, is_union_type
+from docugami._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from docugami._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
@@ -109,3 +105,16 @@ def _assert_list_type(type_: type[object], value: object) -> None:
     inner_type = get_args(type_)[0]
     for entry in value:
         assert_type(inner_type, entry)  # type: ignore
+
+
+@contextlib.contextmanager
+def update_env(**new_env: str) -> Iterator[None]:
+    old = os.environ.copy()
+
+    try:
+        os.environ.update(new_env)
+
+        yield None
+    finally:
+        os.environ.clear()
+        os.environ.update(old)
