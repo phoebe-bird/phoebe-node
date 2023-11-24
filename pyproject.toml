@@ -1,7 +1,7 @@
 [project]
 name = "docugami"
-version = "0.0.4"
-description = "The official Python library for the docugami API"
+version = "0.0.5"
+description = "The official Python library for the Docugami API"
 readme = "README.md"
 license = "Apache-2.0"
 authors = [
