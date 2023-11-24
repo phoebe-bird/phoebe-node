@@ -37,6 +37,7 @@ def upload_to_named_docset(
         raise Exception(f"Could not create or detect docset_id for docset: {docset_name}")
 
     document_list_response = client.documents.list(limit=int(1e5))  # TODO: paginate
+    conflict_docs: List[Document] = []
     uploaded_docs: List[Document] = []
     if document_list_response and document_list_response.documents:
         new_names = [Path(f).name for f in local_paths]
@@ -53,7 +54,7 @@ def upload_to_named_docset(
                         docset_id=docset_id,
                     )
                 )
-    return uploaded_docs
+    return uploaded_docs + conflict_docs
 
 
 def wait_for_dgml(client: Docugami, docs: List[Document], poll_wait_seconds: int = 30) -> Dict[str, str]:
