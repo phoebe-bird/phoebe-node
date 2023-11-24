@@ -12,3 +12,6 @@ dist
 .env
 .envrc
 codegen.log
+
+temp
+.DS_Store
