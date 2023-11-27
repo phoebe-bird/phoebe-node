@@ -80,7 +80,7 @@ def wait_for_dgml(client: Docugami, docs: List[Document], poll_wait_seconds: int
                 docset_length = client.docsets.retrieve(docset_id).document_count
                 docset_id_to_count[docset_id] = docset_length
 
-            if docset_id_to_count[docset_id] < 6:  # current min doc size
+            if docset_id_to_count[docset_id] < 6: # type: ignore
                 raise Exception(
                     f"Document is assigned to docset with less than 6 docs, XML will not be generated: {doc.name}"
                 )

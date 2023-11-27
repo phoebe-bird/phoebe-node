@@ -1,6 +1,6 @@
 [project]
 name = "docugami"
-version = "0.0.7"
+version = "0.0.8"
 description = "The official Python library for the Docugami API"
 readme = "README.md"
 license = "MIT"
@@ -14,7 +14,8 @@ dependencies = [
     "anyio>=3.5.0, <4",
     "distro>=1.7.0, <2",
     "sniffio",
-
+    "requests>=2.31.0",
+    "types-requests>=2.31.0.10",
 ]
 requires-python = ">= 3.7"
 classifiers = [
