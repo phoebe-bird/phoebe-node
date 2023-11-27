@@ -1,9 +1,9 @@
 [project]
 name = "docugami"
 version = "0.0.7"
-description = "The official Python library for the docugami API"
+description = "The official Python library for the Docugami API"
 readme = "README.md"
-license = "Apache-2.0"
+license = "MIT"
 authors = [
 { name = "Docugami", email = "contact@docugami.com" },
 ]
@@ -32,7 +32,7 @@ classifiers = [
   "Operating System :: POSIX :: Linux",
   "Operating System :: Microsoft :: Windows",
   "Topic :: Software Development :: Libraries :: Python Modules",
-  "License :: OSI Approved :: Apache Software License"
+  "License :: OSI Approved :: MIT License"
 ]
 
 

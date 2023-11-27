@@ -72,7 +72,7 @@ class Docugami(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous docugami client instance.
+        """Construct a new synchronous Docugami client instance.
 
         This automatically infers the `api_key` argument from the `DOCUGAMI_API_KEY` environment variable if it is not provided.
         """
@@ -254,7 +254,7 @@ class AsyncDocugami(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async docugami client instance.
+        """Construct a new async Docugami client instance.
 
         This automatically infers the `api_key` argument from the `DOCUGAMI_API_KEY` environment variable if it is not provided.
         """
