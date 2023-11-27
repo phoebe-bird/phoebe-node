@@ -147,7 +147,7 @@ class Webhooks(SyncAPIResource):
           target: Filters webhooks by target type. 'read:documents' scope is required for document
               and docset targets and 'read:projects' for project targets.
 
-          targetId: Filters webhooks by target id.
+          target_id: Filters webhooks by target id.
 
           extra_headers: Send extra headers
 
@@ -332,7 +332,7 @@ class AsyncWebhooks(AsyncAPIResource):
           target: Filters webhooks by target type. 'read:documents' scope is required for document
               and docset targets and 'read:projects' for project targets.
 
-          targetId: Filters webhooks by target id.
+          target_id: Filters webhooks by target id.
 
           extra_headers: Send extra headers
 

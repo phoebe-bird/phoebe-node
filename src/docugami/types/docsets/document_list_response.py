@@ -5,10 +5,10 @@ from typing import List, Optional
 from ..._models import BaseModel
 from ..document import Document
 
-__all__ = ["DocumentListDocsetResponse"]
+__all__ = ["DocumentListResponse"]
 
 
-class DocumentListDocsetResponse(BaseModel):
+class DocumentListResponse(BaseModel):
     documents: List[Document]
 
     next: Optional[str] = None

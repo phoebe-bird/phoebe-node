@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [here](https://api-docs.docugami.com).
+The API documentation can be found [here](https://api-docs.docugami.com/).
 
 ## Installation
 
@@ -18,7 +18,7 @@ pip install docugami
 
 ## Usage
 
-The full API of this library can be found in [api.md](https://github.com/stainless-sdks/docugami-python/blob/main/api.md).
+The full API of this library can be found in [api.md](https://www.github.com/stainless-sdks/docugami-python/blob/main/api.md).
 
 ```python
 from docugami import Docugami
@@ -63,7 +63,10 @@ Functionality between the synchronous and asynchronous clients is otherwise iden
 
 ## Using types
 
-Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like serializing back into JSON ([v1](https://docs.pydantic.dev/1.10/usage/models/), [v2](https://docs.pydantic.dev/latest/usage/serialization/)). To get a dictionary, call `model.model_dump()`.
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like:
+
+- Serializing back into JSON, `model.model_dump_json(indent=2, exclude_unset=True)`
+- Converting to a dictionary, `model.model_dump(exclude_unset=True)`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
@@ -195,7 +198,7 @@ document = response.parse()  # get the object that `documents.list()` would have
 print(document.documents)
 ```
 
-These methods return an [`APIResponse`](https://github.com/docugami/docugami-python/tree/main/src/docugami/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/docugami-python/tree/main/src/docugami/_response.py) object.
 
 ### Configuring the HTTP client
 
@@ -233,7 +236,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/docugami/docugami-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/docugami-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

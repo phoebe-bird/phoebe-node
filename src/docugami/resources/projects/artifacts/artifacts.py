@@ -17,11 +17,7 @@ from ...._utils import maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...._base_client import make_request_options
-from ....types.projects import (
-    Artifact,
-    ArtifactRetrieveResponse,
-    artifact_retrieve_params,
-)
+from ....types.projects import Artifact, ArtifactListResponse, artifact_list_params
 
 if TYPE_CHECKING:
     from ...._client import Docugami, AsyncDocugami
@@ -40,11 +36,44 @@ class Artifacts(SyncAPIResource):
 
     def retrieve(
         self,
+        artifact_id: str,
+        *,
+        project_id: str,
+        version: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Artifact:
+        """
+        Get an artifact
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Artifact,
+        )
+
+    def list(
+        self,
         version: str | NotGiven = NOT_GIVEN,
         *,
         project_id: str,
         cursor: str | NotGiven = NOT_GIVEN,
-        document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
+        document: artifact_list_params.Document | NotGiven = NOT_GIVEN,
         is_read_only: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         max_size: int | NotGiven = NOT_GIVEN,
@@ -56,7 +85,7 @@ class Artifacts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactRetrieveResponse:
+    ) -> ArtifactListResponse:
         """
         List artifacts
 
@@ -64,13 +93,13 @@ class Artifacts(SyncAPIResource):
           cursor: Opaque continuation token used to get additional items when a previous query
               returned more than `limit` items.
 
-          isReadOnly: Filters artifacts by read-only status.
+          is_read_only: Filters artifacts by read-only status.
 
           limit: Maximum number of items to return.
 
-          maxSize: Filters artifacts by maximum file size in bytes
+          max_size: Filters artifacts by maximum file size in bytes
 
-          minSize: Filters artifacts by minimum file size in bytes.
+          min_size: Filters artifacts by minimum file size in bytes.
 
           name: Filters artifacts by name.
 
@@ -99,10 +128,10 @@ class Artifacts(SyncAPIResource):
                         "min_size": min_size,
                         "name": name,
                     },
-                    artifact_retrieve_params.ArtifactRetrieveParams,
+                    artifact_list_params.ArtifactListParams,
                 ),
             ),
-            cast_to=ArtifactRetrieveResponse,
+            cast_to=ArtifactListResponse,
         )
 
     def delete(
@@ -139,7 +168,17 @@ class Artifacts(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def get(
+
+class AsyncArtifacts(AsyncAPIResource):
+    contents: AsyncContents
+    with_raw_response: AsyncArtifactsWithRawResponse
+
+    def __init__(self, client: AsyncDocugami) -> None:
+        super().__init__(client)
+        self.contents = AsyncContents(client)
+        self.with_raw_response = AsyncArtifactsWithRawResponse(self)
+
+    async def retrieve(
         self,
         artifact_id: str,
         *,
@@ -164,7 +203,7 @@ class Artifacts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return await self._get(
             f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -172,23 +211,13 @@ class Artifacts(SyncAPIResource):
             cast_to=Artifact,
         )
 
-
-class AsyncArtifacts(AsyncAPIResource):
-    contents: AsyncContents
-    with_raw_response: AsyncArtifactsWithRawResponse
-
-    def __init__(self, client: AsyncDocugami) -> None:
-        super().__init__(client)
-        self.contents = AsyncContents(client)
-        self.with_raw_response = AsyncArtifactsWithRawResponse(self)
-
-    async def retrieve(
+    async def list(
         self,
         version: str | NotGiven = NOT_GIVEN,
         *,
         project_id: str,
         cursor: str | NotGiven = NOT_GIVEN,
-        document: artifact_retrieve_params.Document | NotGiven = NOT_GIVEN,
+        document: artifact_list_params.Document | NotGiven = NOT_GIVEN,
         is_read_only: bool | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         max_size: int | NotGiven = NOT_GIVEN,
@@ -200,7 +229,7 @@ class AsyncArtifacts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactRetrieveResponse:
+    ) -> ArtifactListResponse:
         """
         List artifacts
 
@@ -208,13 +237,13 @@ class AsyncArtifacts(AsyncAPIResource):
           cursor: Opaque continuation token used to get additional items when a previous query
               returned more than `limit` items.
 
-          isReadOnly: Filters artifacts by read-only status.
+          is_read_only: Filters artifacts by read-only status.
 
           limit: Maximum number of items to return.
 
-          maxSize: Filters artifacts by maximum file size in bytes
+          max_size: Filters artifacts by maximum file size in bytes
 
-          minSize: Filters artifacts by minimum file size in bytes.
+          min_size: Filters artifacts by minimum file size in bytes.
 
           name: Filters artifacts by name.
 
@@ -243,10 +272,10 @@ class AsyncArtifacts(AsyncAPIResource):
                         "min_size": min_size,
                         "name": name,
                     },
-                    artifact_retrieve_params.ArtifactRetrieveParams,
+                    artifact_list_params.ArtifactListParams,
                 ),
             ),
-            cast_to=ArtifactRetrieveResponse,
+            cast_to=ArtifactListResponse,
         )
 
     async def delete(
@@ -283,39 +312,6 @@ class AsyncArtifacts(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def get(
-        self,
-        artifact_id: str,
-        *,
-        project_id: str,
-        version: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Artifact:
-        """
-        Get an artifact
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            f"/projects/{project_id}/artifacts/{version}/{artifact_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=Artifact,
-        )
-
 
 class ArtifactsWithRawResponse:
     def __init__(self, artifacts: Artifacts) -> None:
@@ -324,11 +320,11 @@ class ArtifactsWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             artifacts.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            artifacts.list,
+        )
         self.delete = to_raw_response_wrapper(
             artifacts.delete,
-        )
-        self.get = to_raw_response_wrapper(
-            artifacts.get,
         )
 
 
@@ -339,9 +335,9 @@ class AsyncArtifactsWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             artifacts.retrieve,
         )
+        self.list = async_to_raw_response_wrapper(
+            artifacts.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             artifacts.delete,
-        )
-        self.get = async_to_raw_response_wrapper(
-            artifacts.get,
         )

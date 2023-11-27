@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["ArtifactRetrieveParams", "Document"]
+__all__ = ["ArtifactListParams", "Document"]
 
 
-class ArtifactRetrieveParams(TypedDict, total=False):
+class ArtifactListParams(TypedDict, total=False):
     project_id: Required[Annotated[str, PropertyInfo(alias="projectId")]]
 
     cursor: str

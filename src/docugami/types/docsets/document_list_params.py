@@ -6,10 +6,10 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["DocumentListDocsetParams"]
+__all__ = ["DocumentListParams"]
 
 
-class DocumentListDocsetParams(TypedDict, total=False):
+class DocumentListParams(TypedDict, total=False):
     cursor: str
     """
     Opaque continuation token used to get additional items when a previous query

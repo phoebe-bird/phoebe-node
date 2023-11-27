@@ -25,9 +25,9 @@ class TestContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list(self, client: Docugami, respx_mock: MockRouter) -> None:
+    def test_method_download(self, client: Docugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/documents/{id}/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        content = client.documents.contents.list(
+        content = client.documents.contents.download(
             "string",
         )
         assert isinstance(content, BinaryResponseContent)
@@ -35,9 +35,9 @@ class TestContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list(self, client: Docugami, respx_mock: MockRouter) -> None:
+    def test_raw_response_download(self, client: Docugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/documents/{id}/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        response = client.documents.contents.with_raw_response.list(
+        response = client.documents.contents.with_raw_response.download(
             "string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -77,9 +77,9 @@ class TestAsyncContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
+    async def test_method_download(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/documents/{id}/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        content = await client.documents.contents.list(
+        content = await client.documents.contents.download(
             "string",
         )
         assert isinstance(content, BinaryResponseContent)
@@ -87,9 +87,9 @@ class TestAsyncContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
+    async def test_raw_response_download(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/documents/{id}/content").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        response = await client.documents.contents.with_raw_response.list(
+        response = await client.documents.contents.with_raw_response.download(
             "string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"

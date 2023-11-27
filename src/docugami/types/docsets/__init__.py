@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from .document_list_docset_params import (
-    DocumentListDocsetParams as DocumentListDocsetParams,
-)
-from .document_list_docset_response import (
-    DocumentListDocsetResponse as DocumentListDocsetResponse,
-)
+from .document_list_params import DocumentListParams as DocumentListParams
+from .document_dgml_response import DocumentDgmlResponse as DocumentDgmlResponse
+from .document_list_response import DocumentListResponse as DocumentListResponse

@@ -96,13 +96,13 @@ class Documents(SyncAPIResource):
 
           limit: Maximum number of items to return.
 
-          maxPages: Filters documents by maximum number of pages in the document.
+          max_pages: Filters documents by maximum number of pages in the document.
 
-          maxSize: Filters documents by maximum file size in bytes.
+          max_size: Filters documents by maximum file size in bytes.
 
-          minPages: Filters documents by minimum number of pages in the document.
+          min_pages: Filters documents by minimum number of pages in the document.
 
-          minSize: Filters documents by minimum file size in bytes.
+          min_size: Filters documents by minimum file size in bytes.
 
           name: Filters documents by name, excluding any prefix.
 
@@ -250,13 +250,13 @@ class AsyncDocuments(AsyncAPIResource):
 
           limit: Maximum number of items to return.
 
-          maxPages: Filters documents by maximum number of pages in the document.
+          max_pages: Filters documents by maximum number of pages in the document.
 
-          maxSize: Filters documents by maximum file size in bytes.
+          max_size: Filters documents by maximum file size in bytes.
 
-          minPages: Filters documents by minimum number of pages in the document.
+          min_pages: Filters documents by minimum number of pages in the document.
 
-          minSize: Filters documents by minimum file size in bytes.
+          min_size: Filters documents by minimum file size in bytes.
 
           name: Filters documents by name, excluding any prefix.
 

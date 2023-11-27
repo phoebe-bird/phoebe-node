@@ -65,8 +65,6 @@ __all__ = [
     "file_from_path",
 ]
 
-from .lib.upload import *
-
 _setup_logging()
 
 # Update the __module__ attribute for exported symbols so that

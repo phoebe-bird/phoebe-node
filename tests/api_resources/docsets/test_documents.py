@@ -10,7 +10,7 @@ from docugami import Docugami, AsyncDocugami
 from tests.utils import assert_matches_type
 from docugami.types import Docset, Document
 from docugami._client import Docugami, AsyncDocugami
-from docugami.types.docsets import DocumentListDocsetResponse
+from docugami.types.docsets import DocumentListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -40,22 +40,35 @@ class TestDocuments:
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
-    def test_method_update(self, client: Docugami) -> None:
-        document = client.docsets.documents.update(
+    def test_method_list(self, client: Docugami) -> None:
+        document = client.docsets.documents.list(
             "string",
-            docset_id="string",
         )
-        assert_matches_type(Docset, document, path=["response"])
+        assert_matches_type(DocumentListResponse, document, path=["response"])
 
     @parametrize
-    def test_raw_response_update(self, client: Docugami) -> None:
-        response = client.docsets.documents.with_raw_response.update(
+    def test_method_list_with_all_params(self, client: Docugami) -> None:
+        document = client.docsets.documents.list(
             "string",
-            docset_id="string",
+            cursor="string",
+            limit=1,
+            max_pages=0,
+            max_size=0,
+            min_pages=0,
+            min_size=0,
+            prefix="string",
+            status="Ready",
+        )
+        assert_matches_type(DocumentListResponse, document, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Docugami) -> None:
+        response = client.docsets.documents.with_raw_response.list(
+            "string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
-        assert_matches_type(Docset, document, path=["response"])
+        assert_matches_type(DocumentListResponse, document, path=["response"])
 
     @parametrize
     def test_method_delete(self, client: Docugami) -> None:
@@ -76,35 +89,40 @@ class TestDocuments:
         assert document is None
 
     @parametrize
-    def test_method_list_docset(self, client: Docugami) -> None:
-        document = client.docsets.documents.list_docset(
+    def test_method_add(self, client: Docugami) -> None:
+        document = client.docsets.documents.add(
             "string",
+            docset_id="string",
         )
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
+        assert_matches_type(Docset, document, path=["response"])
 
     @parametrize
-    def test_method_list_docset_with_all_params(self, client: Docugami) -> None:
-        document = client.docsets.documents.list_docset(
+    def test_raw_response_add(self, client: Docugami) -> None:
+        response = client.docsets.documents.with_raw_response.add(
             "string",
-            cursor="string",
-            limit=1,
-            max_pages=0,
-            max_size=0,
-            min_pages=0,
-            min_size=0,
-            prefix="string",
-            status="Ready",
-        )
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
-
-    @parametrize
-    def test_raw_response_list_docset(self, client: Docugami) -> None:
-        response = client.docsets.documents.with_raw_response.list_docset(
-            "string",
+            docset_id="string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
+        assert_matches_type(Docset, document, path=["response"])
+
+    @parametrize
+    def test_method_dgml(self, client: Docugami) -> None:
+        document = client.docsets.documents.dgml(
+            "string",
+            docset_id="string",
+        )
+        assert_matches_type(str, document, path=["response"])
+
+    @parametrize
+    def test_raw_response_dgml(self, client: Docugami) -> None:
+        response = client.docsets.documents.with_raw_response.dgml(
+            "string",
+            docset_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = response.parse()
+        assert_matches_type(str, document, path=["response"])
 
 
 class TestAsyncDocuments:
@@ -131,22 +149,35 @@ class TestAsyncDocuments:
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
-    async def test_method_update(self, client: AsyncDocugami) -> None:
-        document = await client.docsets.documents.update(
+    async def test_method_list(self, client: AsyncDocugami) -> None:
+        document = await client.docsets.documents.list(
             "string",
-            docset_id="string",
         )
-        assert_matches_type(Docset, document, path=["response"])
+        assert_matches_type(DocumentListResponse, document, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncDocugami) -> None:
-        response = await client.docsets.documents.with_raw_response.update(
+    async def test_method_list_with_all_params(self, client: AsyncDocugami) -> None:
+        document = await client.docsets.documents.list(
             "string",
-            docset_id="string",
+            cursor="string",
+            limit=1,
+            max_pages=0,
+            max_size=0,
+            min_pages=0,
+            min_size=0,
+            prefix="string",
+            status="Ready",
+        )
+        assert_matches_type(DocumentListResponse, document, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncDocugami) -> None:
+        response = await client.docsets.documents.with_raw_response.list(
+            "string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
-        assert_matches_type(Docset, document, path=["response"])
+        assert_matches_type(DocumentListResponse, document, path=["response"])
 
     @parametrize
     async def test_method_delete(self, client: AsyncDocugami) -> None:
@@ -167,32 +198,37 @@ class TestAsyncDocuments:
         assert document is None
 
     @parametrize
-    async def test_method_list_docset(self, client: AsyncDocugami) -> None:
-        document = await client.docsets.documents.list_docset(
+    async def test_method_add(self, client: AsyncDocugami) -> None:
+        document = await client.docsets.documents.add(
             "string",
+            docset_id="string",
         )
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
+        assert_matches_type(Docset, document, path=["response"])
 
     @parametrize
-    async def test_method_list_docset_with_all_params(self, client: AsyncDocugami) -> None:
-        document = await client.docsets.documents.list_docset(
+    async def test_raw_response_add(self, client: AsyncDocugami) -> None:
+        response = await client.docsets.documents.with_raw_response.add(
             "string",
-            cursor="string",
-            limit=1,
-            max_pages=0,
-            max_size=0,
-            min_pages=0,
-            min_size=0,
-            prefix="string",
-            status="Ready",
-        )
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
-
-    @parametrize
-    async def test_raw_response_list_docset(self, client: AsyncDocugami) -> None:
-        response = await client.docsets.documents.with_raw_response.list_docset(
-            "string",
+            docset_id="string",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
-        assert_matches_type(DocumentListDocsetResponse, document, path=["response"])
+        assert_matches_type(Docset, document, path=["response"])
+
+    @parametrize
+    async def test_method_dgml(self, client: AsyncDocugami) -> None:
+        document = await client.docsets.documents.dgml(
+            "string",
+            docset_id="string",
+        )
+        assert_matches_type(str, document, path=["response"])
+
+    @parametrize
+    async def test_raw_response_dgml(self, client: AsyncDocugami) -> None:
+        response = await client.docsets.documents.with_raw_response.dgml(
+            "string",
+            docset_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = response.parse()
+        assert_matches_type(str, document, path=["response"])

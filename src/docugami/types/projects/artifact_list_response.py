@@ -5,10 +5,10 @@ from typing import List, Optional
 from .artifact import Artifact
 from ..._models import BaseModel
 
-__all__ = ["ArtifactRetrieveResponse"]
+__all__ = ["ArtifactListResponse"]
 
 
-class ArtifactRetrieveResponse(BaseModel):
+class ArtifactListResponse(BaseModel):
     artifacts: List[Artifact]
 
     next: Optional[str] = None

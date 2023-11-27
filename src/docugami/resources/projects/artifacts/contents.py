@@ -27,7 +27,7 @@ class Contents(SyncAPIResource):
         super().__init__(client)
         self.with_raw_response = ContentsWithRawResponse(self)
 
-    def list(
+    def download(
         self,
         artifact_id: str,
         *,
@@ -119,7 +119,7 @@ class AsyncContents(AsyncAPIResource):
         super().__init__(client)
         self.with_raw_response = AsyncContentsWithRawResponse(self)
 
-    async def list(
+    async def download(
         self,
         artifact_id: str,
         *,
@@ -206,8 +206,8 @@ class AsyncContents(AsyncAPIResource):
 
 class ContentsWithRawResponse:
     def __init__(self, contents: Contents) -> None:
-        self.list = to_raw_response_wrapper(
-            contents.list,
+        self.download = to_raw_response_wrapper(
+            contents.download,
         )
         self.upload = to_raw_response_wrapper(
             contents.upload,
@@ -216,8 +216,8 @@ class ContentsWithRawResponse:
 
 class AsyncContentsWithRawResponse:
     def __init__(self, contents: AsyncContents) -> None:
-        self.list = async_to_raw_response_wrapper(
-            contents.list,
+        self.download = async_to_raw_response_wrapper(
+            contents.download,
         )
         self.upload = async_to_raw_response_wrapper(
             contents.upload,

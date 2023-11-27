@@ -139,9 +139,9 @@ class Docsets(SyncAPIResource):
 
           limit: Maximum number of items to return.
 
-          maxDocuments: Filters docsets by maximum number of documents in the set.
+          max_documents: Filters docsets by maximum number of documents in the set.
 
-          minDocuments: Filters docsets by minimum number of documents in the set.
+          min_documents: Filters docsets by minimum number of documents in the set.
 
           name: Filters docsets by name.
 
@@ -319,9 +319,9 @@ class AsyncDocsets(AsyncAPIResource):
 
           limit: Maximum number of items to return.
 
-          maxDocuments: Filters docsets by maximum number of documents in the set.
+          max_documents: Filters docsets by maximum number of documents in the set.
 
-          minDocuments: Filters docsets by minimum number of documents in the set.
+          min_documents: Filters docsets by minimum number of documents in the set.
 
           name: Filters docsets by name.
 

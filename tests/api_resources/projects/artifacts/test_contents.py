@@ -25,28 +25,28 @@ class TestContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_method_list(self, client: Docugami, respx_mock: MockRouter) -> None:
+    def test_method_download(self, client: Docugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/projects/{projectId}/artifacts/{version}/{artifactId}/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        content = client.projects.artifacts.contents.list(
+        content = client.projects.artifacts.contents.download(
             "string",
             project_id="string",
-            version="string",
+            version="1",
         )
         assert isinstance(content, BinaryResponseContent)
         assert content.json() == {"foo": "bar"}
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_list(self, client: Docugami, respx_mock: MockRouter) -> None:
+    def test_raw_response_download(self, client: Docugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/projects/{projectId}/artifacts/{version}/{artifactId}/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        response = client.projects.artifacts.contents.with_raw_response.list(
+        response = client.projects.artifacts.contents.with_raw_response.download(
             "string",
             project_id="string",
-            version="string",
+            version="1",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         content = response.parse()
@@ -56,7 +56,7 @@ class TestContents:
     @parametrize
     def test_method_upload(self, client: Docugami) -> None:
         content = client.projects.artifacts.contents.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
         )
@@ -65,7 +65,7 @@ class TestContents:
     @parametrize
     def test_method_upload_with_all_params(self, client: Docugami) -> None:
         content = client.projects.artifacts.contents.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
             document_id="string",
@@ -75,7 +75,7 @@ class TestContents:
     @parametrize
     def test_raw_response_upload(self, client: Docugami) -> None:
         response = client.projects.artifacts.contents.with_raw_response.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
         )
@@ -91,28 +91,28 @@ class TestAsyncContents:
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_method_list(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
+    async def test_method_download(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/projects/{projectId}/artifacts/{version}/{artifactId}/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        content = await client.projects.artifacts.contents.list(
+        content = await client.projects.artifacts.contents.download(
             "string",
             project_id="string",
-            version="string",
+            version="1",
         )
         assert isinstance(content, BinaryResponseContent)
         assert content.json() == {"foo": "bar"}
 
     @parametrize
     @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_list(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
+    async def test_raw_response_download(self, client: AsyncDocugami, respx_mock: MockRouter) -> None:
         respx_mock.get("/projects/{projectId}/artifacts/{version}/{artifactId}/content").mock(
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
-        response = await client.projects.artifacts.contents.with_raw_response.list(
+        response = await client.projects.artifacts.contents.with_raw_response.download(
             "string",
             project_id="string",
-            version="string",
+            version="1",
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         content = response.parse()
@@ -122,7 +122,7 @@ class TestAsyncContents:
     @parametrize
     async def test_method_upload(self, client: AsyncDocugami) -> None:
         content = await client.projects.artifacts.contents.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
         )
@@ -131,7 +131,7 @@ class TestAsyncContents:
     @parametrize
     async def test_method_upload_with_all_params(self, client: AsyncDocugami) -> None:
         content = await client.projects.artifacts.contents.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
             document_id="string",
@@ -141,7 +141,7 @@ class TestAsyncContents:
     @parametrize
     async def test_raw_response_upload(self, client: AsyncDocugami) -> None:
         response = await client.projects.artifacts.contents.with_raw_response.upload(
-            "string",
+            "1",
             project_id="string",
             file=b"raw file contents",
         )

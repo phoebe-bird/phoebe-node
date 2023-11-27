@@ -1,8 +1,8 @@
 import logging
-from pathlib import Path
 import tempfile
 from time import sleep
 from typing import Dict, List, Union
+from pathlib import Path
 
 import requests
 

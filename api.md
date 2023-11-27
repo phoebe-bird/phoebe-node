@@ -16,7 +16,7 @@ Methods:
 
 Methods:
 
-- <code title="get /documents/{id}/content">client.documents.contents.<a href="./src/docugami/resources/documents/contents.py">list</a>(id) -> HttpxBinaryResponseContent</code>
+- <code title="get /documents/{id}/content">client.documents.contents.<a href="./src/docugami/resources/documents/contents.py">download</a>(id) -> HttpxBinaryResponseContent</code>
 - <code title="post /documents/content">client.documents.contents.<a href="./src/docugami/resources/documents/contents.py">upload</a>(\*\*<a href="src/docugami/types/documents/content_upload_params.py">params</a>) -> <a href="./src/docugami/types/document.py">Document</a></code>
 
 # Docsets
@@ -39,27 +39,16 @@ Methods:
 Types:
 
 ```python
-from docugami.types.docsets import DocumentListDocsetResponse
+from docugami.types.docsets import DocumentListResponse, DocumentDgmlResponse
 ```
 
 Methods:
 
-- <code title="get /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents/documents.py">retrieve</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/document.py">Document</a></code>
-- <code title="put /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents/documents.py">update</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/docset.py">Docset</a></code>
-- <code title="delete /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents/documents.py">delete</a>(document_id, \*, docset_id) -> None</code>
-- <code title="get /docsets/{id}/documents">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents/documents.py">list_docset</a>(id, \*\*<a href="src/docugami/types/docsets/document_list_docset_params.py">params</a>) -> <a href="./src/docugami/types/docsets/document_list_docset_response.py">DocumentListDocsetResponse</a></code>
-
-### Dgmls
-
-Types:
-
-```python
-from docugami.types.docsets.documents import DgmlListResponse
-```
-
-Methods:
-
-- <code title="get /docsets/{docsetId}/documents/{documentId}/dgml">client.docsets.documents.dgmls.<a href="./src/docugami/resources/docsets/documents/dgmls.py">list</a>(document_id, \*, docset_id) -> str</code>
+- <code title="get /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">retrieve</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/document.py">Document</a></code>
+- <code title="get /docsets/{id}/documents">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">list</a>(id, \*\*<a href="src/docugami/types/docsets/document_list_params.py">params</a>) -> <a href="./src/docugami/types/docsets/document_list_response.py">DocumentListResponse</a></code>
+- <code title="delete /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">delete</a>(document_id, \*, docset_id) -> None</code>
+- <code title="put /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">add</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/docset.py">Docset</a></code>
+- <code title="get /docsets/{docsetId}/documents/{documentId}/dgml">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">dgml</a>(document_id, \*, docset_id) -> str</code>
 
 # Projects
 
@@ -80,20 +69,20 @@ Methods:
 Types:
 
 ```python
-from docugami.types.projects import Artifact, ArtifactRetrieveResponse
+from docugami.types.projects import Artifact, ArtifactListResponse
 ```
 
 Methods:
 
-- <code title="get /projects/{projectId}/artifacts/{version}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">retrieve</a>(version, \*, project_id, \*\*<a href="src/docugami/types/projects/artifact_retrieve_params.py">params</a>) -> <a href="./src/docugami/types/projects/artifact_retrieve_response.py">ArtifactRetrieveResponse</a></code>
+- <code title="get /projects/{projectId}/artifacts/{version}/{artifactId}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">retrieve</a>(artifact_id, \*, project_id, version) -> <a href="./src/docugami/types/projects/artifact.py">Artifact</a></code>
+- <code title="get /projects/{projectId}/artifacts/{version}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">list</a>(version, \*, project_id, \*\*<a href="src/docugami/types/projects/artifact_list_params.py">params</a>) -> <a href="./src/docugami/types/projects/artifact_list_response.py">ArtifactListResponse</a></code>
 - <code title="delete /projects/{projectId}/artifacts/{version}/{artifactId}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">delete</a>(artifact_id, \*, project_id, version) -> None</code>
-- <code title="get /projects/{projectId}/artifacts/{version}/{artifactId}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">get</a>(artifact_id, \*, project_id, version) -> <a href="./src/docugami/types/projects/artifact.py">Artifact</a></code>
 
 ### Contents
 
 Methods:
 
-- <code title="get /projects/{projectId}/artifacts/{version}/{artifactId}/content">client.projects.artifacts.contents.<a href="./src/docugami/resources/projects/artifacts/contents.py">list</a>(artifact_id, \*, project_id, version) -> HttpxBinaryResponseContent</code>
+- <code title="get /projects/{projectId}/artifacts/{version}/{artifactId}/content">client.projects.artifacts.contents.<a href="./src/docugami/resources/projects/artifacts/contents.py">download</a>(artifact_id, \*, project_id, version) -> HttpxBinaryResponseContent</code>
 - <code title="post /projects/{projectId}/artifacts/{version}/content">client.projects.artifacts.contents.<a href="./src/docugami/resources/projects/artifacts/contents.py">upload</a>(version, \*, project_id, \*\*<a href="src/docugami/types/projects/artifacts/content_upload_params.py">params</a>) -> <a href="./src/docugami/types/projects/artifact.py">Artifact</a></code>
 
 # Workspaces

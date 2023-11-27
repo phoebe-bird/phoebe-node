@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import os
 import asyncio
-from typing import Union, Mapping
-from typing_extensions import override
+from typing import Any, Union, Mapping
+from typing_extensions import Self, override
 
 import httpx
 
@@ -13,13 +13,14 @@ from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
+    Omit,
     Timeout,
     NotGiven,
     Transport,
     ProxiesTypes,
     RequestOptions,
 )
-from ._utils import is_given
+from ._utils import is_given, get_async_library
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
@@ -117,6 +118,15 @@ class Docugami(SyncAPIClient):
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
 
+    @property
+    @override
+    def default_headers(self) -> dict[str, str | Omit]:
+        return {
+            **super().default_headers,
+            "X-Stainless-Async": "false",
+            **self._custom_headers,
+        }
+
     def copy(
         self,
         *,
@@ -129,12 +139,10 @@ class Docugami(SyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> Docugami:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -163,6 +171,7 @@ class Docugami(SyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
@@ -291,6 +300,15 @@ class AsyncDocugami(AsyncAPIClient):
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
 
+    @property
+    @override
+    def default_headers(self) -> dict[str, str | Omit]:
+        return {
+            **super().default_headers,
+            "X-Stainless-Async": f"async:{get_async_library()}",
+            **self._custom_headers,
+        }
+
     def copy(
         self,
         *,
@@ -303,12 +321,10 @@ class AsyncDocugami(AsyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> AsyncDocugami:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -337,6 +353,7 @@ class AsyncDocugami(AsyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
