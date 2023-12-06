@@ -9,7 +9,8 @@ import pytest
 from docugami import Docugami, AsyncDocugami
 from tests.utils import assert_matches_type
 from docugami._client import Docugami, AsyncDocugami
-from docugami.types.projects import Artifact, ArtifactListResponse
+from docugami.pagination import SyncArtifactsPage, AsyncArtifactsPage
+from docugami.types.projects import Artifact
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -46,7 +47,7 @@ class TestArtifacts:
             "1",
             project_id="string",
         )
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(SyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Docugami) -> None:
@@ -61,7 +62,7 @@ class TestArtifacts:
             min_size=0,
             name="string",
         )
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(SyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Docugami) -> None:
@@ -71,7 +72,7 @@ class TestArtifacts:
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         artifact = response.parse()
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(SyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     def test_method_delete(self, client: Docugami) -> None:
@@ -125,7 +126,7 @@ class TestAsyncArtifacts:
             "1",
             project_id="string",
         )
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(AsyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncDocugami) -> None:
@@ -140,7 +141,7 @@ class TestAsyncArtifacts:
             min_size=0,
             name="string",
         )
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(AsyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, client: AsyncDocugami) -> None:
@@ -150,7 +151,7 @@ class TestAsyncArtifacts:
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         artifact = response.parse()
-        assert_matches_type(ArtifactListResponse, artifact, path=["response"])
+        assert_matches_type(AsyncArtifactsPage[Artifact], artifact, path=["response"])
 
     @parametrize
     async def test_method_delete(self, client: AsyncDocugami) -> None:

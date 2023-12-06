@@ -24,14 +24,14 @@ Methods:
 Types:
 
 ```python
-from docugami.types import Docset, DocsetListResponse
+from docugami.types import Docset
 ```
 
 Methods:
 
 - <code title="post /docsets">client.docsets.<a href="./src/docugami/resources/docsets/docsets.py">create</a>(\*\*<a href="src/docugami/types/docset_create_params.py">params</a>) -> <a href="./src/docugami/types/docset.py">Docset</a></code>
 - <code title="get /docsets/{id}">client.docsets.<a href="./src/docugami/resources/docsets/docsets.py">retrieve</a>(id) -> <a href="./src/docugami/types/docset.py">Docset</a></code>
-- <code title="get /docsets">client.docsets.<a href="./src/docugami/resources/docsets/docsets.py">list</a>(\*\*<a href="src/docugami/types/docset_list_params.py">params</a>) -> <a href="./src/docugami/types/docset_list_response.py">DocsetListResponse</a></code>
+- <code title="get /docsets">client.docsets.<a href="./src/docugami/resources/docsets/docsets.py">list</a>(\*\*<a href="src/docugami/types/docset_list_params.py">params</a>) -> <a href="./src/docugami/types/docset.py">SyncDocsetsPage[Docset]</a></code>
 - <code title="delete /docsets/{id}">client.docsets.<a href="./src/docugami/resources/docsets/docsets.py">delete</a>(id) -> None</code>
 
 ## Documents
@@ -55,13 +55,13 @@ Methods:
 Types:
 
 ```python
-from docugami.types import Project, ProjectListResponse
+from docugami.types import Project
 ```
 
 Methods:
 
 - <code title="get /projects/{id}">client.projects.<a href="./src/docugami/resources/projects/projects.py">retrieve</a>(id) -> <a href="./src/docugami/types/project.py">Project</a></code>
-- <code title="get /projects">client.projects.<a href="./src/docugami/resources/projects/projects.py">list</a>(\*\*<a href="src/docugami/types/project_list_params.py">params</a>) -> <a href="./src/docugami/types/project_list_response.py">ProjectListResponse</a></code>
+- <code title="get /projects">client.projects.<a href="./src/docugami/resources/projects/projects.py">list</a>(\*\*<a href="src/docugami/types/project_list_params.py">params</a>) -> <a href="./src/docugami/types/project.py">SyncProjectsPage[Project]</a></code>
 - <code title="delete /projects/{id}">client.projects.<a href="./src/docugami/resources/projects/projects.py">delete</a>(id) -> None</code>
 
 ## Artifacts
@@ -69,13 +69,13 @@ Methods:
 Types:
 
 ```python
-from docugami.types.projects import Artifact, ArtifactListResponse
+from docugami.types.projects import Artifact
 ```
 
 Methods:
 
 - <code title="get /projects/{projectId}/artifacts/{version}/{artifactId}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">retrieve</a>(artifact_id, \*, project_id, version) -> <a href="./src/docugami/types/projects/artifact.py">Artifact</a></code>
-- <code title="get /projects/{projectId}/artifacts/{version}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">list</a>(version, \*, project_id, \*\*<a href="src/docugami/types/projects/artifact_list_params.py">params</a>) -> <a href="./src/docugami/types/projects/artifact_list_response.py">ArtifactListResponse</a></code>
+- <code title="get /projects/{projectId}/artifacts/{version}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">list</a>(version, \*, project_id, \*\*<a href="src/docugami/types/projects/artifact_list_params.py">params</a>) -> <a href="./src/docugami/types/projects/artifact.py">SyncArtifactsPage[Artifact]</a></code>
 - <code title="delete /projects/{projectId}/artifacts/{version}/{artifactId}">client.projects.artifacts.<a href="./src/docugami/resources/projects/artifacts/artifacts.py">delete</a>(artifact_id, \*, project_id, version) -> None</code>
 
 ### Contents
@@ -102,12 +102,12 @@ Methods:
 Types:
 
 ```python
-from docugami.types import Webhook, WebhookListResponse
+from docugami.types import Webhook
 ```
 
 Methods:
 
 - <code title="post /webhooks">client.webhooks.<a href="./src/docugami/resources/webhooks.py">create</a>(\*\*<a href="src/docugami/types/webhook_create_params.py">params</a>) -> <a href="./src/docugami/types/webhook.py">Webhook</a></code>
 - <code title="get /webhooks/{id}">client.webhooks.<a href="./src/docugami/resources/webhooks.py">retrieve</a>(id) -> <a href="./src/docugami/types/webhook.py">Webhook</a></code>
-- <code title="get /webhooks">client.webhooks.<a href="./src/docugami/resources/webhooks.py">list</a>(\*\*<a href="src/docugami/types/webhook_list_params.py">params</a>) -> <a href="./src/docugami/types/webhook_list_response.py">WebhookListResponse</a></code>
+- <code title="get /webhooks">client.webhooks.<a href="./src/docugami/resources/webhooks.py">list</a>(\*\*<a href="src/docugami/types/webhook_list_params.py">params</a>) -> <a href="./src/docugami/types/webhook.py">SyncWebhooksPage[Webhook]</a></code>
 - <code title="delete /webhooks/{id}">client.webhooks.<a href="./src/docugami/resources/webhooks.py">delete</a>(id) -> None</code>

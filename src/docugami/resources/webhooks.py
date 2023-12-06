@@ -7,17 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    Webhook,
-    WebhookListResponse,
-    webhook_list_params,
-    webhook_create_params,
-)
+from ..types import Webhook, webhook_list_params, webhook_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from .._base_client import make_request_options
+from ..pagination import SyncWebhooksPage, AsyncWebhooksPage
+from .._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
     from .._client import Docugami, AsyncDocugami
@@ -134,7 +130,7 @@ class Webhooks(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookListResponse:
+    ) -> SyncWebhooksPage[Webhook]:
         """
         List webhooks
 
@@ -157,8 +153,9 @@ class Webhooks(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/webhooks",
+            page=SyncWebhooksPage[Webhook],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -174,7 +171,7 @@ class Webhooks(SyncAPIResource):
                     webhook_list_params.WebhookListParams,
                 ),
             ),
-            cast_to=WebhookListResponse,
+            model=Webhook,
         )
 
     def delete(
@@ -306,7 +303,7 @@ class AsyncWebhooks(AsyncAPIResource):
             cast_to=Webhook,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
@@ -319,7 +316,7 @@ class AsyncWebhooks(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookListResponse:
+    ) -> AsyncPaginator[Webhook, AsyncWebhooksPage[Webhook]]:
         """
         List webhooks
 
@@ -342,8 +339,9 @@ class AsyncWebhooks(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/webhooks",
+            page=AsyncWebhooksPage[Webhook],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -359,7 +357,7 @@ class AsyncWebhooks(AsyncAPIResource):
                     webhook_list_params.WebhookListParams,
                 ),
             ),
-            cast_to=WebhookListResponse,
+            model=Webhook,
         )
 
     async def delete(

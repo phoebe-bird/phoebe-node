@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import Project, ProjectListResponse, project_list_params
+from ...types import Project, project_list_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from .artifacts import (
@@ -18,7 +18,8 @@ from .artifacts import (
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
+from ...pagination import SyncProjectsPage, AsyncProjectsPage
+from ..._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
     from ..._client import Docugami, AsyncDocugami
@@ -95,7 +96,7 @@ class Projects(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectListResponse:
+    ) -> SyncProjectsPage[Project]:
         """
         List projects
 
@@ -117,8 +118,9 @@ class Projects(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/projects",
+            page=SyncProjectsPage[Project],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -135,7 +137,7 @@ class Projects(SyncAPIResource):
                     project_list_params.ProjectListParams,
                 ),
             ),
-            cast_to=ProjectListResponse,
+            model=Project,
         )
 
     def delete(
@@ -211,7 +213,7 @@ class AsyncProjects(AsyncAPIResource):
             cast_to=Project,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
@@ -240,7 +242,7 @@ class AsyncProjects(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectListResponse:
+    ) -> AsyncPaginator[Project, AsyncProjectsPage[Project]]:
         """
         List projects
 
@@ -262,8 +264,9 @@ class AsyncProjects(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/projects",
+            page=AsyncProjectsPage[Project],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -280,7 +283,7 @@ class AsyncProjects(AsyncAPIResource):
                     project_list_params.ProjectListParams,
                 ),
             ),
-            cast_to=ProjectListResponse,
+            model=Project,
         )
 
     async def delete(

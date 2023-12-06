@@ -16,8 +16,9 @@ from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ...._utils import maybe_transform
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ...._base_client import make_request_options
-from ....types.projects import Artifact, ArtifactListResponse, artifact_list_params
+from ....pagination import SyncArtifactsPage, AsyncArtifactsPage
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.projects import Artifact, artifact_list_params
 
 if TYPE_CHECKING:
     from ...._client import Docugami, AsyncDocugami
@@ -85,7 +86,7 @@ class Artifacts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactListResponse:
+    ) -> SyncArtifactsPage[Artifact]:
         """
         List artifacts
 
@@ -111,8 +112,9 @@ class Artifacts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             f"/projects/{project_id}/artifacts/{version}",
+            page=SyncArtifactsPage[Artifact],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -131,7 +133,7 @@ class Artifacts(SyncAPIResource):
                     artifact_list_params.ArtifactListParams,
                 ),
             ),
-            cast_to=ArtifactListResponse,
+            model=Artifact,
         )
 
     def delete(
@@ -211,7 +213,7 @@ class AsyncArtifacts(AsyncAPIResource):
             cast_to=Artifact,
         )
 
-    async def list(
+    def list(
         self,
         version: str | NotGiven = NOT_GIVEN,
         *,
@@ -229,7 +231,7 @@ class AsyncArtifacts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArtifactListResponse:
+    ) -> AsyncPaginator[Artifact, AsyncArtifactsPage[Artifact]]:
         """
         List artifacts
 
@@ -255,8 +257,9 @@ class AsyncArtifacts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             f"/projects/{project_id}/artifacts/{version}",
+            page=AsyncArtifactsPage[Artifact],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -275,7 +278,7 @@ class AsyncArtifacts(AsyncAPIResource):
                     artifact_list_params.ArtifactListParams,
                 ),
             ),
-            cast_to=ArtifactListResponse,
+            model=Artifact,
         )
 
     async def delete(

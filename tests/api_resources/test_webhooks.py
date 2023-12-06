@@ -8,8 +8,9 @@ import pytest
 
 from docugami import Docugami, AsyncDocugami
 from tests.utils import assert_matches_type
-from docugami.types import Webhook, WebhookListResponse
+from docugami.types import Webhook
 from docugami._client import Docugami, AsyncDocugami
+from docugami.pagination import SyncWebhooksPage, AsyncWebhooksPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -68,7 +69,7 @@ class TestWebhooks:
     @parametrize
     def test_method_list(self, client: Docugami) -> None:
         webhook = client.webhooks.list()
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(SyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Docugami) -> None:
@@ -78,14 +79,14 @@ class TestWebhooks:
             target="Project",
             target_id="0gjiwhvpeqcg",
         )
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(SyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Docugami) -> None:
         response = client.webhooks.with_raw_response.list()
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(SyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     def test_method_delete(self, client: Docugami) -> None:
@@ -157,7 +158,7 @@ class TestAsyncWebhooks:
     @parametrize
     async def test_method_list(self, client: AsyncDocugami) -> None:
         webhook = await client.webhooks.list()
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(AsyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncDocugami) -> None:
@@ -167,14 +168,14 @@ class TestAsyncWebhooks:
             target="Project",
             target_id="0gjiwhvpeqcg",
         )
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(AsyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, client: AsyncDocugami) -> None:
         response = await client.webhooks.with_raw_response.list()
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookListResponse, webhook, path=["response"])
+        assert_matches_type(AsyncWebhooksPage[Webhook], webhook, path=["response"])
 
     @parametrize
     async def test_method_delete(self, client: AsyncDocugami) -> None:

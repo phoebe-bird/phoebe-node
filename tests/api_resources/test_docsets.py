@@ -8,8 +8,9 @@ import pytest
 
 from docugami import Docugami, AsyncDocugami
 from tests.utils import assert_matches_type
-from docugami.types import Docset, DocsetListResponse
+from docugami.types import Docset
 from docugami._client import Docugami, AsyncDocugami
+from docugami.pagination import SyncDocsetsPage, AsyncDocsetsPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -63,7 +64,7 @@ class TestDocsets:
     @parametrize
     def test_method_list(self, client: Docugami) -> None:
         docset = client.docsets.list()
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(SyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Docugami) -> None:
@@ -75,14 +76,14 @@ class TestDocsets:
             name="string",
             samples=True,
         )
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(SyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Docugami) -> None:
         response = client.docsets.with_raw_response.list()
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         docset = response.parse()
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(SyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     def test_method_delete(self, client: Docugami) -> None:
@@ -149,7 +150,7 @@ class TestAsyncDocsets:
     @parametrize
     async def test_method_list(self, client: AsyncDocugami) -> None:
         docset = await client.docsets.list()
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(AsyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncDocugami) -> None:
@@ -161,14 +162,14 @@ class TestAsyncDocsets:
             name="string",
             samples=True,
         )
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(AsyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, client: AsyncDocugami) -> None:
         response = await client.docsets.with_raw_response.list()
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         docset = response.parse()
-        assert_matches_type(DocsetListResponse, docset, path=["response"])
+        assert_matches_type(AsyncDocsetsPage[Docset], docset, path=["response"])
 
     @parametrize
     async def test_method_delete(self, client: AsyncDocugami) -> None:

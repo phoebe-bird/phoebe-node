@@ -6,12 +6,7 @@ from typing import TYPE_CHECKING, List
 
 import httpx
 
-from ...types import (
-    Docset,
-    DocsetListResponse,
-    docset_list_params,
-    docset_create_params,
-)
+from ...types import Docset, docset_list_params, docset_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from .documents import (
@@ -22,7 +17,8 @@ from .documents import (
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
+from ...pagination import SyncDocsetsPage, AsyncDocsetsPage
+from ..._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
     from ..._client import Docugami, AsyncDocugami
@@ -129,7 +125,7 @@ class Docsets(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocsetListResponse:
+    ) -> SyncDocsetsPage[Docset]:
         """
         List docsets
 
@@ -155,8 +151,9 @@ class Docsets(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/docsets",
+            page=SyncDocsetsPage[Docset],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -174,7 +171,7 @@ class Docsets(SyncAPIResource):
                     docset_list_params.DocsetListParams,
                 ),
             ),
-            cast_to=DocsetListResponse,
+            model=Docset,
         )
 
     def delete(
@@ -294,7 +291,7 @@ class AsyncDocsets(AsyncAPIResource):
             cast_to=Docset,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
@@ -309,7 +306,7 @@ class AsyncDocsets(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocsetListResponse:
+    ) -> AsyncPaginator[Docset, AsyncDocsetsPage[Docset]]:
         """
         List docsets
 
@@ -335,8 +332,9 @@ class AsyncDocsets(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/docsets",
+            page=AsyncDocsetsPage[Docset],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -354,7 +352,7 @@ class AsyncDocsets(AsyncAPIResource):
                     docset_list_params.DocsetListParams,
                 ),
             ),
-            cast_to=DocsetListResponse,
+            model=Docset,
         )
 
     async def delete(
