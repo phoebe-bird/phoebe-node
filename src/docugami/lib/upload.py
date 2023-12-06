@@ -39,21 +39,20 @@ def upload_to_named_docset(
     document_list_response = client.documents.list(limit=int(1e5))  # TODO: paginate
     conflict_docs: List[Document] = []
     uploaded_docs: List[Document] = []
-    if document_list_response and document_list_response.documents:
-        new_names = [Path(f).name for f in local_paths]
+    new_names = [Path(f).name for f in local_paths]
+    conflict_docs = [d for d in document_list_response.documents if Path(d.name).name in new_names]
+    conflict_names = [Path(d.name).name for d in conflict_docs]
 
-        conflict_docs = [d for d in document_list_response.documents if Path(d.name).name in new_names]
-        conflict_names = [Path(d.name).name for d in conflict_docs]
-
-        # Upload any new files that don't have name conflicts
-        for f in local_paths:
-            if Path(f).name not in conflict_names:
-                uploaded_docs.append(
-                    client.documents.contents.upload(
-                        file=Path(f).absolute(),
-                        docset_id=docset_id,
-                    )
+    # Upload any new files that don't have name conflicts
+    for f in local_paths:
+        if Path(f).name not in conflict_names:
+            uploaded_docs.append(
+                client.documents.contents.upload(
+                    file=Path(f).absolute(),
+                    docset_id=docset_id,
                 )
+            )
+
     return uploaded_docs + conflict_docs
 
 
@@ -80,7 +79,7 @@ def wait_for_dgml(client: Docugami, docs: List[Document], poll_wait_seconds: int
                 docset_length = client.docsets.retrieve(docset_id).document_count
                 docset_id_to_count[docset_id] = docset_length
 
-            if docset_id_to_count[docset_id] < 6: # type: ignore
+            if docset_id_to_count[docset_id] < 6:  # type: ignore
                 raise Exception(
                     f"Document is assigned to docset with less than 6 docs, XML will not be generated: {doc.name}"
                 )

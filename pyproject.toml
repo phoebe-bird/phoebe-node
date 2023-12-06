@@ -1,6 +1,6 @@
 [project]
 name = "docugami"
-version = "0.0.8"
+version = "0.0.9"
 description = "The official Python library for the Docugami API"
 readme = "README.md"
 license = "MIT"
