@@ -16,4 +16,3 @@ from .document_list_params import DocumentListParams as DocumentListParams
 from .project_list_response import ProjectListResponse as ProjectListResponse
 from .webhook_create_params import WebhookCreateParams as WebhookCreateParams
 from .webhook_list_response import WebhookListResponse as WebhookListResponse
-from .document_list_response import DocumentListResponse as DocumentListResponse

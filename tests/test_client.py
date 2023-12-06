@@ -6,7 +6,7 @@ import os
 import json
 import asyncio
 import inspect
-from typing import Any, Dict, Union, cast
+from typing import Any, Union, cast
 from unittest import mock
 
 import httpx
@@ -17,7 +17,7 @@ from pydantic import ValidationError
 from docugami import Docugami, AsyncDocugami, APIResponseValidationError
 from docugami._client import Docugami, AsyncDocugami
 from docugami._models import BaseModel, FinalRequestOptions
-from docugami._exceptions import APIResponseValidationError
+from docugami._exceptions import APIStatusError, APIResponseValidationError
 from docugami._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -326,7 +326,7 @@ class TestDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
@@ -340,7 +340,7 @@ class TestDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
@@ -354,7 +354,7 @@ class TestDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"foo": "2"}
 
     @pytest.mark.respx(base_url=base_url)
@@ -413,6 +413,14 @@ class TestDocugami:
         response = self.client.get("/foo", cast_to=Model)
         assert isinstance(response, Model)
         assert response.foo == 2
+
+    def test_base_url_setter(self) -> None:
+        client = Docugami(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
+        assert client.base_url == "https://example.com/from_init/"
+
+        client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
+
+        assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
         with update_env(DOCUGAMI_BASE_URL="http://localhost:5000/from/env"):
@@ -573,6 +581,31 @@ class TestDocugami:
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
+
+    @pytest.mark.respx(base_url=base_url)
+    def test_status_error_within_httpx(self, respx_mock: MockRouter) -> None:
+        respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        def on_response(response: httpx.Response) -> None:
+            raise httpx.HTTPStatusError(
+                "Simulating an error inside httpx",
+                response=response,
+                request=response.request,
+            )
+
+        client = Docugami(
+            base_url=base_url,
+            api_key=api_key,
+            _strict_response_validation=True,
+            http_client=httpx.Client(
+                event_hooks={
+                    "response": [on_response],
+                }
+            ),
+            max_retries=0,
+        )
+        with pytest.raises(APIStatusError):
+            client.post("/foo", cast_to=httpx.Response)
 
 
 class TestAsyncDocugami:
@@ -866,7 +899,7 @@ class TestAsyncDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
@@ -880,7 +913,7 @@ class TestAsyncDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
@@ -894,7 +927,7 @@ class TestAsyncDocugami:
                 ),
             ),
         )
-        params = cast(Dict[str, str], dict(request.url.params))
+        params = dict(request.url.params)
         assert params == {"foo": "2"}
 
     @pytest.mark.respx(base_url=base_url)
@@ -953,6 +986,16 @@ class TestAsyncDocugami:
         response = await self.client.get("/foo", cast_to=Model)
         assert isinstance(response, Model)
         assert response.foo == 2
+
+    def test_base_url_setter(self) -> None:
+        client = AsyncDocugami(
+            base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
+        )
+        assert client.base_url == "https://example.com/from_init/"
+
+        client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
+
+        assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
         with update_env(DOCUGAMI_BASE_URL="http://localhost:5000/from/env"):
@@ -1124,3 +1167,29 @@ class TestAsyncDocugami:
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
+
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_status_error_within_httpx(self, respx_mock: MockRouter) -> None:
+        respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        def on_response(response: httpx.Response) -> None:
+            raise httpx.HTTPStatusError(
+                "Simulating an error inside httpx",
+                response=response,
+                request=response.request,
+            )
+
+        client = AsyncDocugami(
+            base_url=base_url,
+            api_key=api_key,
+            _strict_response_validation=True,
+            http_client=httpx.AsyncClient(
+                event_hooks={
+                    "response": [on_response],
+                }
+            ),
+            max_retries=0,
+        )
+        with pytest.raises(APIStatusError):
+            await client.post("/foo", cast_to=httpx.Response)

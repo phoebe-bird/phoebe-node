@@ -3,13 +3,13 @@
 Types:
 
 ```python
-from docugami.types import Document, DocumentListResponse
+from docugami.types import Document
 ```
 
 Methods:
 
 - <code title="get /documents/{id}">client.documents.<a href="./src/docugami/resources/documents/documents.py">retrieve</a>(id) -> <a href="./src/docugami/types/document.py">Document</a></code>
-- <code title="get /documents">client.documents.<a href="./src/docugami/resources/documents/documents.py">list</a>(\*\*<a href="src/docugami/types/document_list_params.py">params</a>) -> <a href="./src/docugami/types/document_list_response.py">DocumentListResponse</a></code>
+- <code title="get /documents">client.documents.<a href="./src/docugami/resources/documents/documents.py">list</a>(\*\*<a href="src/docugami/types/document_list_params.py">params</a>) -> <a href="./src/docugami/types/document.py">SyncDocumentsPage[Document]</a></code>
 - <code title="delete /documents/{id}">client.documents.<a href="./src/docugami/resources/documents/documents.py">delete</a>(id) -> None</code>
 
 ## Contents
@@ -39,13 +39,13 @@ Methods:
 Types:
 
 ```python
-from docugami.types.docsets import DocumentListResponse, DocumentDgmlResponse
+from docugami.types.docsets import DocumentDgmlResponse
 ```
 
 Methods:
 
 - <code title="get /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">retrieve</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/document.py">Document</a></code>
-- <code title="get /docsets/{id}/documents">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">list</a>(id, \*\*<a href="src/docugami/types/docsets/document_list_params.py">params</a>) -> <a href="./src/docugami/types/docsets/document_list_response.py">DocumentListResponse</a></code>
+- <code title="get /docsets/{id}/documents">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">list</a>(id, \*\*<a href="src/docugami/types/docsets/document_list_params.py">params</a>) -> <a href="./src/docugami/types/document.py">SyncDocumentsPage[Document]</a></code>
 - <code title="delete /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">delete</a>(document_id, \*, docset_id) -> None</code>
 - <code title="put /docsets/{docsetId}/documents/{documentId}">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">add</a>(document_id, \*, docset_id) -> <a href="./src/docugami/types/docset.py">Docset</a></code>
 - <code title="get /docsets/{docsetId}/documents/{documentId}/dgml">client.docsets.documents.<a href="./src/docugami/resources/docsets/documents.py">dgml</a>(document_id, \*, docset_id) -> str</code>

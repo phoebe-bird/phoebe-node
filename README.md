@@ -21,15 +21,16 @@ pip install docugami
 The full API of this library can be found in [api.md](https://www.github.com/stainless-sdks/docugami-python/blob/main/api.md).
 
 ```python
+import os
 from docugami import Docugami
 
 client = Docugami(
-    # defaults to os.environ.get("DOCUGAMI_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("DOCUGAMI_API_KEY"),
 )
 
-document_list_response = client.documents.list()
-print(document_list_response.documents)
+page = client.documents.list()
+print(page.page)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -42,18 +43,19 @@ so that your API Key is not stored in source control.
 Simply import `AsyncDocugami` instead of `Docugami` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from docugami import AsyncDocugami
 
 client = AsyncDocugami(
-    # defaults to os.environ.get("DOCUGAMI_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("DOCUGAMI_API_KEY"),
 )
 
 
 async def main() -> None:
-    document_list_response = await client.documents.list()
-    print(document_list_response.documents)
+    page = await client.documents.list()
+    print(page.page)
 
 
 asyncio.run(main())
@@ -69,6 +71,69 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.model_dump(exclude_unset=True)`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Pagination
+
+List methods in the Docugami API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```python
+import docugami
+
+client = Docugami()
+
+all_documents = []
+# Automatically fetches more pages as needed.
+for document in client.documents.list():
+    # Do something with document here
+    all_documents.append(document)
+print(all_documents)
+```
+
+Or, asynchronously:
+
+```python
+import asyncio
+import docugami
+
+client = AsyncDocugami()
+
+
+async def main() -> None:
+    all_documents = []
+    # Iterate through items across all pages, issuing requests as needed.
+    async for document in client.documents.list():
+        all_documents.append(document)
+    print(all_documents)
+
+
+asyncio.run(main())
+```
+
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
+
+```python
+first_page = await client.documents.list()
+if first_page.has_next_page():
+    print(f"will fetch next page using these details: {first_page.next_page_info()}")
+    next_page = await first_page.get_next_page()
+    print(f"number of items we just fetched: {len(next_page.documents)}")
+
+# Remove `await` for non-async usage.
+```
+
+Or just work directly with the returned data:
+
+```python
+first_page = await client.documents.list()
+
+print(f"next URL: {first_page.next}")  # => "next URL: ..."
+for document in first_page.documents:
+    print(document.id)
+
+# Remove `await` for non-async usage.
+```
 
 ## Handling errors
 
@@ -195,7 +260,7 @@ response = client.documents.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 document = response.parse()  # get the object that `documents.list()` would have returned
-print(document.documents)
+print(document.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/docugami-python/tree/main/src/docugami/_response.py) object.

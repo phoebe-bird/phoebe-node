@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import Document, DocumentListResponse, document_list_params
+from ...types import Document, document_list_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform
 from .contents import (
@@ -18,7 +18,8 @@ from .contents import (
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
+from ...pagination import SyncDocumentsPage, AsyncDocumentsPage
+from ..._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
     from ..._client import Docugami, AsyncDocugami
@@ -86,7 +87,7 @@ class Documents(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentListResponse:
+    ) -> SyncDocumentsPage[Document]:
         """
         List documents
 
@@ -120,8 +121,9 @@ class Documents(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/documents",
+            page=SyncDocumentsPage[Document],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -144,7 +146,7 @@ class Documents(SyncAPIResource):
                     document_list_params.DocumentListParams,
                 ),
             ),
-            cast_to=DocumentListResponse,
+            model=Document,
         )
 
     def delete(
@@ -220,7 +222,7 @@ class AsyncDocuments(AsyncAPIResource):
             cast_to=Document,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
@@ -240,7 +242,7 @@ class AsyncDocuments(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentListResponse:
+    ) -> AsyncPaginator[Document, AsyncDocumentsPage[Document]]:
         """
         List documents
 
@@ -274,8 +276,9 @@ class AsyncDocuments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/documents",
+            page=AsyncDocumentsPage[Document],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -298,7 +301,7 @@ class AsyncDocuments(AsyncAPIResource):
                     document_list_params.DocumentListParams,
                 ),
             ),
-            cast_to=DocumentListResponse,
+            model=Document,
         )
 
     async def delete(
