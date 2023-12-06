@@ -13,6 +13,8 @@ __all__ = [
     "AsyncDocumentsPage",
     "SyncDocsetsPage",
     "AsyncDocsetsPage",
+    "SyncPagesPage",
+    "AsyncPagesPage",
     "SyncProjectsPage",
     "AsyncProjectsPage",
     "SyncWebhooksPage",
@@ -100,6 +102,44 @@ class AsyncDocsetsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT])
             return None
 
         return PageInfo(url=httpx.URL(url))
+
+
+class SyncPagesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+    pages: List[ModelT]
+
+    @override
+    def _get_page_items(self) -> List[ModelT]:
+        pages = self.pages
+        if not pages:
+            return []
+        return pages
+
+    @override
+    def next_page_info(self) -> None:
+        """
+        This page represents a response that isn't actually paginated at the API level
+        so there will never be a next page.
+        """
+        return None
+
+
+class AsyncPagesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+    pages: List[ModelT]
+
+    @override
+    def _get_page_items(self) -> List[ModelT]:
+        pages = self.pages
+        if not pages:
+            return []
+        return pages
+
+    @override
+    def next_page_info(self) -> None:
+        """
+        This page represents a response that isn't actually paginated at the API level
+        so there will never be a next page.
+        """
+        return None
 
 
 class SyncProjectsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
