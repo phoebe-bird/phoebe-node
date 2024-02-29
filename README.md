@@ -188,7 +188,7 @@ import { fetch } from 'undici'; // as one example
 import GitHub from '@stainless-api/github-internal';
 
 const client = new GitHub({
-  fetch: async (url: RequestInfo, init?: RequestInfo): Promise<Response> => {
+  fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
     console.log('Got response', response);
