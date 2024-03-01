@@ -11,6 +11,7 @@ The REST API documentation can be found [on docs.github.com](https://docs.github
 ## Installation
 
 ```sh
+# install from NPM
 npm install --save @stainless-api/github-internal
 # or
 yarn add @stainless-api/github-internal
