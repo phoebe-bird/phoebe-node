@@ -71,7 +71,7 @@ a subclass of `APIError` will be thrown:
 async function main() {
   const issue = await github.repos.issues
     .create({ owner: 'github', repo: 'docs', title: 'My first issue!' })
-    .catch((err) => {
+    .catch(async (err) => {
       if (err instanceof GitHub.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
