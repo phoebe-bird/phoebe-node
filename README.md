@@ -210,7 +210,7 @@ If you would like to disable or customize this behavior, for example to use the 
 <!-- prettier-ignore -->
 ```ts
 import http from 'http';
-import HttpsProxyAgent from 'https-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
 const github = new GitHub({
@@ -218,10 +218,12 @@ const github = new GitHub({
 });
 
 // Override per-request:
-await github.repos.issues.create({ owner: 'github', repo: 'docs', title: 'My first issue!' }, {
-  baseURL: 'http://localhost:8080/test-api',
-  httpAgent: new http.Agent({ keepAlive: false }),
-})
+await github.repos.issues.create(
+  { owner: 'github', repo: 'docs', title: 'My first issue!' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic Versioning
