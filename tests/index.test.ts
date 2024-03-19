@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless.
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import GitHub from '@stainless-api/github-internal';
 import { APIUserAbortError } from '@stainless-api/github-internal';
