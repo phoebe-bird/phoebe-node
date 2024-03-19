@@ -1,4 +1,4 @@
-// File generated from our OpenAPI spec by Stainless.
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '@stainless-api/github-internal/resource';
 import * as RefsAPI from '@stainless-api/github-internal/resources/repos/git/refs';
