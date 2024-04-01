@@ -12,7 +12,6 @@
       "@stainless-api/github-internal/_shims/auto/*": ["src/_shims/auto/*-node"],
       "@stainless-api/github-internal/*": ["src/*"],
       "@stainless-api/github-internal": ["src/index.ts"],
-      "digest-fetch": ["./typings/digest-fetch"]
     },
     "noEmit": true,
 
