@@ -9,7 +9,6 @@
       "@stainless-api/github-internal/_shims/auto/*": ["deno/_shims/auto/*-deno"],
       "@stainless-api/github-internal/*": ["deno/*"],
       "@stainless-api/github-internal": ["deno/index.ts"],
-      "digest-fetch": ["./typings/digest-fetch"]
     },
     "noEmit": true,
     "declaration": true,
