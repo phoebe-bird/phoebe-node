@@ -3,6 +3,9 @@ import type { JestConfigWithTsJest } from 'ts-jest';
 const config: JestConfigWithTsJest = {
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'node',
+  transform: {
+    '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
+  },
   moduleNameMapper: {
     '^@stainless-api/github-internal$': '<rootDir>/src/index.ts',
     '^@stainless-api/github-internal/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
