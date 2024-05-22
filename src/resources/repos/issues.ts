@@ -521,7 +521,7 @@ export namespace Issue {
       issues?: string;
 
       metadata?: string;
-      [k: string]: string;
+      [k: string]: string | undefined;
     }
   }
 
