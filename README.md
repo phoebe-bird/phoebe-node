@@ -1,6 +1,6 @@
 # GitHub Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/@stainless-api/github-internal.svg)](https://npmjs.org/package/@stainless-api/github-internal)
+[![NPM version](https://img.shields.io/npm/v/@stainless-api/github-internal.svg)](https://npmjs.org/package/@stainless-api/github-internal) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@stainless-api/github-internal)
 
 > [!WARNING]
 > This SDK is intended for internal usage, is not affiliated with GitHub and
