@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^phoebe$': '<rootDir>/src/index.ts',
-    '^phoebe/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^phoebe/(.*)$': '<rootDir>/src/$1',
+    '^phoebe-node$': '<rootDir>/src/index.ts',
+    '^phoebe-node/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^phoebe-node/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',
