@@ -1,4 +1,4 @@
-import { APIClient } from 'phoebe/core';
+import { APIClient } from 'phoebe-node/core';
 
 const { stringifyQuery } = APIClient.prototype as any;
 
