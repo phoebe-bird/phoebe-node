@@ -9,5 +9,6 @@ export class Nearest extends APIResource {
 
 export namespace Nearest {
   export import GeoSpecies = GeoSpeciesAPI.GeoSpecies;
+  export import GeoSpecieListResponse = GeoSpeciesAPI.GeoSpecieListResponse;
   export import GeoSpecieListParams = GeoSpeciesAPI.GeoSpecieListParams;
 }

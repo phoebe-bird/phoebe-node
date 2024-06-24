@@ -77,5 +77,6 @@ export namespace Recent {
   export import SpecieListResponse = SpeciesAPI.SpecieListResponse;
   export import SpecieListParams = SpeciesAPI.SpecieListParams;
   export import Notable = NotableAPI.Notable;
+  export import NotableListResponse = NotableAPI.NotableListResponse;
   export import NotableListParams = NotableAPI.NotableListParams;
 }
