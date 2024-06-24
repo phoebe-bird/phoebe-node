@@ -38,9 +38,13 @@ Methods:
 
 #### Historic
 
+Types:
+
+- <code><a href="./src/resources/data/observations/recent/historic.ts">HistoricListResponse</a></code>
+
 Methods:
 
-- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.observations.recent.historic.<a href="./src/resources/data/observations/recent/historic.ts">list</a>(regionCode, y, m, d, { ...params }) -> void</code>
+- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.observations.recent.historic.<a href="./src/resources/data/observations/recent/historic.ts">list</a>(regionCode, y, m, d, { ...params }) -> HistoricListResponse</code>
 
 ### Geo
 
@@ -66,25 +70,37 @@ Methods:
 
 ##### Notable
 
+Types:
+
+- <code><a href="./src/resources/data/observations/geo/recent/notable.ts">NotableListResponse</a></code>
+
 Methods:
 
-- <code title="get /data/obs/geo/recent/notable">client.data.observations.geo.recent.notable.<a href="./src/resources/data/observations/geo/recent/notable.ts">list</a>({ ...params }) -> void</code>
+- <code title="get /data/obs/geo/recent/notable">client.data.observations.geo.recent.notable.<a href="./src/resources/data/observations/geo/recent/notable.ts">list</a>({ ...params }) -> NotableListResponse</code>
 
 ### Nearest
 
 #### GeoSpecies
 
+Types:
+
+- <code><a href="./src/resources/data/observations/nearest/geo-species.ts">GeoSpecieListResponse</a></code>
+
 Methods:
 
-- <code title="get /data/nearest/geo/recent/{speciesCode}">client.data.observations.nearest.geoSpecies.<a href="./src/resources/data/observations/nearest/geo-species.ts">list</a>(speciesCode, { ...params }) -> void</code>
+- <code title="get /data/nearest/geo/recent/{speciesCode}">client.data.observations.nearest.geoSpecies.<a href="./src/resources/data/observations/nearest/geo-species.ts">list</a>(speciesCode, { ...params }) -> GeoSpecieListResponse</code>
 
 # Product
 
 ## Lists
 
+Types:
+
+- <code><a href="./src/resources/product/lists/lists.ts">ListRetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /product/lists/{regionCode}">client.product.lists.<a href="./src/resources/product/lists/lists.ts">retrieve</a>(regionCode, { ...params }) -> void</code>
+- <code title="get /product/lists/{regionCode}">client.product.lists.<a href="./src/resources/product/lists/lists.ts">retrieve</a>(regionCode, { ...params }) -> ListRetrieveResponse</code>
 
 ### Historical
 

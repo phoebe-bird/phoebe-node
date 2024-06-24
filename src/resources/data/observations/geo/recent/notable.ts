@@ -3,6 +3,7 @@
 import * as Core from '../../../../../core';
 import { APIResource } from '../../../../../resource';
 import * as NotableAPI from './notable';
+import * as ObservationsAPI from '../../observations';
 
 export class Notable extends APIResource {
   /**
@@ -12,14 +13,12 @@ export class Notable extends APIResource {
    * or are otherwise unusual, for example over-wintering birds in a species which is
    * normally only a summer visitor.
    */
-  list(query: NotableListParams, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.get('/data/obs/geo/recent/notable', {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+  list(query: NotableListParams, options?: Core.RequestOptions): Core.APIPromise<NotableListResponse> {
+    return this._client.get('/data/obs/geo/recent/notable', { query, ...options });
   }
 }
+
+export type NotableListResponse = Array<ObservationsAPI.Observation>;
 
 export interface NotableListParams {
   lat: number;
@@ -58,5 +57,6 @@ export interface NotableListParams {
 }
 
 export namespace Notable {
+  export import NotableListResponse = NotableAPI.NotableListResponse;
   export import NotableListParams = NotableAPI.NotableListParams;
 }

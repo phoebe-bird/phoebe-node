@@ -4,6 +4,7 @@ import * as Core from '../../../../core';
 import { APIResource } from '../../../../resource';
 import { isRequestOptions } from '../../../../core';
 import * as HistoricAPI from './historic';
+import * as ObservationsAPI from '../observations';
 
 export class Historic extends APIResource {
   /**
@@ -20,14 +21,14 @@ export class Historic extends APIResource {
     d: number,
     query?: HistoricListParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void>;
+  ): Core.APIPromise<HistoricListResponse>;
   list(
     regionCode: string,
     y: number,
     m: number,
     d: number,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void>;
+  ): Core.APIPromise<HistoricListResponse>;
   list(
     regionCode: string,
     y: number,
@@ -35,17 +36,15 @@ export class Historic extends APIResource {
     d: number,
     query: HistoricListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void> {
+  ): Core.APIPromise<HistoricListResponse> {
     if (isRequestOptions(query)) {
       return this.list(regionCode, y, m, d, {}, query);
     }
-    return this._client.get(`/data/obs/${regionCode}/historic/${y}/${m}/${d}`, {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+    return this._client.get(`/data/obs/${regionCode}/historic/${y}/${m}/${d}`, { query, ...options });
   }
 }
+
+export type HistoricListResponse = Array<ObservationsAPI.Observation>;
 
 export interface HistoricListParams {
   /**
@@ -90,5 +89,6 @@ export interface HistoricListParams {
 }
 
 export namespace Historic {
+  export import HistoricListResponse = HistoricAPI.HistoricListResponse;
   export import HistoricListParams = HistoricAPI.HistoricListParams;
 }

@@ -17,6 +17,7 @@ export class Product extends APIResource {
 
 export namespace Product {
   export import Lists = ListsAPI.Lists;
+  export import ListRetrieveResponse = ListsAPI.ListRetrieveResponse;
   export import ListRetrieveParams = ListsAPI.ListRetrieveParams;
   export import Top100 = Top100API.Top100;
   export import Top100RetrieveParams = Top100API.Top100RetrieveParams;

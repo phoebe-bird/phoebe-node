@@ -3,6 +3,7 @@
 import * as Core from '../../../../core';
 import { APIResource } from '../../../../resource';
 import * as GeoSpeciesAPI from './geo-species';
+import * as ObservationsAPI from '../observations';
 
 export class GeoSpecies extends APIResource {
   /**
@@ -14,14 +15,12 @@ export class GeoSpecies extends APIResource {
     speciesCode: string,
     query: GeoSpecieListParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void> {
-    return this._client.get(`/data/nearest/geo/recent/${speciesCode}`, {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+  ): Core.APIPromise<GeoSpecieListResponse> {
+    return this._client.get(`/data/nearest/geo/recent/${speciesCode}`, { query, ...options });
   }
 }
+
+export type GeoSpecieListResponse = Array<ObservationsAPI.Observation>;
 
 export interface GeoSpecieListParams {
   lat: number;
@@ -60,5 +59,6 @@ export interface GeoSpecieListParams {
 }
 
 export namespace GeoSpecies {
+  export import GeoSpecieListResponse = GeoSpeciesAPI.GeoSpecieListResponse;
   export import GeoSpecieListParams = GeoSpeciesAPI.GeoSpecieListParams;
 }

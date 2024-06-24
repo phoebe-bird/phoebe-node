@@ -86,5 +86,6 @@ export namespace Recent {
   export import SpecieRetrieveResponse = SpeciesAPI.SpecieRetrieveResponse;
   export import SpecieRetrieveParams = SpeciesAPI.SpecieRetrieveParams;
   export import Historic = HistoricAPI.Historic;
+  export import HistoricListResponse = HistoricAPI.HistoricListResponse;
   export import HistoricListParams = HistoricAPI.HistoricListParams;
 }
