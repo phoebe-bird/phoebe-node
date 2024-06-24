@@ -25,7 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Phoebe from 'phoebe';
 
-const phoebe = new Phoebe();
+const phoebe = new Phoebe({
+  apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const versionListResponse = await phoebe.refTaxonomy.versions.list();
@@ -42,7 +44,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Phoebe from 'phoebe';
 
-const phoebe = new Phoebe();
+const phoebe = new Phoebe({
+  apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const versionListResponse: Phoebe.RefTaxonomy.VersionListResponse =
