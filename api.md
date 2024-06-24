@@ -1,36 +1,46 @@
 # Data
 
-## Obs
+## Observations
+
+Types:
+
+- <code><a href="./src/resources/data/observations/observations.ts">Observation</a></code>
 
 ### Recent
 
 Types:
 
-- <code><a href="./src/resources/data/obs/recent/recent.ts">RecentListResponse</a></code>
+- <code><a href="./src/resources/data/observations/recent/recent.ts">RecentListResponse</a></code>
 
 Methods:
 
-- <code title="get /data/obs/{regionCode}/recent">client.data.obs.recent.<a href="./src/resources/data/obs/recent/recent.ts">list</a>(regionCode, { ...params }) -> RecentListResponse</code>
+- <code title="get /data/obs/{regionCode}/recent">client.data.observations.recent.<a href="./src/resources/data/observations/recent/recent.ts">list</a>(regionCode, { ...params }) -> RecentListResponse</code>
 
 #### Notable
 
 Types:
 
-- <code><a href="./src/resources/data/obs/recent/notable.ts">NotableListResponse</a></code>
+- <code><a href="./src/resources/data/observations/recent/notable.ts">NotableListResponse</a></code>
 
 Methods:
 
-- <code title="get /data/obs/{regionCode}/recent/notable">client.data.obs.recent.notable.<a href="./src/resources/data/obs/recent/notable.ts">list</a>(regionCode, { ...params }) -> NotableListResponse</code>
+- <code title="get /data/obs/{regionCode}/recent/notable">client.data.observations.recent.notable.<a href="./src/resources/data/observations/recent/notable.ts">list</a>(regionCode, { ...params }) -> NotableListResponse</code>
 
 #### Species
 
 Types:
 
-- <code><a href="./src/resources/data/obs/recent/species.ts">SpecieRetrieveResponse</a></code>
+- <code><a href="./src/resources/data/observations/recent/species.ts">SpecieRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /data/obs/{regionCode}/recent/{speciesCode}">client.data.obs.recent.species.<a href="./src/resources/data/obs/recent/species.ts">retrieve</a>(regionCode, speciesCode, { ...params }) -> SpecieRetrieveResponse</code>
+- <code title="get /data/obs/{regionCode}/recent/{speciesCode}">client.data.observations.recent.species.<a href="./src/resources/data/observations/recent/species.ts">retrieve</a>(regionCode, speciesCode, { ...params }) -> SpecieRetrieveResponse</code>
+
+#### Historic
+
+Methods:
+
+- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.observations.recent.historic.<a href="./src/resources/data/observations/recent/historic.ts">list</a>(regionCode, y, m, d, { ...params }) -> void</code>
 
 ### Geo
 
@@ -38,125 +48,133 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/data/obs/geo/recent/recent.ts">RecentListResponse</a></code>
+- <code><a href="./src/resources/data/observations/geo/recent/recent.ts">RecentListResponse</a></code>
 
 Methods:
 
-- <code title="get /data/obs/geo/recent">client.data.obs.geo.recent.<a href="./src/resources/data/obs/geo/recent/recent.ts">list</a>({ ...params }) -> RecentListResponse</code>
+- <code title="get /data/obs/geo/recent">client.data.observations.geo.recent.<a href="./src/resources/data/observations/geo/recent/recent.ts">list</a>({ ...params }) -> RecentListResponse</code>
 
 ##### Species
 
 Types:
 
-- <code><a href="./src/resources/data/obs/geo/recent/species.ts">SpecieListResponse</a></code>
+- <code><a href="./src/resources/data/observations/geo/recent/species.ts">SpecieListResponse</a></code>
 
 Methods:
 
-- <code title="get /data/obs/geo/recent/{speciesCode}">client.data.obs.geo.recent.species.<a href="./src/resources/data/obs/geo/recent/species.ts">list</a>(speciesCode, { ...params }) -> SpecieListResponse</code>
+- <code title="get /data/obs/geo/recent/{speciesCode}">client.data.observations.geo.recent.species.<a href="./src/resources/data/observations/geo/recent/species.ts">list</a>(speciesCode, { ...params }) -> SpecieListResponse</code>
 
 ##### Notable
 
 Methods:
 
-- <code title="get /data/obs/geo/recent/notable">client.data.obs.geo.recent.notable.<a href="./src/resources/data/obs/geo/recent/notable.ts">list</a>({ ...params }) -> void</code>
+- <code title="get /data/obs/geo/recent/notable">client.data.observations.geo.recent.notable.<a href="./src/resources/data/observations/geo/recent/notable.ts">list</a>({ ...params }) -> void</code>
 
-### Historic
+### Nearest
 
-Methods:
-
-- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.obs.historic.<a href="./src/resources/data/obs/historic.ts">list</a>(regionCode, y, m, d, { ...params }) -> void</code>
-
-## Nearest
-
-### Geo
-
-#### Recent
-
-##### Species
+#### GeoSpecies
 
 Methods:
 
-- <code title="get /data/nearest/geo/recent/{speciesCode}">client.data.nearest.geo.recent.species.<a href="./src/resources/data/nearest/geo/recent/species.ts">list</a>(speciesCode, { ...params }) -> void</code>
+- <code title="get /data/nearest/geo/recent/{speciesCode}">client.data.observations.nearest.geoSpecies.<a href="./src/resources/data/observations/nearest/geo-species.ts">list</a>(speciesCode, { ...params }) -> void</code>
 
 # Product
 
 ## Lists
 
-### Region
+Methods:
+
+- <code title="get /product/lists/{regionCode}">client.product.lists.<a href="./src/resources/product/lists/lists.ts">retrieve</a>(regionCode, { ...params }) -> void</code>
+
+### Historical
 
 Methods:
 
-- <code title="get /product/lists/{regionCode}">client.product.lists.region.<a href="./src/resources/product/lists/region.ts">retrieve</a>(regionCode, { ...params }) -> void</code>
+- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.lists.historical.<a href="./src/resources/product/lists/historical.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> void</code>
 
 ## Top100
 
 Methods:
 
-- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">list</a>(regionCode, y, m, d, { ...params }) -> void</code>
+- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> void</code>
 
-## Checklists
-
-Methods:
-
-- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.checklists.<a href="./src/resources/product/checklists/checklists.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> void</code>
-
-### Summary
+## Stats
 
 Methods:
 
-- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.checklists.summary.<a href="./src/resources/product/checklists/summary.ts">retrieve</a>(regionCode, y, m, d) -> void</code>
+- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.stats.<a href="./src/resources/product/stats.ts">retrieve</a>(regionCode, y, m, d) -> void</code>
 
-## Species
+## SpeciesList
 
 Methods:
 
-- <code title="get /product/spplist/{regionCode}">client.product.species.<a href="./src/resources/product/species.ts">list</a>(regionCode) -> void</code>
+- <code title="get /product/spplist/{regionCode}">client.product.speciesList.<a href="./src/resources/product/species-list.ts">list</a>(regionCode) -> void</code>
 
 ## Checklist
 
 Types:
 
-- <code><a href="./src/resources/product/checklist.ts">ChecklistRetrieveResponse</a></code>
+- <code><a href="./src/resources/product/checklist.ts">ChecklistViewResponse</a></code>
 
 Methods:
 
-- <code title="get /product/checklist/view/{subId}">client.product.checklist.<a href="./src/resources/product/checklist.ts">retrieve</a>(subId) -> ChecklistRetrieveResponse</code>
+- <code title="get /product/checklist/view/{subId}">client.product.checklist.<a href="./src/resources/product/checklist.ts">view</a>(subId) -> ChecklistViewResponse</code>
 
 # Ref
 
-## Geo
+## Region
 
 ### Adjacent
 
 Types:
 
-- <code><a href="./src/resources/ref/geo/adjacent.ts">AdjacentRetrieveResponse</a></code>
+- <code><a href="./src/resources/ref/region/adjacent.ts">AdjacentListResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/adjacent/{regionCode}">client.ref.geo.adjacent.<a href="./src/resources/ref/geo/adjacent.ts">retrieve</a>(regionCode) -> AdjacentRetrieveResponse</code>
-
-## Hotspots
-
-Methods:
-
-- <code title="get /ref/hotspot/{regionCode}">client.ref.hotspots.<a href="./src/resources/ref/hotspots/hotspots.ts">list</a>(regionCode, { ...params }) -> void</code>
-
-### Geo
-
-Methods:
-
-- <code title="get /ref/hotspot/geo">client.ref.hotspots.geo.<a href="./src/resources/ref/hotspots/geo.ts">retrieve</a>({ ...params }) -> void</code>
+- <code title="get /ref/adjacent/{regionCode}">client.ref.region.adjacent.<a href="./src/resources/ref/region/adjacent.ts">list</a>(regionCode) -> AdjacentListResponse</code>
 
 ### Info
 
 Types:
 
-- <code><a href="./src/resources/ref/hotspots/info.ts">InfoRetrieveResponse</a></code>
+- <code><a href="./src/resources/ref/region/info.ts">InfoRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/hotspot/info/{locId}">client.ref.hotspots.info.<a href="./src/resources/ref/hotspots/info.ts">retrieve</a>(locId) -> InfoRetrieveResponse</code>
+- <code title="get /ref/region/info/{regionCode}">client.ref.region.info.<a href="./src/resources/ref/region/info.ts">retrieve</a>(regionCode, { ...params }) -> InfoRetrieveResponse</code>
+
+### List
+
+Types:
+
+- <code><a href="./src/resources/ref/region/list.ts">ListListResponse</a></code>
+
+Methods:
+
+- <code title="get /ref/region/list/{regionType}/{parentRegionCode}">client.ref.region.list.<a href="./src/resources/ref/region/list.ts">list</a>(regionType, parentRegionCode, { ...params }) -> ListListResponse</code>
+
+## Hotspot
+
+Methods:
+
+- <code title="get /ref/hotspot/{regionCode}">client.ref.hotspot.<a href="./src/resources/ref/hotspot/hotspot.ts">list</a>(regionCode, { ...params }) -> void</code>
+
+### Geo
+
+Methods:
+
+- <code title="get /ref/hotspot/geo">client.ref.hotspot.geo.<a href="./src/resources/ref/hotspot/geo.ts">retrieve</a>({ ...params }) -> void</code>
+
+### Info
+
+Types:
+
+- <code><a href="./src/resources/ref/hotspot/info.ts">InfoRetrieveResponse</a></code>
+
+Methods:
+
+- <code title="get /ref/hotspot/info/{locId}">client.ref.hotspot.info.<a href="./src/resources/ref/hotspot/info.ts">retrieve</a>(locId) -> InfoRetrieveResponse</code>
 
 ## Taxonomy
 
@@ -170,68 +188,42 @@ Methods:
 
 - <code title="get /ref/taxonomy/ebird">client.ref.taxonomy.ebird.<a href="./src/resources/ref/taxonomy/ebird.ts">retrieve</a>({ ...params }) -> string</code>
 
-### Subspecies
+### Forms
 
 Types:
 
-- <code><a href="./src/resources/ref/taxonomy/subspecies.ts">SubspecieListResponse</a></code>
+- <code><a href="./src/resources/ref/taxonomy/forms.ts">FormListResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/taxon/forms/{speciesCode}">client.ref.taxonomy.subspecies.<a href="./src/resources/ref/taxonomy/subspecies.ts">list</a>(speciesCode) -> SubspecieListResponse</code>
+- <code title="get /ref/taxon/forms/{speciesCode}">client.ref.taxonomy.forms.<a href="./src/resources/ref/taxonomy/forms.ts">list</a>(speciesCode) -> FormListResponse</code>
 
-# RefTaxonomy
-
-## TaxaLocales
-
-### Ebird
+### Locales
 
 Types:
 
-- <code><a href="./src/resources/ref-taxonomy/taxa-locales/ebird.ts">EbirdListResponse</a></code>
+- <code><a href="./src/resources/ref/taxonomy/locales.ts">LocaleListResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/taxa-locales/ebird">client.refTaxonomy.taxaLocales.ebird.<a href="./src/resources/ref-taxonomy/taxa-locales/ebird.ts">list</a>({ ...params }) -> EbirdListResponse</code>
+- <code title="get /ref/taxa-locales/ebird">client.ref.taxonomy.locales.<a href="./src/resources/ref/taxonomy/locales.ts">list</a>({ ...params }) -> LocaleListResponse</code>
 
-## Versions
+### Versions
 
 Types:
 
-- <code><a href="./src/resources/ref-taxonomy/versions.ts">VersionListResponse</a></code>
+- <code><a href="./src/resources/ref/taxonomy/versions.ts">VersionListResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/taxonomy/versions">client.refTaxonomy.versions.<a href="./src/resources/ref-taxonomy/versions.ts">list</a>() -> VersionListResponse</code>
+- <code title="get /ref/taxonomy/versions">client.ref.taxonomy.versions.<a href="./src/resources/ref/taxonomy/versions.ts">list</a>() -> VersionListResponse</code>
 
-## Sppgroup
+### SpeciesGroups
 
 Types:
 
-- <code><a href="./src/resources/ref-taxonomy/sppgroup.ts">SppgroupRetrieveResponse</a></code>
+- <code><a href="./src/resources/ref/taxonomy/species-groups.ts">SpeciesGroupListResponse</a></code>
 
 Methods:
 
-- <code title="get /ref/sppgroup/{speciesGrouping}">client.refTaxonomy.sppgroup.<a href="./src/resources/ref-taxonomy/sppgroup.ts">retrieve</a>(speciesGrouping, { ...params }) -> SppgroupRetrieveResponse</code>
-
-# RefRegion
-
-## Info
-
-Types:
-
-- <code><a href="./src/resources/ref-region/info.ts">InfoRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /ref/region/info/{regionCode}">client.refRegion.info.<a href="./src/resources/ref-region/info.ts">retrieve</a>(regionCode, { ...params }) -> InfoRetrieveResponse</code>
-
-## List
-
-Types:
-
-- <code><a href="./src/resources/ref-region/list.ts">ListRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /ref/region/list/{regionType}/{parentRegionCode}">client.refRegion.list.<a href="./src/resources/ref-region/list.ts">retrieve</a>(regionType, parentRegionCode, { ...params }) -> ListRetrieveResponse</code>
+- <code title="get /ref/sppgroup/{speciesGrouping}">client.ref.taxonomy.speciesGroups.<a href="./src/resources/ref/taxonomy/species-groups.ts">list</a>(speciesGrouping, { ...params }) -> SpeciesGroupListResponse</code>

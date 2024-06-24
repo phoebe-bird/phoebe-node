@@ -25,31 +25,31 @@ export class Top100 extends APIResource {
    * observations ARE included in this total numCompleteChecklists - always zero when
    * checklistSort parameter is false
    */
-  list(
+  retrieve(
     regionCode: string,
     y: number,
     m: number,
     d: number,
-    query?: Top100ListParams,
+    query?: Top100RetrieveParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<void>;
-  list(
+  retrieve(
     regionCode: string,
     y: number,
     m: number,
     d: number,
     options?: Core.RequestOptions,
   ): Core.APIPromise<void>;
-  list(
+  retrieve(
     regionCode: string,
     y: number,
     m: number,
     d: number,
-    query: Top100ListParams | Core.RequestOptions = {},
+    query: Top100RetrieveParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<void> {
     if (isRequestOptions(query)) {
-      return this.list(regionCode, y, m, d, {}, query);
+      return this.retrieve(regionCode, y, m, d, {}, query);
     }
     return this._client.get(`/product/top100/${regionCode}/${y}/${m}/${d}`, {
       query,
@@ -59,7 +59,7 @@ export class Top100 extends APIResource {
   }
 }
 
-export interface Top100ListParams {
+export interface Top100RetrieveParams {
   /**
    * Only fetch this number of contributors.
    */
@@ -72,5 +72,5 @@ export interface Top100ListParams {
 }
 
 export namespace Top100 {
-  export import Top100ListParams = Top100API.Top100ListParams;
+  export import Top100RetrieveParams = Top100API.Top100RetrieveParams;
 }

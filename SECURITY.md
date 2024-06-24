@@ -20,7 +20,7 @@ or products provided by Phoebe please follow the respective company's security r
 
 ### Phoebe Terms and Policies
 
-Please contact dev-feedback@phoebe.com for any questions or concerns regarding security of our services.
+Please contact not.a.real@email.address for any questions or concerns regarding security of our services.
 
 ---
 

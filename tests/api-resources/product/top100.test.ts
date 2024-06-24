@@ -9,8 +9,8 @@ const phoebe = new Phoebe({
 });
 
 describe('resource top100', () => {
-  test('list', async () => {
-    const responsePromise = phoebe.product.top100.list('string', 0, 1, 1);
+  test('retrieve', async () => {
+    const responsePromise = phoebe.product.top100.retrieve('string', 0, 1, 1);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,17 +20,17 @@ describe('resource top100', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('list: request options instead of params are passed correctly', async () => {
+  test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.product.top100.list('string', 0, 1, 1, { path: '/_stainless_unknown_path' }),
+      phoebe.product.top100.retrieve('string', 0, 1, 1, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Phoebe.NotFoundError);
   });
 
-  test('list: request options and params are passed correctly', async () => {
+  test('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.product.top100.list(
+      phoebe.product.top100.retrieve(
         'string',
         0,
         1,
