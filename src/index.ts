@@ -9,6 +9,11 @@ import * as API from './resources/index';
 
 export interface ClientOptions {
   /**
+   * Defaults to process.env['EBIRD_API_KEY'].
+   */
+  apiKey?: string | undefined;
+
+  /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
    * Defaults to process.env['PHOEBE_BASE_URL'].
@@ -67,11 +72,14 @@ export interface ClientOptions {
 
 /** API Client for interfacing with the Phoebe API. */
 export class Phoebe extends Core.APIClient {
+  apiKey: string;
+
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Phoebe API.
    *
+   * @param {string | undefined} [opts.apiKey=process.env['EBIRD_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['PHOEBE_BASE_URL'] ?? https://api.ebird.org/v2/] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -80,8 +88,19 @@ export class Phoebe extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('PHOEBE_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({
+    baseURL = Core.readEnv('PHOEBE_BASE_URL'),
+    apiKey = Core.readEnv('EBIRD_API_KEY'),
+    ...opts
+  }: ClientOptions = {}) {
+    if (apiKey === undefined) {
+      throw new Errors.PhoebeError(
+        "The EBIRD_API_KEY environment variable is missing or empty; either provide it, or instantiate the Phoebe client with an apiKey option, like new Phoebe({ apiKey: 'My API Key' }).",
+      );
+    }
+
     const options: ClientOptions = {
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://api.ebird.org/v2/`,
     };
@@ -94,6 +113,8 @@ export class Phoebe extends Core.APIClient {
       fetch: options.fetch,
     });
     this._options = options;
+
+    this.apiKey = apiKey;
   }
 
   data: API.Data = new API.Data(this);
@@ -111,6 +132,10 @@ export class Phoebe extends Core.APIClient {
       ...super.defaultHeaders(opts),
       ...this._options.defaultHeaders,
     };
+  }
+
+  protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
+    return { 'X-eBirdApiToken': this.apiKey };
   }
 
   protected override stringifyQuery(query: Record<string, unknown>): string {
