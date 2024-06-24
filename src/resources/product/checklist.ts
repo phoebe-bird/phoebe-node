@@ -10,12 +10,12 @@ export class Checklist extends APIResource {
    *
    * #### Notes Do NOT use this to download large amounts of data. You will be banned if you do. In the fields for each observation, the following fields are duplicates or obsolete and will be removed at a future date: _howManyAtleast_, _howManyAtmost_, _hideFlags_, _projId_, _subId_, _subnational1Code_ and _present_.
    */
-  retrieve(subId: string, options?: Core.RequestOptions): Core.APIPromise<ChecklistRetrieveResponse> {
+  view(subId: string, options?: Core.RequestOptions): Core.APIPromise<ChecklistViewResponse> {
     return this._client.get(`/product/checklist/view/${subId}`, options);
   }
 }
 
-export interface ChecklistRetrieveResponse {
+export interface ChecklistViewResponse {
   allObsReported?: boolean;
 
   checklistId?: string;
@@ -30,7 +30,7 @@ export interface ChecklistRetrieveResponse {
 
   numObservers?: number;
 
-  obs?: Array<ChecklistRetrieveResponse.Ob>;
+  obs?: Array<ChecklistViewResponse.Ob>;
 
   obsDt?: string;
 
@@ -49,7 +49,7 @@ export interface ChecklistRetrieveResponse {
   userDisplayName?: string;
 }
 
-export namespace ChecklistRetrieveResponse {
+export namespace ChecklistViewResponse {
   export interface Ob {
     obsAux?: Array<Ob.ObsAux>;
 
@@ -80,5 +80,5 @@ export namespace ChecklistRetrieveResponse {
 }
 
 export namespace Checklist {
-  export import ChecklistRetrieveResponse = ChecklistAPI.ChecklistRetrieveResponse;
+  export import ChecklistViewResponse = ChecklistAPI.ChecklistViewResponse;
 }

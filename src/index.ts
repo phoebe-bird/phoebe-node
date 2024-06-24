@@ -80,7 +80,7 @@ export class Phoebe extends Core.APIClient {
    * API Client for interfacing with the Phoebe API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['EBIRD_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['PHOEBE_BASE_URL'] ?? https://api.ebird.org/v2/] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['PHOEBE_BASE_URL'] ?? https://api.ebird.org/v2] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -102,7 +102,7 @@ export class Phoebe extends Core.APIClient {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.ebird.org/v2/`,
+      baseURL: baseURL || `https://api.ebird.org/v2`,
     };
 
     super({
@@ -120,8 +120,6 @@ export class Phoebe extends Core.APIClient {
   data: API.Data = new API.Data(this);
   product: API.Product = new API.Product(this);
   ref: API.Ref = new API.Ref(this);
-  refTaxonomy: API.RefTaxonomy = new API.RefTaxonomy(this);
-  refRegion: API.RefRegion = new API.RefRegion(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -189,10 +187,6 @@ export namespace Phoebe {
   export import Product = API.Product;
 
   export import Ref = API.Ref;
-
-  export import RefTaxonomy = API.RefTaxonomy;
-
-  export import RefRegion = API.RefRegion;
 }
 
 export default Phoebe;

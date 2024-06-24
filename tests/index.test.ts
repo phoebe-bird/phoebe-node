@@ -151,13 +151,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['PHOEBE_BASE_URL'] = ''; // empty
       const client = new Phoebe({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.ebird.org/v2/');
+      expect(client.baseURL).toEqual('https://api.ebird.org/v2');
     });
 
     test('blank env variable', () => {
       process.env['PHOEBE_BASE_URL'] = '  '; // blank
       const client = new Phoebe({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.ebird.org/v2/');
+      expect(client.baseURL).toEqual('https://api.ebird.org/v2');
     });
   });
 

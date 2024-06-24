@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Phoebe REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.phoebe.com](https://docs.phoebe.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on science.ebird.org](https://science.ebird.org/en/use-ebird-data/download-ebird-data-products). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -30,7 +30,9 @@ const phoebe = new Phoebe({
 });
 
 async function main() {
-  const versionListResponse = await phoebe.refTaxonomy.versions.list();
+  const infoRetrieveResponse = await phoebe.ref.hotspot.info.retrieve('L99381');
+
+  console.log(infoRetrieveResponse.countryCode);
 }
 
 main();
@@ -49,8 +51,8 @@ const phoebe = new Phoebe({
 });
 
 async function main() {
-  const versionListResponse: Phoebe.RefTaxonomy.VersionListResponse =
-    await phoebe.refTaxonomy.versions.list();
+  const infoRetrieveResponse: Phoebe.Ref.Hotspot.InfoRetrieveResponse =
+    await phoebe.ref.hotspot.info.retrieve('L99381');
 }
 
 main();
@@ -67,7 +69,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const versionListResponse = await phoebe.refTaxonomy.versions.list().catch(async (err) => {
+  const infoRetrieveResponse = await phoebe.ref.hotspot.info.retrieve('L99381').catch(async (err) => {
     if (err instanceof Phoebe.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -110,7 +112,7 @@ const phoebe = new Phoebe({
 });
 
 // Or, configure per-request:
-await phoebe.refTaxonomy.versions.list({
+await phoebe.ref.hotspot.info.retrieve('L99381', {
   maxRetries: 5,
 });
 ```
@@ -127,7 +129,7 @@ const phoebe = new Phoebe({
 });
 
 // Override per-request:
-await phoebe.refTaxonomy.versions.list({
+await phoebe.ref.hotspot.info.retrieve('L99381', {
   timeout: 5 * 1000,
 });
 ```
@@ -148,13 +150,15 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const phoebe = new Phoebe();
 
-const response = await phoebe.refTaxonomy.versions.list().asResponse();
+const response = await phoebe.ref.hotspot.info.retrieve('L99381').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: versionListResponse, response: raw } = await phoebe.refTaxonomy.versions.list().withResponse();
+const { data: infoRetrieveResponse, response: raw } = await phoebe.ref.hotspot.info
+  .retrieve('L99381')
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(versionListResponse);
+console.log(infoRetrieveResponse.countryCode);
 ```
 
 ### Making custom/undocumented requests
@@ -258,7 +262,7 @@ const phoebe = new Phoebe({
 });
 
 // Override per-request:
-await phoebe.refTaxonomy.versions.list({
+await phoebe.ref.hotspot.info.retrieve('L99381', {
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

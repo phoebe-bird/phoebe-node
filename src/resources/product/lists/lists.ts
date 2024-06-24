@@ -1,13 +1,48 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as Core from '../../../core';
 import { APIResource } from '../../../resource';
-import * as RegionAPI from './region';
+import { isRequestOptions } from '../../../core';
+import * as ListsAPI from './lists';
+import * as HistoricalAPI from './historical';
 
 export class Lists extends APIResource {
-  region: RegionAPI.Region = new RegionAPI.Region(this._client);
+  historical: HistoricalAPI.Historical = new HistoricalAPI.Historical(this._client);
+
+  /**
+   * Get information on the most recently submitted checklists for a region.
+   */
+  retrieve(
+    regionCode: string,
+    query?: ListRetrieveParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<void>;
+  retrieve(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<void>;
+  retrieve(
+    regionCode: string,
+    query: ListRetrieveParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<void> {
+    if (isRequestOptions(query)) {
+      return this.retrieve(regionCode, {}, query);
+    }
+    return this._client.get(`/product/lists/${regionCode}`, {
+      query,
+      ...options,
+      headers: { Accept: '*/*', ...options?.headers },
+    });
+  }
+}
+
+export interface ListRetrieveParams {
+  /**
+   * Only fetch this number of checklists.
+   */
+  maxResults?: number;
 }
 
 export namespace Lists {
-  export import Region = RegionAPI.Region;
-  export import RegionRetrieveParams = RegionAPI.RegionRetrieveParams;
+  export import ListRetrieveParams = ListsAPI.ListRetrieveParams;
+  export import Historical = HistoricalAPI.Historical;
+  export import HistoricalRetrieveParams = HistoricalAPI.HistoricalRetrieveParams;
 }

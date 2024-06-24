@@ -1,15 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as NearestAPI from './nearest/nearest';
-import * as ObsAPI from './obs/obs';
+import * as ObservationsAPI from './observations/observations';
 
 export class Data extends APIResource {
-  obs: ObsAPI.Obs = new ObsAPI.Obs(this._client);
-  nearest: NearestAPI.Nearest = new NearestAPI.Nearest(this._client);
+  observations: ObservationsAPI.Observations = new ObservationsAPI.Observations(this._client);
 }
 
 export namespace Data {
-  export import Obs = ObsAPI.Obs;
-  export import Nearest = NearestAPI.Nearest;
+  export import Observations = ObservationsAPI.Observations;
+  export import Observation = ObservationsAPI.Observation;
 }
