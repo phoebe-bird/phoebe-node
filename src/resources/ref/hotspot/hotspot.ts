@@ -14,21 +14,45 @@ export class Hotspot extends APIResource {
   /**
    * Hotspots in a region
    */
-  list(regionCode: string, query?: HotspotListParams, options?: Core.RequestOptions): Core.APIPromise<void>;
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<void>;
+  list(
+    regionCode: string,
+    query?: HotspotListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<HotspotListResponse>;
+  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<HotspotListResponse>;
   list(
     regionCode: string,
     query: HotspotListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void> {
+  ): Core.APIPromise<HotspotListResponse> {
     if (isRequestOptions(query)) {
       return this.list(regionCode, {}, query);
     }
-    return this._client.get(`/ref/hotspot/${regionCode}`, {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+    return this._client.get(`/ref/hotspot/${regionCode}`, { query, ...options });
+  }
+}
+
+export type HotspotListResponse = Array<HotspotListResponse.HotspotListResponseItem>;
+
+export namespace HotspotListResponse {
+  export interface HotspotListResponseItem {
+    countryCode?: string;
+
+    lat?: number;
+
+    latestObsDt?: string;
+
+    lng?: number;
+
+    locId?: string;
+
+    locName?: string;
+
+    numSpeciesAllTime?: number;
+
+    subnational1Code?: string;
+
+    subnational2Code?: string;
   }
 }
 
@@ -45,8 +69,10 @@ export interface HotspotListParams {
 }
 
 export namespace Hotspot {
+  export import HotspotListResponse = HotspotAPI.HotspotListResponse;
   export import HotspotListParams = HotspotAPI.HotspotListParams;
   export import Geo = GeoAPI.Geo;
+  export import GeoRetrieveResponse = GeoAPI.GeoRetrieveResponse;
   export import GeoRetrieveParams = GeoAPI.GeoRetrieveParams;
   export import Info = InfoAPI.Info;
   export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;

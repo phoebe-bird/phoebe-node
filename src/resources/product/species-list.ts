@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import * as SpeciesListAPI from './species-list';
 
 export class SpeciesList extends APIResource {
   /**
@@ -10,10 +11,13 @@ export class SpeciesList extends APIResource {
    *
    * #### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.
    */
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.get(`/product/spplist/${regionCode}`, {
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<SpeciesListListResponse> {
+    return this._client.get(`/product/spplist/${regionCode}`, options);
   }
+}
+
+export type SpeciesListListResponse = Array<string>;
+
+export namespace SpeciesList {
+  export import SpeciesListListResponse = SpeciesListAPI.SpeciesListListResponse;
 }

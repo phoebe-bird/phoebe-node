@@ -9,12 +9,32 @@ export class Geo extends APIResource {
    * Get the list of hotspots, within a radius of up to 50 kilometers, from a given
    * set of coordinates.
    */
-  retrieve(query: GeoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<void> {
-    return this._client.get('/ref/hotspot/geo', {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+  retrieve(query: GeoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<GeoRetrieveResponse> {
+    return this._client.get('/ref/hotspot/geo', { query, ...options });
+  }
+}
+
+export type GeoRetrieveResponse = Array<GeoRetrieveResponse.GeoRetrieveResponseItem>;
+
+export namespace GeoRetrieveResponse {
+  export interface GeoRetrieveResponseItem {
+    countryCode?: string;
+
+    lat?: number;
+
+    latestObsDt?: string;
+
+    lng?: number;
+
+    locId?: string;
+
+    locName?: string;
+
+    numSpeciesAllTime?: number;
+
+    subnational1Code?: string;
+
+    subnational2Code?: string;
   }
 }
 
@@ -40,5 +60,6 @@ export interface GeoRetrieveParams {
 }
 
 export namespace Geo {
+  export import GeoRetrieveResponse = GeoAPI.GeoRetrieveResponse;
   export import GeoRetrieveParams = GeoAPI.GeoRetrieveParams;
 }

@@ -24,15 +24,23 @@ export interface ChecklistViewResponse {
 
   durationHrs?: number;
 
+  isoObsDate?: string;
+
   lastEditedDt?: string;
+
+  loc?: ChecklistViewResponse.Loc;
 
   locId?: string;
 
   numObservers?: number;
 
+  numSpecies?: number;
+
   obs?: Array<ChecklistViewResponse.Ob>;
 
   obsDt?: string;
+
+  obsTime?: string;
 
   obsTimeValid?: boolean;
 
@@ -42,6 +50,8 @@ export interface ChecklistViewResponse {
 
   subId?: string;
 
+  subID?: string;
+
   submissionMethodCode?: string;
 
   subnational1Code?: string;
@@ -50,6 +60,36 @@ export interface ChecklistViewResponse {
 }
 
 export namespace ChecklistViewResponse {
+  export interface Loc {
+    countryCode?: string;
+
+    countryName?: string;
+
+    hierarchicalName?: string;
+
+    isHotspot?: boolean;
+
+    lat?: number;
+
+    latitude?: number;
+
+    lng?: number;
+
+    locId?: string;
+
+    locID?: string;
+
+    locName?: string;
+
+    longitude?: number;
+
+    name?: string;
+
+    subnational1Code?: string;
+
+    subnational1Name?: string;
+  }
+
   export interface Ob {
     obsAux?: Array<Ob.ObsAux>;
 

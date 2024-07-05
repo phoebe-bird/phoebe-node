@@ -3,6 +3,6 @@
 export { ChecklistViewResponse, Checklist } from './checklist';
 export { ListRetrieveResponse, ListRetrieveParams, Lists } from './lists/index';
 export { Product } from './product';
-export { SpeciesList } from './species-list';
-export { Stats } from './stats';
-export { Top100RetrieveParams, Top100 } from './top100';
+export { SpeciesListListResponse, SpeciesList } from './species-list';
+export { StatRetrieveResponse, Stats } from './stats';
+export { Top100RetrieveResponse, Top100RetrieveParams, Top100 } from './top100';

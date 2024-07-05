@@ -32,14 +32,14 @@ export class Top100 extends APIResource {
     d: number,
     query?: Top100RetrieveParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void>;
+  ): Core.APIPromise<Top100RetrieveResponse>;
   retrieve(
     regionCode: string,
     y: number,
     m: number,
     d: number,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void>;
+  ): Core.APIPromise<Top100RetrieveResponse>;
   retrieve(
     regionCode: string,
     y: number,
@@ -47,15 +47,29 @@ export class Top100 extends APIResource {
     d: number,
     query: Top100RetrieveParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void> {
+  ): Core.APIPromise<Top100RetrieveResponse> {
     if (isRequestOptions(query)) {
       return this.retrieve(regionCode, y, m, d, {}, query);
     }
-    return this._client.get(`/product/top100/${regionCode}/${y}/${m}/${d}`, {
-      query,
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+    return this._client.get(`/product/top100/${regionCode}/${y}/${m}/${d}`, { query, ...options });
+  }
+}
+
+export type Top100RetrieveResponse = Array<Top100RetrieveResponse.Top100RetrieveResponseItem>;
+
+export namespace Top100RetrieveResponse {
+  export interface Top100RetrieveResponseItem {
+    numCompleteChecklists?: number;
+
+    numSpecies?: number;
+
+    profileHandle?: string;
+
+    rowNum?: number;
+
+    userDisplayName?: string;
+
+    userId?: string;
   }
 }
 
@@ -72,5 +86,6 @@ export interface Top100RetrieveParams {
 }
 
 export namespace Top100 {
+  export import Top100RetrieveResponse = Top100API.Top100RetrieveResponse;
   export import Top100RetrieveParams = Top100API.Top100RetrieveParams;
 }
