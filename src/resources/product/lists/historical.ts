@@ -78,8 +78,6 @@ export namespace HistoricalRetrieveResponse {
 
     subId?: string;
 
-    subID?: string;
-
     submissionMethodCode?: string;
 
     subnational1Code?: string;
@@ -104,8 +102,6 @@ export namespace HistoricalRetrieveResponse {
       lng?: number;
 
       locId?: string;
-
-      locID?: string;
 
       locName?: string;
 

@@ -50,8 +50,6 @@ export interface ChecklistViewResponse {
 
   subId?: string;
 
-  subID?: string;
-
   submissionMethodCode?: string;
 
   subnational1Code?: string;
@@ -76,8 +74,6 @@ export namespace ChecklistViewResponse {
     lng?: number;
 
     locId?: string;
-
-    locID?: string;
 
     locName?: string;
 

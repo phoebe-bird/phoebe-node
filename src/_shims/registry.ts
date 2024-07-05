@@ -42,13 +42,11 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'phoebe-bird/shims/${shims.kind}'\` before importing anything else from phoebe-bird`,
+      `you must \`import 'phoebe/shims/${shims.kind}'\` before importing anything else from phoebe`,
     );
   }
   if (kind) {
-    throw new Error(
-      `can't \`import 'phoebe-bird/shims/${shims.kind}'\` after \`import 'phoebe-bird/shims/${kind}'\``,
-    );
+    throw new Error(`can't \`import 'phoebe/shims/${shims.kind}'\` after \`import 'phoebe/shims/${kind}'\``);
   }
   auto = options.auto;
   kind = shims.kind;
