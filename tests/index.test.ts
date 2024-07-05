@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Phoebe from 'phoebe';
-import { APIUserAbortError } from 'phoebe';
-import { Headers } from 'phoebe/core';
+import Phoebe from 'phoebe-bird';
+import { APIUserAbortError } from 'phoebe-bird';
+import { Headers } from 'phoebe-bird/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
