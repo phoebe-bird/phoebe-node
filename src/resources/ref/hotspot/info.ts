@@ -32,8 +32,6 @@ export interface InfoRetrieveResponse {
 
   locId?: string;
 
-  locID?: string;
-
   locName?: string;
 
   longitude?: number;
