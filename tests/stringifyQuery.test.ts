@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Phoebe } from 'phoebe';
+import { Phoebe } from 'phoebe-bird';
 
 const { stringifyQuery } = Phoebe.prototype as any;
 

@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "phoebe/*": ["dist/src/*"],
-      "phoebe": ["dist/src/index.ts"],
+      "phoebe-bird/*": ["dist/src/*"],
+      "phoebe-bird": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,
