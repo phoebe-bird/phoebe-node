@@ -1,12 +1,12 @@
 {
-  "name": "phoebe-ebird",
+  "name": "phoebe",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Phoebe API",
   "author": "Phoebe <not.a.real@email.address>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-api/github-node",
+  "repository": "github:phoebe-bird/phoebe-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
@@ -62,8 +62,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "phoebe-ebird": ".",
-    "phoebe-ebird/*": "./src/*"
+    "phoebe": ".",
+    "phoebe/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {
