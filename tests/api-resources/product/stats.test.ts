@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Phoebe from 'phoebe-node';
+import Phoebe from 'phoebe';
 import { Response } from 'node-fetch';
 
 const phoebe = new Phoebe({

@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "phoebe-node/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "phoebe-node/*": ["deno/*"],
-      "phoebe-node": ["deno/index.ts"],
+      "phoebe/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "phoebe/*": ["deno/*"],
+      "phoebe": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

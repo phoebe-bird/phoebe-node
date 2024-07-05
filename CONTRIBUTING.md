@@ -55,12 +55,12 @@ cd github-node
 # With yarn
 yarn link
 cd ../my-package
-yarn link phoebe-node
+yarn link phoebe
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global phoebe-node
+pnpm link -—global phoebe
 ```
 
 ## Running tests
