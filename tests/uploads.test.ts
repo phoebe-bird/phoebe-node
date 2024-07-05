@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'phoebe-ebird/uploads';
-import { File } from 'phoebe-ebird/_shims/index';
+import { toFile, type ResponseLike } from 'phoebe/uploads';
+import { File } from 'phoebe/_shims/index';
 
 class MyClass {
   name: string = 'foo';

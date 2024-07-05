@@ -42,25 +42,25 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-npm install git+ssh://git@github.com:stainless-api/github-node.git
+npm install git+ssh://git@github.com:phoebe-bird/phoebe-node.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```bash
 # Clone
-git clone https://www.github.com/stainless-api/github-node
-cd github-node
+git clone https://www.github.com/phoebe-bird/phoebe-node
+cd phoebe-node
 
 # With yarn
 yarn link
 cd ../my-package
-yarn link phoebe-ebird
+yarn link phoebe
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global phoebe-ebird
+pnpm link -—global phoebe
 ```
 
 ## Running tests
@@ -99,7 +99,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/stainless-api/github-node/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/phoebe-bird/phoebe-node/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 
