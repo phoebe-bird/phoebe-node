@@ -104,27 +104,43 @@ Methods:
 
 ### Historical
 
+Types:
+
+- <code><a href="./src/resources/product/lists/historical.ts">HistoricalRetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.lists.historical.<a href="./src/resources/product/lists/historical.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> void</code>
+- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.lists.historical.<a href="./src/resources/product/lists/historical.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> HistoricalRetrieveResponse</code>
 
 ## Top100
 
+Types:
+
+- <code><a href="./src/resources/product/top100.ts">Top100RetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> void</code>
+- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> Top100RetrieveResponse</code>
 
 ## Stats
 
+Types:
+
+- <code><a href="./src/resources/product/stats.ts">StatRetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.stats.<a href="./src/resources/product/stats.ts">retrieve</a>(regionCode, y, m, d) -> void</code>
+- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.stats.<a href="./src/resources/product/stats.ts">retrieve</a>(regionCode, y, m, d) -> StatRetrieveResponse</code>
 
 ## SpeciesList
 
+Types:
+
+- <code><a href="./src/resources/product/species-list.ts">SpeciesListListResponse</a></code>
+
 Methods:
 
-- <code title="get /product/spplist/{regionCode}">client.product.speciesList.<a href="./src/resources/product/species-list.ts">list</a>(regionCode) -> void</code>
+- <code title="get /product/spplist/{regionCode}">client.product.speciesList.<a href="./src/resources/product/species-list.ts">list</a>(regionCode) -> SpeciesListListResponse</code>
 
 ## Checklist
 
@@ -172,15 +188,23 @@ Methods:
 
 ## Hotspot
 
+Types:
+
+- <code><a href="./src/resources/ref/hotspot/hotspot.ts">HotspotListResponse</a></code>
+
 Methods:
 
-- <code title="get /ref/hotspot/{regionCode}">client.ref.hotspot.<a href="./src/resources/ref/hotspot/hotspot.ts">list</a>(regionCode, { ...params }) -> void</code>
+- <code title="get /ref/hotspot/{regionCode}">client.ref.hotspot.<a href="./src/resources/ref/hotspot/hotspot.ts">list</a>(regionCode, { ...params }) -> HotspotListResponse</code>
 
 ### Geo
 
+Types:
+
+- <code><a href="./src/resources/ref/hotspot/geo.ts">GeoRetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /ref/hotspot/geo">client.ref.hotspot.geo.<a href="./src/resources/ref/hotspot/geo.ts">retrieve</a>({ ...params }) -> void</code>
+- <code title="get /ref/hotspot/geo">client.ref.hotspot.geo.<a href="./src/resources/ref/hotspot/geo.ts">retrieve</a>({ ...params }) -> GeoRetrieveResponse</code>
 
 ### Info
 
@@ -202,7 +226,7 @@ Types:
 
 Methods:
 
-- <code title="get /ref/taxonomy/ebird">client.ref.taxonomy.ebird.<a href="./src/resources/ref/taxonomy/ebird.ts">retrieve</a>({ ...params }) -> string</code>
+- <code title="get /ref/taxonomy/ebird">client.ref.taxonomy.ebird.<a href="./src/resources/ref/taxonomy/ebird.ts">retrieve</a>({ ...params }) -> EbirdRetrieveResponse</code>
 
 ### Forms
 

@@ -20,9 +20,12 @@ export namespace Product {
   export import ListRetrieveResponse = ListsAPI.ListRetrieveResponse;
   export import ListRetrieveParams = ListsAPI.ListRetrieveParams;
   export import Top100 = Top100API.Top100;
+  export import Top100RetrieveResponse = Top100API.Top100RetrieveResponse;
   export import Top100RetrieveParams = Top100API.Top100RetrieveParams;
   export import Stats = StatsAPI.Stats;
+  export import StatRetrieveResponse = StatsAPI.StatRetrieveResponse;
   export import SpeciesList = SpeciesListAPI.SpeciesList;
+  export import SpeciesListListResponse = SpeciesListAPI.SpeciesListListResponse;
   export import Checklist = ChecklistAPI.Checklist;
   export import ChecklistViewResponse = ChecklistAPI.ChecklistViewResponse;
 }

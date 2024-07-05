@@ -12,24 +12,51 @@ export class Ebird extends APIResource {
    * for selected species using the _species_ query parameter with a comma separating
    * each code. Otherwise the full taxonomy is downloaded.
    */
-  retrieve(query?: EbirdRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<string>;
-  retrieve(options?: Core.RequestOptions): Core.APIPromise<string>;
+  retrieve(
+    query?: EbirdRetrieveParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<EbirdRetrieveResponse>;
+  retrieve(options?: Core.RequestOptions): Core.APIPromise<EbirdRetrieveResponse>;
   retrieve(
     query: EbirdRetrieveParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<string> {
+  ): Core.APIPromise<EbirdRetrieveResponse> {
     if (isRequestOptions(query)) {
       return this.retrieve({}, query);
     }
-    return this._client.get('/ref/taxonomy/ebird', {
-      query,
-      ...options,
-      headers: { Accept: 'text/plain', ...options?.headers },
-    });
+    return this._client.get('/ref/taxonomy/ebird', { query, ...options });
   }
 }
 
-export type EbirdRetrieveResponse = string;
+export type EbirdRetrieveResponse = Array<EbirdRetrieveResponse.EbirdRetrieveResponseItem>;
+
+export namespace EbirdRetrieveResponse {
+  export interface EbirdRetrieveResponseItem {
+    bandingCodes?: Array<string>;
+
+    category?: string;
+
+    comName?: string;
+
+    comNameCodes?: Array<string>;
+
+    familyCode?: string;
+
+    familyComName?: string;
+
+    familySciName?: string;
+
+    order?: string;
+
+    sciName?: string;
+
+    sciNameCodes?: Array<string>;
+
+    speciesCode?: string;
+
+    taxonOrder?: number;
+  }
+}
 
 export interface EbirdRetrieveParams {
   /**

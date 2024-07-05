@@ -14,6 +14,7 @@ export class Ref extends APIResource {
 export namespace Ref {
   export import Region = RegionAPI.Region;
   export import Hotspot = HotspotAPI.Hotspot;
+  export import HotspotListResponse = HotspotAPI.HotspotListResponse;
   export import HotspotListParams = HotspotAPI.HotspotListParams;
   export import Taxonomy = TaxonomyAPI.Taxonomy;
 }

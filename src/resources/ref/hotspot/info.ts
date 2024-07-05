@@ -24,9 +24,17 @@ export interface InfoRetrieveResponse {
 
   isHotspot?: boolean;
 
+  lat?: number;
+
   latitude?: number;
 
+  lng?: number;
+
   locId?: string;
+
+  locID?: string;
+
+  locName?: string;
 
   longitude?: number;
 
@@ -35,10 +43,6 @@ export interface InfoRetrieveResponse {
   subnational1Code?: string;
 
   subnational1Name?: string;
-
-  subnational2Code?: string;
-
-  subnational2Name?: string;
 }
 
 export namespace Info {

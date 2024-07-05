@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import * as StatsAPI from './stats';
 
 export class Stats extends APIResource {
   /**
@@ -16,10 +17,19 @@ export class Stats extends APIResource {
     m: number,
     d: number,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<void> {
-    return this._client.get(`/product/stats/${regionCode}/${y}/${m}/${d}`, {
-      ...options,
-      headers: { Accept: '*/*', ...options?.headers },
-    });
+  ): Core.APIPromise<StatRetrieveResponse> {
+    return this._client.get(`/product/stats/${regionCode}/${y}/${m}/${d}`, options);
   }
+}
+
+export interface StatRetrieveResponse {
+  numChecklists?: number;
+
+  numContributors?: number;
+
+  numSpecies?: number;
+}
+
+export namespace Stats {
+  export import StatRetrieveResponse = StatsAPI.StatRetrieveResponse;
 }
