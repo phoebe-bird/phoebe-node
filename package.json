@@ -1,5 +1,5 @@
 {
-  "name": "phoebe",
+  "name": "phoebe-ebird",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Phoebe API",
   "author": "Phoebe <not.a.real@email.address>",
@@ -62,8 +62,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "phoebe": ".",
-    "phoebe/*": "./src/*"
+    "phoebe-ebird": ".",
+    "phoebe-ebird/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

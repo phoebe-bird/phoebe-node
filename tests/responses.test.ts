@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'phoebe/core';
-import { Headers } from 'phoebe/_shims/index';
+import { createResponseHeaders } from 'phoebe-ebird/core';
+import { Headers } from 'phoebe-ebird/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters
