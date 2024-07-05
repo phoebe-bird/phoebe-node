@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "phoebe-bird/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "phoebe-bird/*": ["src/*"],
-      "phoebe-bird": ["src/index.ts"],
+      "phoebe/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "phoebe/*": ["src/*"],
+      "phoebe": ["src/index.ts"],
     },
     "noEmit": true,
 
