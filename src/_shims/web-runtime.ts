@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from 'phoebe-ebird'\`:
-- \`import 'phoebe-ebird/shims/node'\` (if you're running on Node)
-- \`import 'phoebe-ebird/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from 'phoebe'\`:
+- \`import 'phoebe/shims/node'\` (if you're running on Node)
+- \`import 'phoebe/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;
@@ -95,7 +95,7 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
     getDefaultAgent: (url: string) => undefined,
     fileFromPath: () => {
       throw new Error(
-        'The `fileFromPath` function is only supported in Node. See the README for more details: https://www.github.com/stainless-api/github-node#file-uploads',
+        'The `fileFromPath` function is only supported in Node. See the README for more details: https://www.github.com/phoebe-bird/phoebe-node#file-uploads',
       );
     },
     isFsReadStream: (value: any) => false,
