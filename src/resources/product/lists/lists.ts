@@ -68,8 +68,6 @@ export namespace ListRetrieveResponse {
 
     subId?: string;
 
-    subID?: string;
-
     submissionMethodCode?: string;
 
     subnational1Code?: string;
@@ -94,8 +92,6 @@ export namespace ListRetrieveResponse {
       lng?: number;
 
       locId?: string;
-
-      locID?: string;
 
       locName?: string;
 

@@ -1,6 +1,6 @@
 # Phoebe Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/phoebe-bird.svg)](https://npmjs.org/package/phoebe-bird) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/phoebe-bird)
+[![NPM version](https://img.shields.io/npm/v/phoebe.svg)](https://npmjs.org/package/phoebe) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/phoebe)
 
 This library provides convenient access to the Phoebe REST API from server-side TypeScript or JavaScript.
 
@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install phoebe-bird
+npm install phoebe
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Phoebe from 'phoebe-bird';
+import Phoebe from 'phoebe';
 
 const phoebe = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
@@ -41,7 +41,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Phoebe from 'phoebe-bird';
+import Phoebe from 'phoebe';
 
 const phoebe = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
@@ -213,11 +213,11 @@ add the following import before your first import `from "Phoebe"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'phoebe-bird/shims/web';
-import Phoebe from 'phoebe-bird';
+import 'phoebe/shims/web';
+import Phoebe from 'phoebe';
 ```
 
-To do the inverse, add `import "phoebe-bird/shims/node"` (which does import polyfills).
+To do the inverse, add `import "phoebe/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/phoebe-bird/phoebe-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -227,7 +227,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Phoebe from 'phoebe-bird';
+import Phoebe from 'phoebe';
 
 const client = new Phoebe({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
@@ -283,7 +283,7 @@ TypeScript >= 4.5 is supported.
 The following runtimes are supported:
 
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import Phoebe from "npm:phoebe-bird"`.
+- Deno v1.28.0 or higher, using `import Phoebe from "npm:phoebe"`.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.
