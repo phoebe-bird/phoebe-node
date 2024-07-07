@@ -1,4 +1,4 @@
-import Phoebe from 'phoebe';
+import Phoebe from 'phoebe-ebird';
 
 const phoebe = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
