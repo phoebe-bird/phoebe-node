@@ -55,12 +55,12 @@ cd phoebe-node
 # With yarn
 yarn link
 cd ../my-package
-yarn link phoebe
+yarn link phoebe-ebird
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global phoebe
+pnpm link -—global phoebe-ebird
 ```
 
 ## Running tests
