@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'phoebe/core';
-import { Blob } from 'phoebe/_shims/index';
-import { toFile } from 'phoebe';
+import { multipartFormRequestOptions, createForm } from 'phoebe-ebird/core';
+import { Blob } from 'phoebe-ebird/_shims/index';
+import { toFile } from 'phoebe-ebird';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
