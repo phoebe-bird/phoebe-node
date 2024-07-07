@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'phoebe/shims/node'
- *   import 'phoebe/shims/web'
+ *   import 'phoebe-ebird/shims/node'
+ *   import 'phoebe-ebird/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */
