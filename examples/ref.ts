@@ -18,20 +18,4 @@ async function ref() {
   console.debug(locales);
 }
 
-async function observations() {
-  const phoebes = await phoebe.data.observations.recent.species.retrieve('US-NY', 'easpho');
-
-  console.debug(phoebes);
-
-  const recentChecklists = await phoebe.data.observations.recent.list('US-NY');
-
-  console.debug(recentChecklists);
-}
-
-async function main() {
-  await observations();
-
-  await ref();
-}
-
-main();
+ref();
