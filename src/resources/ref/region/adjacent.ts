@@ -15,12 +15,10 @@ export class Adjacent extends APIResource {
   }
 }
 
-export interface AdjacentListResponse {
-  adjacentRegions?: Array<AdjacentListResponse.AdjacentRegion>;
-}
+export type AdjacentListResponse = Array<AdjacentListResponse.AdjacentListResponseItem>;
 
 export namespace AdjacentListResponse {
-  export interface AdjacentRegion {
+  export interface AdjacentListResponseItem {
     code?: string;
 
     name?: string;
