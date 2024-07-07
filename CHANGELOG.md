@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-07-07)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* fixup! ([da67ca1](https://github.com/phoebe-bird/phoebe-node/commit/da67ca1bd7fc9888f223a166de94a79677c14cc7))
+
 ## 0.1.0-alpha.2 (2024-07-07)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
