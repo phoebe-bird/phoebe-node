@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-07-07)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **docs:** update contact email ([#14](https://github.com/phoebe-bird/phoebe-node/issues/14)) ([c838c46](https://github.com/phoebe-bird/phoebe-node/commit/c838c46b7071a3850631eefa0cc3b292f8db4c34))
+
+
+### Chores
+
+* update SDK settings ([#12](https://github.com/phoebe-bird/phoebe-node/issues/12)) ([e326c95](https://github.com/phoebe-bird/phoebe-node/commit/e326c958c5a0cec9749090f568eebed9f5404b97))
+
 ## 0.1.0-alpha.1 (2024-07-05)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
