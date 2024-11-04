@@ -3,7 +3,6 @@
 import { APIResource } from '../../../../resource';
 import { isRequestOptions } from '../../../../core';
 import * as Core from '../../../../core';
-import * as HistoricAPI from './historic';
 import * as ObservationsAPI from '../observations';
 
 export class Historic extends APIResource {
@@ -88,7 +87,6 @@ export interface HistoricListParams {
   sppLocale?: string;
 }
 
-export namespace Historic {
-  export import HistoricListResponse = HistoricAPI.HistoricListResponse;
-  export import HistoricListParams = HistoricAPI.HistoricListParams;
+export declare namespace Historic {
+  export { type HistoricListResponse as HistoricListResponse, type HistoricListParams as HistoricListParams };
 }

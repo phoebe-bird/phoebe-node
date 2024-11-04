@@ -3,9 +3,10 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as HotspotAPI from './hotspot';
 import * as GeoAPI from './geo';
+import { Geo, GeoRetrieveParams, GeoRetrieveResponse } from './geo';
 import * as InfoAPI from './info';
+import { Info, InfoRetrieveResponse } from './info';
 
 export class Hotspot extends APIResource {
   geo: GeoAPI.Geo = new GeoAPI.Geo(this._client);
@@ -68,12 +69,17 @@ export interface HotspotListParams {
   fmt?: 'csv' | 'json';
 }
 
-export namespace Hotspot {
-  export import HotspotListResponse = HotspotAPI.HotspotListResponse;
-  export import HotspotListParams = HotspotAPI.HotspotListParams;
-  export import Geo = GeoAPI.Geo;
-  export import GeoRetrieveResponse = GeoAPI.GeoRetrieveResponse;
-  export import GeoRetrieveParams = GeoAPI.GeoRetrieveParams;
-  export import Info = InfoAPI.Info;
-  export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;
+Hotspot.Geo = Geo;
+Hotspot.Info = Info;
+
+export declare namespace Hotspot {
+  export { type HotspotListResponse as HotspotListResponse, type HotspotListParams as HotspotListParams };
+
+  export {
+    Geo as Geo,
+    type GeoRetrieveResponse as GeoRetrieveResponse,
+    type GeoRetrieveParams as GeoRetrieveParams,
+  };
+
+  export { Info as Info, type InfoRetrieveResponse as InfoRetrieveResponse };
 }

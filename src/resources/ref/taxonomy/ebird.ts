@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as EbirdAPI from './ebird';
 
 export class Ebird extends APIResource {
   /**
@@ -85,7 +84,9 @@ export interface EbirdRetrieveParams {
   version?: string;
 }
 
-export namespace Ebird {
-  export import EbirdRetrieveResponse = EbirdAPI.EbirdRetrieveResponse;
-  export import EbirdRetrieveParams = EbirdAPI.EbirdRetrieveParams;
+export declare namespace Ebird {
+  export {
+    type EbirdRetrieveResponse as EbirdRetrieveResponse,
+    type EbirdRetrieveParams as EbirdRetrieveParams,
+  };
 }

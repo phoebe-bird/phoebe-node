@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as ListAPI from './list';
 
 export class List extends APIResource {
   /**
@@ -53,7 +52,6 @@ export interface ListListParams {
   fmt?: 'csv' | 'json';
 }
 
-export namespace List {
-  export import ListListResponse = ListAPI.ListListResponse;
-  export import ListListParams = ListAPI.ListListParams;
+export declare namespace List {
+  export { type ListListResponse as ListListResponse, type ListListParams as ListListParams };
 }

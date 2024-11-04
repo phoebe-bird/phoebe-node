@@ -2,13 +2,18 @@
 
 import { APIResource } from '../../../../resource';
 import * as GeoSpeciesAPI from './geo-species';
+import { GeoSpecieListParams, GeoSpecieListResponse, GeoSpecies } from './geo-species';
 
 export class Nearest extends APIResource {
   geoSpecies: GeoSpeciesAPI.GeoSpecies = new GeoSpeciesAPI.GeoSpecies(this._client);
 }
 
-export namespace Nearest {
-  export import GeoSpecies = GeoSpeciesAPI.GeoSpecies;
-  export import GeoSpecieListResponse = GeoSpeciesAPI.GeoSpecieListResponse;
-  export import GeoSpecieListParams = GeoSpeciesAPI.GeoSpecieListParams;
+Nearest.GeoSpecies = GeoSpecies;
+
+export declare namespace Nearest {
+  export {
+    GeoSpecies as GeoSpecies,
+    type GeoSpecieListResponse as GeoSpecieListResponse,
+    type GeoSpecieListParams as GeoSpecieListParams,
+  };
 }

@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource speciesList', () => {
   test('list', async () => {
-    const responsePromise = phoebe.product.speciesList.list('string');
+    const responsePromise = client.product.speciesList.list('regionCode');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource speciesList', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.product.speciesList.list('string', { path: '/_stainless_unknown_path' }),
+      client.product.speciesList.list('regionCode', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Phoebe.NotFoundError);
   });
 });

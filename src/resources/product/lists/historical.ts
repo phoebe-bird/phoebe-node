@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as HistoricalAPI from './historical';
 
 export class Historical extends APIResource {
   /**
@@ -156,7 +155,9 @@ export interface HistoricalRetrieveParams {
   sortKey?: 'obs_dt' | 'creation_dt';
 }
 
-export namespace Historical {
-  export import HistoricalRetrieveResponse = HistoricalAPI.HistoricalRetrieveResponse;
-  export import HistoricalRetrieveParams = HistoricalAPI.HistoricalRetrieveParams;
+export declare namespace Historical {
+  export {
+    type HistoricalRetrieveResponse as HistoricalRetrieveResponse,
+    type HistoricalRetrieveParams as HistoricalRetrieveParams,
+  };
 }

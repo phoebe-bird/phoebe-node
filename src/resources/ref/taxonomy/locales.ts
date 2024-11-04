@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as LocalesAPI from './locales';
 
 export class Locales extends APIResource {
   /**
@@ -50,7 +49,6 @@ export interface LocaleListParams {
   'Accept-Language'?: string;
 }
 
-export namespace Locales {
-  export import LocaleListResponse = LocalesAPI.LocaleListResponse;
-  export import LocaleListParams = LocalesAPI.LocaleListParams;
+export declare namespace Locales {
+  export { type LocaleListResponse as LocaleListResponse, type LocaleListParams as LocaleListParams };
 }

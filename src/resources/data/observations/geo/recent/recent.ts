@@ -2,10 +2,11 @@
 
 import { APIResource } from '../../../../../resource';
 import * as Core from '../../../../../core';
-import * as RecentAPI from './recent';
 import * as ObservationsAPI from '../../observations';
 import * as NotableAPI from './notable';
+import { Notable, NotableListParams, NotableListResponse } from './notable';
 import * as SpeciesAPI from './species';
+import { SpecieListParams, SpecieListResponse, Species } from './species';
 
 export class Recent extends APIResource {
   species: SpeciesAPI.Species = new SpeciesAPI.Species(this._client);
@@ -70,13 +71,21 @@ export interface RecentListParams {
   sppLocale?: string;
 }
 
-export namespace Recent {
-  export import RecentListResponse = RecentAPI.RecentListResponse;
-  export import RecentListParams = RecentAPI.RecentListParams;
-  export import Species = SpeciesAPI.Species;
-  export import SpecieListResponse = SpeciesAPI.SpecieListResponse;
-  export import SpecieListParams = SpeciesAPI.SpecieListParams;
-  export import Notable = NotableAPI.Notable;
-  export import NotableListResponse = NotableAPI.NotableListResponse;
-  export import NotableListParams = NotableAPI.NotableListParams;
+Recent.Species = Species;
+Recent.Notable = Notable;
+
+export declare namespace Recent {
+  export { type RecentListResponse as RecentListResponse, type RecentListParams as RecentListParams };
+
+  export {
+    Species as Species,
+    type SpecieListResponse as SpecieListResponse,
+    type SpecieListParams as SpecieListParams,
+  };
+
+  export {
+    Notable as Notable,
+    type NotableListResponse as NotableListResponse,
+    type NotableListParams as NotableListParams,
+  };
 }

@@ -2,8 +2,11 @@
 
 import { APIResource } from '../../../resource';
 import * as AdjacentAPI from './adjacent';
+import { Adjacent, AdjacentListResponse } from './adjacent';
 import * as InfoAPI from './info';
+import { Info, InfoRetrieveParams, InfoRetrieveResponse } from './info';
 import * as ListAPI from './list';
+import { List, ListListParams, ListListResponse } from './list';
 
 export class Region extends APIResource {
   adjacent: AdjacentAPI.Adjacent = new AdjacentAPI.Adjacent(this._client);
@@ -11,13 +14,18 @@ export class Region extends APIResource {
   list: ListAPI.List = new ListAPI.List(this._client);
 }
 
-export namespace Region {
-  export import Adjacent = AdjacentAPI.Adjacent;
-  export import AdjacentListResponse = AdjacentAPI.AdjacentListResponse;
-  export import Info = InfoAPI.Info;
-  export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;
-  export import InfoRetrieveParams = InfoAPI.InfoRetrieveParams;
-  export import List = ListAPI.List;
-  export import ListListResponse = ListAPI.ListListResponse;
-  export import ListListParams = ListAPI.ListListParams;
+Region.Adjacent = Adjacent;
+Region.Info = Info;
+Region.List = List;
+
+export declare namespace Region {
+  export { Adjacent as Adjacent, type AdjacentListResponse as AdjacentListResponse };
+
+  export {
+    Info as Info,
+    type InfoRetrieveResponse as InfoRetrieveResponse,
+    type InfoRetrieveParams as InfoRetrieveParams,
+  };
+
+  export { List as List, type ListListResponse as ListListResponse, type ListListParams as ListListParams };
 }

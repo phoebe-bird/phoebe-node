@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource recent', () => {
   test('list', async () => {
-    const responsePromise = phoebe.data.observations.recent.list('string');
+    const responsePromise = client.data.observations.recent.list('regionCode');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,15 +23,15 @@ describe('resource recent', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.data.observations.recent.list('string', { path: '/_stainless_unknown_path' }),
+      client.data.observations.recent.list('regionCode', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Phoebe.NotFoundError);
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.data.observations.recent.list(
-        'string',
+      client.data.observations.recent.list(
+        'regionCode',
         {
           back: 1,
           cat: 'species',
@@ -39,7 +39,7 @@ describe('resource recent', () => {
           includeProvisional: true,
           maxResults: 1,
           r: ['string'],
-          sppLocale: 'string',
+          sppLocale: 'sppLocale',
         },
         { path: '/_stainless_unknown_path' },
       ),
