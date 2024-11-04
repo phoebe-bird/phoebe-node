@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as StatsAPI from './stats';
 
 export class Stats extends APIResource {
   /**
@@ -30,6 +29,6 @@ export interface StatRetrieveResponse {
   numSpecies?: number;
 }
 
-export namespace Stats {
-  export import StatRetrieveResponse = StatsAPI.StatRetrieveResponse;
+export declare namespace Stats {
+  export { type StatRetrieveResponse as StatRetrieveResponse };
 }

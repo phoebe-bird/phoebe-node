@@ -2,10 +2,15 @@
 
 import { APIResource } from '../../resource';
 import * as ChecklistAPI from './checklist';
+import { Checklist, ChecklistViewResponse } from './checklist';
 import * as SpeciesListAPI from './species-list';
+import { SpeciesList, SpeciesListListResponse } from './species-list';
 import * as StatsAPI from './stats';
+import { StatRetrieveResponse, Stats } from './stats';
 import * as Top100API from './top100';
+import { Top100, Top100RetrieveParams, Top100RetrieveResponse } from './top100';
 import * as ListsAPI from './lists/lists';
+import { ListRetrieveParams, ListRetrieveResponse, Lists } from './lists/lists';
 
 export class Product extends APIResource {
   lists: ListsAPI.Lists = new ListsAPI.Lists(this._client);
@@ -15,17 +20,28 @@ export class Product extends APIResource {
   checklist: ChecklistAPI.Checklist = new ChecklistAPI.Checklist(this._client);
 }
 
-export namespace Product {
-  export import Lists = ListsAPI.Lists;
-  export import ListRetrieveResponse = ListsAPI.ListRetrieveResponse;
-  export import ListRetrieveParams = ListsAPI.ListRetrieveParams;
-  export import Top100 = Top100API.Top100;
-  export import Top100RetrieveResponse = Top100API.Top100RetrieveResponse;
-  export import Top100RetrieveParams = Top100API.Top100RetrieveParams;
-  export import Stats = StatsAPI.Stats;
-  export import StatRetrieveResponse = StatsAPI.StatRetrieveResponse;
-  export import SpeciesList = SpeciesListAPI.SpeciesList;
-  export import SpeciesListListResponse = SpeciesListAPI.SpeciesListListResponse;
-  export import Checklist = ChecklistAPI.Checklist;
-  export import ChecklistViewResponse = ChecklistAPI.ChecklistViewResponse;
+Product.Lists = Lists;
+Product.Top100 = Top100;
+Product.Stats = Stats;
+Product.SpeciesList = SpeciesList;
+Product.Checklist = Checklist;
+
+export declare namespace Product {
+  export {
+    Lists as Lists,
+    type ListRetrieveResponse as ListRetrieveResponse,
+    type ListRetrieveParams as ListRetrieveParams,
+  };
+
+  export {
+    Top100 as Top100,
+    type Top100RetrieveResponse as Top100RetrieveResponse,
+    type Top100RetrieveParams as Top100RetrieveParams,
+  };
+
+  export { Stats as Stats, type StatRetrieveResponse as StatRetrieveResponse };
+
+  export { SpeciesList as SpeciesList, type SpeciesListListResponse as SpeciesListListResponse };
+
+  export { Checklist as Checklist, type ChecklistViewResponse as ChecklistViewResponse };
 }

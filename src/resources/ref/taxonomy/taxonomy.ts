@@ -2,10 +2,15 @@
 
 import { APIResource } from '../../../resource';
 import * as EbirdAPI from './ebird';
+import { Ebird, EbirdRetrieveParams, EbirdRetrieveResponse } from './ebird';
 import * as FormsAPI from './forms';
+import { FormListResponse, Forms } from './forms';
 import * as LocalesAPI from './locales';
+import { LocaleListParams, LocaleListResponse, Locales } from './locales';
 import * as SpeciesGroupsAPI from './species-groups';
+import { SpeciesGroupListParams, SpeciesGroupListResponse, SpeciesGroups } from './species-groups';
 import * as VersionsAPI from './versions';
+import { VersionListResponse, Versions } from './versions';
 
 export class Taxonomy extends APIResource {
   ebird: EbirdAPI.Ebird = new EbirdAPI.Ebird(this._client);
@@ -15,18 +20,32 @@ export class Taxonomy extends APIResource {
   speciesGroups: SpeciesGroupsAPI.SpeciesGroups = new SpeciesGroupsAPI.SpeciesGroups(this._client);
 }
 
-export namespace Taxonomy {
-  export import Ebird = EbirdAPI.Ebird;
-  export import EbirdRetrieveResponse = EbirdAPI.EbirdRetrieveResponse;
-  export import EbirdRetrieveParams = EbirdAPI.EbirdRetrieveParams;
-  export import Forms = FormsAPI.Forms;
-  export import FormListResponse = FormsAPI.FormListResponse;
-  export import Locales = LocalesAPI.Locales;
-  export import LocaleListResponse = LocalesAPI.LocaleListResponse;
-  export import LocaleListParams = LocalesAPI.LocaleListParams;
-  export import Versions = VersionsAPI.Versions;
-  export import VersionListResponse = VersionsAPI.VersionListResponse;
-  export import SpeciesGroups = SpeciesGroupsAPI.SpeciesGroups;
-  export import SpeciesGroupListResponse = SpeciesGroupsAPI.SpeciesGroupListResponse;
-  export import SpeciesGroupListParams = SpeciesGroupsAPI.SpeciesGroupListParams;
+Taxonomy.Ebird = Ebird;
+Taxonomy.Forms = Forms;
+Taxonomy.Locales = Locales;
+Taxonomy.Versions = Versions;
+Taxonomy.SpeciesGroups = SpeciesGroups;
+
+export declare namespace Taxonomy {
+  export {
+    Ebird as Ebird,
+    type EbirdRetrieveResponse as EbirdRetrieveResponse,
+    type EbirdRetrieveParams as EbirdRetrieveParams,
+  };
+
+  export { Forms as Forms, type FormListResponse as FormListResponse };
+
+  export {
+    Locales as Locales,
+    type LocaleListResponse as LocaleListResponse,
+    type LocaleListParams as LocaleListParams,
+  };
+
+  export { Versions as Versions, type VersionListResponse as VersionListResponse };
+
+  export {
+    SpeciesGroups as SpeciesGroups,
+    type SpeciesGroupListResponse as SpeciesGroupListResponse,
+    type SpeciesGroupListParams as SpeciesGroupListParams,
+  };
 }

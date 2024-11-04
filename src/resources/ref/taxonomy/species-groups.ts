@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as SpeciesGroupsAPI from './species-groups';
 
 export class SpeciesGroups extends APIResource {
   /**
@@ -52,7 +51,9 @@ export interface SpeciesGroupListParams {
   groupNameLocale?: string;
 }
 
-export namespace SpeciesGroups {
-  export import SpeciesGroupListResponse = SpeciesGroupsAPI.SpeciesGroupListResponse;
-  export import SpeciesGroupListParams = SpeciesGroupsAPI.SpeciesGroupListParams;
+export declare namespace SpeciesGroups {
+  export {
+    type SpeciesGroupListResponse as SpeciesGroupListResponse,
+    type SpeciesGroupListParams as SpeciesGroupListParams,
+  };
 }

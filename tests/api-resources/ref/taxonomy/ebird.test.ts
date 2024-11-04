@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource ebird', () => {
   test('retrieve', async () => {
-    const responsePromise = phoebe.ref.taxonomy.ebird.retrieve();
+    const responsePromise = client.ref.taxonomy.ebird.retrieve();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource ebird', () => {
 
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(phoebe.ref.taxonomy.ebird.retrieve({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.ref.taxonomy.ebird.retrieve({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Phoebe.NotFoundError,
     );
   });
@@ -30,8 +30,8 @@ describe('resource ebird', () => {
   test('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.ref.taxonomy.ebird.retrieve(
-        { cat: 'string', fmt: 'csv', locale: 'string', species: 'string', version: 'string' },
+      client.ref.taxonomy.ebird.retrieve(
+        { cat: 'cat', fmt: 'csv', locale: 'locale', species: 'species', version: 'version' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Phoebe.NotFoundError);

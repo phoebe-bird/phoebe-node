@@ -3,8 +3,8 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as ListsAPI from './lists';
 import * as HistoricalAPI from './historical';
+import { Historical, HistoricalRetrieveParams, HistoricalRetrieveResponse } from './historical';
 
 export class Lists extends APIResource {
   historical: HistoricalAPI.Historical = new HistoricalAPI.Historical(this._client);
@@ -141,10 +141,14 @@ export interface ListRetrieveParams {
   maxResults?: number;
 }
 
-export namespace Lists {
-  export import ListRetrieveResponse = ListsAPI.ListRetrieveResponse;
-  export import ListRetrieveParams = ListsAPI.ListRetrieveParams;
-  export import Historical = HistoricalAPI.Historical;
-  export import HistoricalRetrieveResponse = HistoricalAPI.HistoricalRetrieveResponse;
-  export import HistoricalRetrieveParams = HistoricalAPI.HistoricalRetrieveParams;
+Lists.Historical = Historical;
+
+export declare namespace Lists {
+  export { type ListRetrieveResponse as ListRetrieveResponse, type ListRetrieveParams as ListRetrieveParams };
+
+  export {
+    Historical as Historical,
+    type HistoricalRetrieveResponse as HistoricalRetrieveResponse,
+    type HistoricalRetrieveParams as HistoricalRetrieveParams,
+  };
 }

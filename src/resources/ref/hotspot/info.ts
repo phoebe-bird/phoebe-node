@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as InfoAPI from './info';
 
 export class Info extends APIResource {
   /**
@@ -43,6 +42,6 @@ export interface InfoRetrieveResponse {
   subnational1Name?: string;
 }
 
-export namespace Info {
-  export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;
+export declare namespace Info {
+  export { type InfoRetrieveResponse as InfoRetrieveResponse };
 }

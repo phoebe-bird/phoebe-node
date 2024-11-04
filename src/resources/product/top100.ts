@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Top100API from './top100';
 
 export class Top100 extends APIResource {
   /**
@@ -85,7 +84,9 @@ export interface Top100RetrieveParams {
   rankedBy?: 'spp' | 'cl';
 }
 
-export namespace Top100 {
-  export import Top100RetrieveResponse = Top100API.Top100RetrieveResponse;
-  export import Top100RetrieveParams = Top100API.Top100RetrieveParams;
+export declare namespace Top100 {
+  export {
+    type Top100RetrieveResponse as Top100RetrieveResponse,
+    type Top100RetrieveParams as Top100RetrieveParams,
+  };
 }

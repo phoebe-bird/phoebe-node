@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as AdjacentAPI from './adjacent';
 
 export class Adjacent extends APIResource {
   /**
@@ -25,6 +24,6 @@ export namespace AdjacentListResponse {
   }
 }
 
-export namespace Adjacent {
-  export import AdjacentListResponse = AdjacentAPI.AdjacentListResponse;
+export declare namespace Adjacent {
+  export { type AdjacentListResponse as AdjacentListResponse };
 }
