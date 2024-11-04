@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../../../resource';
 import * as Core from '../../../../../core';
-import * as NotableAPI from './notable';
 import * as ObservationsAPI from '../../observations';
 
 export class Notable extends APIResource {
@@ -56,7 +55,6 @@ export interface NotableListParams {
   sppLocale?: string;
 }
 
-export namespace Notable {
-  export import NotableListResponse = NotableAPI.NotableListResponse;
-  export import NotableListParams = NotableAPI.NotableListParams;
+export declare namespace Notable {
+  export { type NotableListResponse as NotableListResponse, type NotableListParams as NotableListParams };
 }

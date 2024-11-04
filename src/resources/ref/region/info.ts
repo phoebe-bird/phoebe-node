@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as InfoAPI from './info';
 
 export class Info extends APIResource {
   /**
@@ -71,7 +70,6 @@ export interface InfoRetrieveParams {
   regionNameFormat?: 'detailed' | 'detailednoqual' | 'full' | 'namequal' | 'nameonly' | 'revdetailed';
 }
 
-export namespace Info {
-  export import InfoRetrieveResponse = InfoAPI.InfoRetrieveResponse;
-  export import InfoRetrieveParams = InfoAPI.InfoRetrieveParams;
+export declare namespace Info {
+  export { type InfoRetrieveResponse as InfoRetrieveResponse, type InfoRetrieveParams as InfoRetrieveParams };
 }

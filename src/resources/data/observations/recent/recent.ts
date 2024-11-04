@@ -3,11 +3,13 @@
 import { APIResource } from '../../../../resource';
 import { isRequestOptions } from '../../../../core';
 import * as Core from '../../../../core';
-import * as RecentAPI from './recent';
 import * as ObservationsAPI from '../observations';
 import * as HistoricAPI from './historic';
+import { Historic, HistoricListParams, HistoricListResponse } from './historic';
 import * as NotableAPI from './notable';
+import { Notable, NotableListParams, NotableListResponse } from './notable';
 import * as SpeciesAPI from './species';
+import { SpecieRetrieveParams, SpecieRetrieveResponse, Species } from './species';
 
 export class Recent extends APIResource {
   notable: NotableAPI.Notable = new NotableAPI.Notable(this._client);
@@ -76,16 +78,28 @@ export interface RecentListParams {
   sppLocale?: string;
 }
 
-export namespace Recent {
-  export import RecentListResponse = RecentAPI.RecentListResponse;
-  export import RecentListParams = RecentAPI.RecentListParams;
-  export import Notable = NotableAPI.Notable;
-  export import NotableListResponse = NotableAPI.NotableListResponse;
-  export import NotableListParams = NotableAPI.NotableListParams;
-  export import Species = SpeciesAPI.Species;
-  export import SpecieRetrieveResponse = SpeciesAPI.SpecieRetrieveResponse;
-  export import SpecieRetrieveParams = SpeciesAPI.SpecieRetrieveParams;
-  export import Historic = HistoricAPI.Historic;
-  export import HistoricListResponse = HistoricAPI.HistoricListResponse;
-  export import HistoricListParams = HistoricAPI.HistoricListParams;
+Recent.Notable = Notable;
+Recent.Species = Species;
+Recent.Historic = Historic;
+
+export declare namespace Recent {
+  export { type RecentListResponse as RecentListResponse, type RecentListParams as RecentListParams };
+
+  export {
+    Notable as Notable,
+    type NotableListResponse as NotableListResponse,
+    type NotableListParams as NotableListParams,
+  };
+
+  export {
+    Species as Species,
+    type SpecieRetrieveResponse as SpecieRetrieveResponse,
+    type SpecieRetrieveParams as SpecieRetrieveParams,
+  };
+
+  export {
+    Historic as Historic,
+    type HistoricListResponse as HistoricListResponse,
+    type HistoricListParams as HistoricListParams,
+  };
 }

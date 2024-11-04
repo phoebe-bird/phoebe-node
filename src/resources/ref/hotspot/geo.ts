@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as GeoAPI from './geo';
 
 export class Geo extends APIResource {
   /**
@@ -59,7 +58,6 @@ export interface GeoRetrieveParams {
   fmt?: 'csv' | 'json';
 }
 
-export namespace Geo {
-  export import GeoRetrieveResponse = GeoAPI.GeoRetrieveResponse;
-  export import GeoRetrieveParams = GeoAPI.GeoRetrieveParams;
+export declare namespace Geo {
+  export { type GeoRetrieveResponse as GeoRetrieveResponse, type GeoRetrieveParams as GeoRetrieveParams };
 }

@@ -1,11 +1,14 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { type Agent } from './_shims/index';
+import * as qs from './internal/qs';
+import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
-import { type Agent } from './_shims/index';
-import * as qs from 'qs';
-import * as Core from './core';
 import * as API from './resources/index';
+import { Data } from './resources/data/data';
+import { Product } from './resources/product/product';
+import { Ref } from './resources/ref/ref';
 
 export interface ClientOptions {
   /**
@@ -144,6 +147,7 @@ export class Phoebe extends Core.APIClient {
   }
 
   static Phoebe = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static PhoebeError = Errors.PhoebeError;
   static APIError = Errors.APIError;
@@ -163,7 +167,7 @@ export class Phoebe extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   PhoebeError,
   APIError,
   APIConnectionError,
@@ -177,19 +181,23 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Phoebe {
-  export import RequestOptions = Core.RequestOptions;
+Phoebe.Data = Data;
+Phoebe.Product = Product;
+Phoebe.Ref = Ref;
 
-  export import Data = API.Data;
+export declare namespace Phoebe {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Product = API.Product;
+  export { Data as Data };
 
-  export import Ref = API.Ref;
+  export { Product as Product };
+
+  export { Ref as Ref };
 }
 
 export default Phoebe;

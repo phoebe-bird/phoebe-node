@@ -1,10 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
-import * as ObservationsAPI from './observations';
 import * as GeoAPI from './geo/geo';
+import { Geo } from './geo/geo';
 import * as NearestAPI from './nearest/nearest';
+import { Nearest } from './nearest/nearest';
 import * as RecentAPI from './recent/recent';
+import { Recent, RecentListParams, RecentListResponse } from './recent/recent';
 
 export class Observations extends APIResource {
   recent: RecentAPI.Recent = new RecentAPI.Recent(this._client);
@@ -46,11 +48,20 @@ export interface Observation {
   subId?: string;
 }
 
-export namespace Observations {
-  export import Observation = ObservationsAPI.Observation;
-  export import Recent = RecentAPI.Recent;
-  export import RecentListResponse = RecentAPI.RecentListResponse;
-  export import RecentListParams = RecentAPI.RecentListParams;
-  export import Geo = GeoAPI.Geo;
-  export import Nearest = NearestAPI.Nearest;
+Observations.Recent = Recent;
+Observations.Geo = Geo;
+Observations.Nearest = Nearest;
+
+export declare namespace Observations {
+  export { type Observation as Observation };
+
+  export {
+    Recent as Recent,
+    type RecentListResponse as RecentListResponse,
+    type RecentListParams as RecentListParams,
+  };
+
+  export { Geo as Geo };
+
+  export { Nearest as Nearest };
 }

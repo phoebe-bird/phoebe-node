@@ -2,13 +2,18 @@
 
 import { APIResource } from '../../../../resource';
 import * as RecentAPI from './recent/recent';
+import { Recent, RecentListParams, RecentListResponse } from './recent/recent';
 
 export class Geo extends APIResource {
   recent: RecentAPI.Recent = new RecentAPI.Recent(this._client);
 }
 
-export namespace Geo {
-  export import Recent = RecentAPI.Recent;
-  export import RecentListResponse = RecentAPI.RecentListResponse;
-  export import RecentListParams = RecentAPI.RecentListParams;
+Geo.Recent = Recent;
+
+export declare namespace Geo {
+  export {
+    Recent as Recent,
+    type RecentListResponse as RecentListResponse,
+    type RecentListParams as RecentListParams,
+  };
 }

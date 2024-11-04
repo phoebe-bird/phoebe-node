@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as SpeciesListAPI from './species-list';
 
 export class SpeciesList extends APIResource {
   /**
@@ -18,6 +17,6 @@ export class SpeciesList extends APIResource {
 
 export type SpeciesListListResponse = Array<string>;
 
-export namespace SpeciesList {
-  export import SpeciesListListResponse = SpeciesListAPI.SpeciesListListResponse;
+export declare namespace SpeciesList {
+  export { type SpeciesListListResponse as SpeciesListListResponse };
 }

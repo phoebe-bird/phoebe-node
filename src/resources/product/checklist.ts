@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as ChecklistAPI from './checklist';
 
 export class Checklist extends APIResource {
   /**
@@ -115,6 +114,6 @@ export namespace ChecklistViewResponse {
   }
 }
 
-export namespace Checklist {
-  export import ChecklistViewResponse = ChecklistAPI.ChecklistViewResponse;
+export declare namespace Checklist {
+  export { type ChecklistViewResponse as ChecklistViewResponse };
 }
