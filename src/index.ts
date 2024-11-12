@@ -167,6 +167,20 @@ export class Phoebe extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Phoebe.Data = Data;
+Phoebe.Product = Product;
+Phoebe.Ref = Ref;
+export declare namespace Phoebe {
+  export type RequestOptions = Core.RequestOptions;
+
+  export { Data as Data };
+
+  export { Product as Product };
+
+  export { Ref as Ref };
+}
+
+export { toFile, fileFromPath } from 'phoebe-ebird/uploads';
 export {
   PhoebeError,
   APIError,
@@ -181,23 +195,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
-Phoebe.Data = Data;
-Phoebe.Product = Product;
-Phoebe.Ref = Ref;
-
-export declare namespace Phoebe {
-  export type RequestOptions = Core.RequestOptions;
-
-  export { Data as Data };
-
-  export { Product as Product };
-
-  export { Ref as Ref };
-}
+} from 'phoebe-ebird/error';
 
 export default Phoebe;
