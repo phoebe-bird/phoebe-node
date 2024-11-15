@@ -180,7 +180,7 @@ export declare namespace Phoebe {
   export { Ref as Ref };
 }
 
-export { toFile, fileFromPath } from 'phoebe-ebird/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   PhoebeError,
   APIError,
@@ -195,6 +195,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'phoebe-ebird/error';
+} from './error';
 
 export default Phoebe;
