@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource geo', () => {
   test('retrieve: only required params', async () => {
-    const responsePromise = phoebe.ref.hotspot.geo.retrieve({ lat: -90, lng: -180 });
+    const responsePromise = client.ref.hotspot.geo.retrieve({ lat: -90, lng: -180 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +21,7 @@ describe('resource geo', () => {
   });
 
   test('retrieve: required and optional params', async () => {
-    const response = await phoebe.ref.hotspot.geo.retrieve({
+    const response = await client.ref.hotspot.geo.retrieve({
       lat: -90,
       lng: -180,
       back: 1,

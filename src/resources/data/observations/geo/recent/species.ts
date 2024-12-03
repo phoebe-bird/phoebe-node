@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../../../resource';
 import * as Core from '../../../../../core';
-import * as SpeciesAPI from './species';
 import * as ObservationsAPI from '../../observations';
 
 export class Species extends APIResource {
@@ -70,7 +69,6 @@ export interface SpecieListParams {
   sppLocale?: string;
 }
 
-export namespace Species {
-  export import SpecieListResponse = SpeciesAPI.SpecieListResponse;
-  export import SpecieListParams = SpeciesAPI.SpecieListParams;
+export declare namespace Species {
+  export { type SpecieListResponse as SpecieListResponse, type SpecieListParams as SpecieListParams };
 }

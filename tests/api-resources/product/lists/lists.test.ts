@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource lists', () => {
   test('retrieve', async () => {
-    const responsePromise = phoebe.product.lists.retrieve('string');
+    const responsePromise = client.product.lists.retrieve('regionCode');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,14 +23,14 @@ describe('resource lists', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.product.lists.retrieve('string', { path: '/_stainless_unknown_path' }),
+      client.product.lists.retrieve('regionCode', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Phoebe.NotFoundError);
   });
 
   test('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      phoebe.product.lists.retrieve('string', { maxResults: 1 }, { path: '/_stainless_unknown_path' }),
+      client.product.lists.retrieve('regionCode', { maxResults: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Phoebe.NotFoundError);
   });
 });

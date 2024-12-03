@@ -3,7 +3,6 @@
 import { APIResource } from '../../../../resource';
 import { isRequestOptions } from '../../../../core';
 import * as Core from '../../../../core';
-import * as SpeciesAPI from './species';
 import * as ObservationsAPI from '../observations';
 
 export class Species extends APIResource {
@@ -78,7 +77,9 @@ export interface SpecieRetrieveParams {
   sppLocale?: string;
 }
 
-export namespace Species {
-  export import SpecieRetrieveResponse = SpeciesAPI.SpecieRetrieveResponse;
-  export import SpecieRetrieveParams = SpeciesAPI.SpecieRetrieveParams;
+export declare namespace Species {
+  export {
+    type SpecieRetrieveResponse as SpecieRetrieveResponse,
+    type SpecieRetrieveParams as SpecieRetrieveParams,
+  };
 }

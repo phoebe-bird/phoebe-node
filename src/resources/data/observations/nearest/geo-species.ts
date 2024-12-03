@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../../resource';
 import * as Core from '../../../../core';
-import * as GeoSpeciesAPI from './geo-species';
 import * as ObservationsAPI from '../observations';
 
 export class GeoSpecies extends APIResource {
@@ -58,7 +57,9 @@ export interface GeoSpecieListParams {
   sppLocale?: string;
 }
 
-export namespace GeoSpecies {
-  export import GeoSpecieListResponse = GeoSpeciesAPI.GeoSpecieListResponse;
-  export import GeoSpecieListParams = GeoSpeciesAPI.GeoSpecieListParams;
+export declare namespace GeoSpecies {
+  export {
+    type GeoSpecieListResponse as GeoSpecieListResponse,
+    type GeoSpecieListParams as GeoSpecieListParams,
+  };
 }

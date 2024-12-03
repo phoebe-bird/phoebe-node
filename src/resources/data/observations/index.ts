@@ -2,5 +2,5 @@
 
 export { Geo } from './geo/index';
 export { Nearest } from './nearest/index';
-export { Observation, Observations } from './observations';
-export { RecentListResponse, RecentListParams, Recent } from './recent/index';
+export { Observations, type Observation } from './observations';
+export { Recent, type RecentListResponse, type RecentListParams } from './recent/index';

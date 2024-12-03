@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as FormsAPI from './forms';
 
 export class Forms extends APIResource {
   /**
@@ -16,6 +15,6 @@ export class Forms extends APIResource {
 
 export type FormListResponse = Array<string>;
 
-export namespace Forms {
-  export import FormListResponse = FormsAPI.FormListResponse;
+export declare namespace Forms {
+  export { type FormListResponse as FormListResponse };
 }

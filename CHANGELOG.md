@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-11-28)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Bug Fixes
+
+* **api:** get repo clean ([#18](https://github.com/phoebe-bird/phoebe-node/issues/18)) ([16b2155](https://github.com/phoebe-bird/phoebe-node/commit/16b21552163ee7c438fdf47d36311009a095e397))
+
+
+### Chores
+
+* **internal:** codegen related update ([#26](https://github.com/phoebe-bird/phoebe-node/issues/26)) ([2841ad7](https://github.com/phoebe-bird/phoebe-node/commit/2841ad7ac3c3191a7a3c27138ae360446b3e97c7))
+* rebuild project due to codegen change ([#21](https://github.com/phoebe-bird/phoebe-node/issues/21)) ([176f229](https://github.com/phoebe-bird/phoebe-node/commit/176f229054970abe304849d57add9820b46fe975))
+* rebuild project due to codegen change ([#22](https://github.com/phoebe-bird/phoebe-node/issues/22)) ([71b8426](https://github.com/phoebe-bird/phoebe-node/commit/71b8426dc2a5a9cdba3ab280f247cdd420cee548))
+* rebuild project due to codegen change ([#23](https://github.com/phoebe-bird/phoebe-node/issues/23)) ([dc9c54b](https://github.com/phoebe-bird/phoebe-node/commit/dc9c54b95910c979822e9f02fcb7dc47f3d55426))
+* remove redundant word in comment ([#25](https://github.com/phoebe-bird/phoebe-node/issues/25)) ([5a8df14](https://github.com/phoebe-bird/phoebe-node/commit/5a8df14dc92b0ae4f02a6c38bdb1650c180ee9cb))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#24](https://github.com/phoebe-bird/phoebe-node/issues/24)) ([047c697](https://github.com/phoebe-bird/phoebe-node/commit/047c6975db61aba20c31375365ae48825d81f25a))
+
 ## 0.1.0-alpha.3 (2024-07-07)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)

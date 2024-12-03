@@ -3,14 +3,14 @@
 import Phoebe from 'phoebe-ebird';
 import { Response } from 'node-fetch';
 
-const phoebe = new Phoebe({
+const client = new Phoebe({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource geoSpecies', () => {
   test('list: only required params', async () => {
-    const responsePromise = phoebe.data.observations.nearest.geoSpecies.list('string', {
+    const responsePromise = client.data.observations.nearest.geoSpecies.list('speciesCode', {
       lat: -90,
       lng: -180,
     });
@@ -24,7 +24,7 @@ describe('resource geoSpecies', () => {
   });
 
   test('list: required and optional params', async () => {
-    const response = await phoebe.data.observations.nearest.geoSpecies.list('string', {
+    const response = await client.data.observations.nearest.geoSpecies.list('speciesCode', {
       lat: -90,
       lng: -180,
       back: 1,
@@ -32,7 +32,7 @@ describe('resource geoSpecies', () => {
       hotspot: true,
       includeProvisional: true,
       maxResults: 1,
-      sppLocale: 'string',
+      sppLocale: 'sppLocale',
     });
   });
 });
