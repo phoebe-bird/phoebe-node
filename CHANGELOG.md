@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2025-02-22)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* **internal:** codegen related update ([#40](https://github.com/phoebe-bird/phoebe-node/issues/40)) ([9eb1447](https://github.com/phoebe-bird/phoebe-node/commit/9eb1447289a2176c2e4fef5ca721129a8d0084b9))
+* **internal:** fix devcontainers setup ([#42](https://github.com/phoebe-bird/phoebe-node/issues/42)) ([16774e3](https://github.com/phoebe-bird/phoebe-node/commit/16774e3d52e5d2d8ab1a64a53d88a88093bea9da))
+
 ## 0.1.0 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.4...v0.1.0)
