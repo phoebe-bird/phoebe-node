@@ -6,7 +6,7 @@ This library provides convenient access to the Phoebe REST API from server-side 
 
 The REST API documentation can be found on [science.ebird.org](https://science.ebird.org/en/use-ebird-data/download-ebird-data-products). The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
