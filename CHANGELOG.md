@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.1 (2025-03-14)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#46](https://github.com/phoebe-bird/phoebe-node/issues/46)) ([4694c3b](https://github.com/phoebe-bird/phoebe-node/commit/4694c3bea791f8d9f7d4fc5f9922121010ae4a89))
+
+
+### Chores
+
+* **internal:** codegen related update ([#40](https://github.com/phoebe-bird/phoebe-node/issues/40)) ([9eb1447](https://github.com/phoebe-bird/phoebe-node/commit/9eb1447289a2176c2e4fef5ca721129a8d0084b9))
+* **internal:** codegen related update ([#44](https://github.com/phoebe-bird/phoebe-node/issues/44)) ([e938230](https://github.com/phoebe-bird/phoebe-node/commit/e93823039d7068c9bcf8a47656e6d0b1964335fe))
+* **internal:** fix devcontainers setup ([#42](https://github.com/phoebe-bird/phoebe-node/issues/42)) ([16774e3](https://github.com/phoebe-bird/phoebe-node/commit/16774e3d52e5d2d8ab1a64a53d88a88093bea9da))
+* **internal:** remove extra empty newlines ([#45](https://github.com/phoebe-bird/phoebe-node/issues/45)) ([3fe6994](https://github.com/phoebe-bird/phoebe-node/commit/3fe6994be41940fb7691aaadb02766b774ca5146))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#43](https://github.com/phoebe-bird/phoebe-node/issues/43)) ([3b8d19c](https://github.com/phoebe-bird/phoebe-node/commit/3b8d19c8c9336405a7625e10a99709bcb5f783a4))
+
 ## 0.1.0 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0-alpha.4...v0.1.0)
