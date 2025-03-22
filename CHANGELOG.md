@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.2 (2025-03-22)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.1...v0.1.2)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#51](https://github.com/phoebe-bird/phoebe-node/issues/51)) ([e43750f](https://github.com/phoebe-bird/phoebe-node/commit/e43750f5aa16b17c45ef94244b1f5323d026733d))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#48](https://github.com/phoebe-bird/phoebe-node/issues/48)) ([d1d778a](https://github.com/phoebe-bird/phoebe-node/commit/d1d778a8849957341ab2df241a6ba0ecdf618aea))
+* **exports:** stop using path fallbacks ([#50](https://github.com/phoebe-bird/phoebe-node/issues/50)) ([9669d2a](https://github.com/phoebe-bird/phoebe-node/commit/9669d2a6872bc3de617f9eec9e6e6c8767869129))
+
 ## 0.1.1 (2025-03-14)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.0...v0.1.1)
