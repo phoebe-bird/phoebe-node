@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 (2025-03-28)
+
+Full Changelog: [v0.1.2...v0.1.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.2...v0.1.3)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#53](https://github.com/phoebe-bird/phoebe-node/issues/53)) ([13be885](https://github.com/phoebe-bird/phoebe-node/commit/13be885c4f34fd969e89e8311cf1d65b40677dbd))
+
 ## 0.1.2 (2025-03-22)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.1...v0.1.2)
