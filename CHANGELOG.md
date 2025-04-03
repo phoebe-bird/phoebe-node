@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4 (2025-04-03)
+
+Full Changelog: [v0.1.3...v0.1.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.3...v0.1.4)
+
+### Bug Fixes
+
+* **client:** send `X-Stainless-Timeout` in seconds ([#56](https://github.com/phoebe-bird/phoebe-node/issues/56)) ([f45f505](https://github.com/phoebe-bird/phoebe-node/commit/f45f505d52a6a6c7a81b311c57fbeed04e7f6795))
+
 ## 0.1.3 (2025-03-28)
 
 Full Changelog: [v0.1.2...v0.1.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.2...v0.1.3)
