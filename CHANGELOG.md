@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.5 (2025-04-04)
+
+Full Changelog: [v0.1.4...v0.1.5](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.4...v0.1.5)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#61](https://github.com/phoebe-bird/phoebe-node/issues/61)) ([d818861](https://github.com/phoebe-bird/phoebe-node/commit/d81886113ec57e36466cb08a96487eebe4df0aa0))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#59](https://github.com/phoebe-bird/phoebe-node/issues/59)) ([4b55f68](https://github.com/phoebe-bird/phoebe-node/commit/4b55f68e761e55ffb4f230a2022a470b4ea3dd96))
+
 ## 0.1.4 (2025-04-03)
 
 Full Changelog: [v0.1.3...v0.1.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.3...v0.1.4)
