@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.6 (2025-04-05)
+
+Full Changelog: [v0.1.5...v0.1.6](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.5...v0.1.6)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#63](https://github.com/phoebe-bird/phoebe-node/issues/63)) ([a976b86](https://github.com/phoebe-bird/phoebe-node/commit/a976b8695a6d1f094592d9382b86d9e67b886dd6))
+
 ## 0.1.5 (2025-04-04)
 
 Full Changelog: [v0.1.4...v0.1.5](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.4...v0.1.5)
