@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.7 (2025-04-15)
+
+Full Changelog: [v0.1.6...v0.1.7](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.6...v0.1.7)
+
+### Chores
+
+* **client:** minor internal fixes ([a287c4c](https://github.com/phoebe-bird/phoebe-node/commit/a287c4c7ae2675764b234624a9549e9ed41bbbe2))
+* **internal:** reduce CI branch coverage ([33664fc](https://github.com/phoebe-bird/phoebe-node/commit/33664fca6d20dde07dbcc9b540d56d385c63a561))
+* **internal:** upload builds and expand CI branch coverage ([a773833](https://github.com/phoebe-bird/phoebe-node/commit/a773833d4efaac48971d02f42289748d699899dd))
+
 ## 0.1.6 (2025-04-05)
 
 Full Changelog: [v0.1.5...v0.1.6](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.5...v0.1.6)
