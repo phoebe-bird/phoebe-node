@@ -8,6 +8,14 @@ export class Geo extends APIResource {
   /**
    * Get the list of hotspots, within a radius of up to 50 kilometers, from a given
    * set of coordinates.
+   *
+   * @example
+   * ```ts
+   * const geos = await client.ref.hotspot.geo.retrieve({
+   *   lat: -90,
+   *   lng: -180,
+   * });
+   * ```
    */
   retrieve(query: GeoRetrieveParams, options?: RequestOptions): APIPromise<GeoRetrieveResponse> {
     return this._client.get('/ref/hotspot/geo', { query, ...options });

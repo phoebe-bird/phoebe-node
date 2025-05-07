@@ -13,6 +13,11 @@ export class Locales extends APIResource {
    *
    * NOTE: The locale codes and names are stable but the other fields in this result
    * are not yet finalized and should be used with caution.
+   *
+   * @example
+   * ```ts
+   * const locales = await client.ref.taxonomy.locales.list();
+   * ```
    */
   list(
     params: LocaleListParams | null | undefined = {},

@@ -9,6 +9,13 @@ export class Forms extends APIResource {
   /**
    * For a species, get the list of subspecies recognised in the taxonomy. The
    * results include the species that was passed in.
+   *
+   * @example
+   * ```ts
+   * const forms = await client.ref.taxonomy.forms.list(
+   *   'speciesCode',
+   * );
+   * ```
    */
   list(speciesCode: string, options?: RequestOptions): APIPromise<FormListResponse> {
     return this._client.get(path`/ref/taxon/forms/${speciesCode}`, options);

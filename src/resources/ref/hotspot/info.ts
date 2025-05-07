@@ -10,6 +10,13 @@ export class Info extends APIResource {
    * Get information on the location of a hotspot. #### Notes This API call only
    * works for hotspots. If you pass the location code for a private location or an
    * invalid location code then an HTTP 410 (Gone) error is returned.
+   *
+   * @example
+   * ```ts
+   * const info = await client.ref.hotspot.info.retrieve(
+   *   'locId',
+   * );
+   * ```
    */
   retrieve(locID: string, options?: RequestOptions): APIPromise<InfoRetrieveResponse> {
     return this._client.get(path`/ref/hotspot/info/${locID}`, options);

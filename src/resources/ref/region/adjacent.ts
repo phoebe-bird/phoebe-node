@@ -10,6 +10,13 @@ export class Adjacent extends APIResource {
    * Get the list of countries or regions that share a border with this one. ####
    * Notes Only subnational2 codes in the United States, New Zealand, or Mexico are
    * currently supported
+   *
+   * @example
+   * ```ts
+   * const adjacents = await client.ref.region.adjacent.list(
+   *   'regionCode',
+   * );
+   * ```
    */
   list(regionCode: string, options?: RequestOptions): APIPromise<AdjacentListResponse> {
     return this._client.get(path`/ref/adjacent/${regionCode}`, options);

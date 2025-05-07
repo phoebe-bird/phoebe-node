@@ -22,6 +22,13 @@ export class Info extends APIResource {
    * | namequal       | return the qualified name                  | Madison County                   |
    * | nameonly       | return only the name of the region         | Madison                          |
    * | revdetailed    | return the detailed description in reverse | US, New York, Madison County     |
+   *
+   * @example
+   * ```ts
+   * const info = await client.ref.region.info.retrieve(
+   *   'regionCode',
+   * );
+   * ```
    */
   retrieve(
     regionCode: string,
