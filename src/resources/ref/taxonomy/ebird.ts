@@ -10,6 +10,11 @@ export class Ebird extends APIResource {
    * species code for example, barswa for Barn Swallow. You can download the taxonomy
    * for selected species using the _species_ query parameter with a comma separating
    * each code. Otherwise the full taxonomy is downloaded.
+   *
+   * @example
+   * ```ts
+   * const ebirds = await client.ref.taxonomy.ebird.retrieve();
+   * ```
    */
   retrieve(
     query?: EbirdRetrieveParams,
