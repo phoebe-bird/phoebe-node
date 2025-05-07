@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import { isRequestOptions } from '../../../../core';
-import * as Core from '../../../../core';
+import { APIResource } from '../../../../core/resource';
 import * as ObservationsAPI from '../observations';
+import { APIPromise } from '../../../../core/api-promise';
+import { RequestOptions } from '../../../../internal/request-options';
+import { path } from '../../../../internal/utils/path';
 
 export class Species extends APIResource {
   /**
@@ -20,26 +21,12 @@ export class Species extends APIResource {
    * empty string.
    */
   retrieve(
-    regionCode: string,
     speciesCode: string,
-    query?: SpecieRetrieveParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpecieRetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    speciesCode: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpecieRetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    speciesCode: string,
-    query: SpecieRetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpecieRetrieveResponse> {
-    if (isRequestOptions(query)) {
-      return this.retrieve(regionCode, speciesCode, {}, query);
-    }
-    return this._client.get(`/data/obs/${regionCode}/recent/${speciesCode}`, { query, ...options });
+    params: SpecieRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<SpecieRetrieveResponse> {
+    const { regionCode, ...query } = params;
+    return this._client.get(path`/data/obs/${regionCode}/recent/${speciesCode}`, { query, ...options });
   }
 }
 
@@ -47,32 +34,37 @@ export type SpecieRetrieveResponse = Array<ObservationsAPI.Observation>;
 
 export interface SpecieRetrieveParams {
   /**
-   * The number of days back to fetch observations.
+   * Path param: The country, subnational1, subnational2 or location code.
+   */
+  regionCode: string;
+
+  /**
+   * Query param: The number of days back to fetch observations.
    */
   back?: number;
 
   /**
-   * Only fetch observations from hotspots
+   * Query param: Only fetch observations from hotspots
    */
   hotspot?: boolean;
 
   /**
-   * Include observations which have not yet been reviewed.
+   * Query param: Include observations which have not yet been reviewed.
    */
   includeProvisional?: boolean;
 
   /**
-   * Only fetch this number of observations
+   * Query param: Only fetch this number of observations
    */
   maxResults?: number;
 
   /**
-   * Fetch observations from up to 10 locations
+   * Query param: Fetch observations from up to 10 locations
    */
   r?: Array<string>;
 
   /**
-   * Use this language for species common names
+   * Query param: Use this language for species common names
    */
   sppLocale?: string;
 }

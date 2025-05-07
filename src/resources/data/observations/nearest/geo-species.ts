@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import * as Core from '../../../../core';
+import { APIResource } from '../../../../core/resource';
 import * as ObservationsAPI from '../observations';
+import { APIPromise } from '../../../../core/api-promise';
+import { RequestOptions } from '../../../../internal/request-options';
+import { path } from '../../../../internal/utils/path';
 
 export class GeoSpecies extends APIResource {
   /**
@@ -13,9 +15,9 @@ export class GeoSpecies extends APIResource {
   list(
     speciesCode: string,
     query: GeoSpecieListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<GeoSpecieListResponse> {
-    return this._client.get(`/data/nearest/geo/recent/${speciesCode}`, { query, ...options });
+    options?: RequestOptions,
+  ): APIPromise<GeoSpecieListResponse> {
+    return this._client.get(path`/data/nearest/geo/recent/${speciesCode}`, { query, ...options });
   }
 }
 

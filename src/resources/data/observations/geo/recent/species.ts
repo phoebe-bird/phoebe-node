@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../../resource';
-import * as Core from '../../../../../core';
+import { APIResource } from '../../../../../core/resource';
 import * as ObservationsAPI from '../../observations';
+import { APIPromise } from '../../../../../core/api-promise';
+import { RequestOptions } from '../../../../../internal/request-options';
+import { path } from '../../../../../internal/utils/path';
 
 export class Species extends APIResource {
   /**
@@ -25,9 +27,9 @@ export class Species extends APIResource {
   list(
     speciesCode: string,
     query: SpecieListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpecieListResponse> {
-    return this._client.get(`/data/obs/geo/recent/${speciesCode}`, { query, ...options });
+    options?: RequestOptions,
+  ): APIPromise<SpecieListResponse> {
+    return this._client.get(path`/data/obs/geo/recent/${speciesCode}`, { query, ...options });
   }
 }
 

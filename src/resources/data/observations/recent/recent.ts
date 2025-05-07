@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import { isRequestOptions } from '../../../../core';
-import * as Core from '../../../../core';
+import { APIResource } from '../../../../core/resource';
 import * as ObservationsAPI from '../observations';
 import * as HistoricAPI from './historic';
 import { Historic, HistoricListParams, HistoricListResponse } from './historic';
@@ -10,6 +8,9 @@ import * as NotableAPI from './notable';
 import { Notable, NotableListParams, NotableListResponse } from './notable';
 import * as SpeciesAPI from './species';
 import { SpecieRetrieveParams, SpecieRetrieveResponse, Species } from './species';
+import { APIPromise } from '../../../../core/api-promise';
+import { RequestOptions } from '../../../../internal/request-options';
+import { path } from '../../../../internal/utils/path';
 
 export class Recent extends APIResource {
   notable: NotableAPI.Notable = new NotableAPI.Notable(this._client);
@@ -23,19 +24,10 @@ export class Recent extends APIResource {
    */
   list(
     regionCode: string,
-    query?: RecentListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RecentListResponse>;
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<RecentListResponse>;
-  list(
-    regionCode: string,
-    query: RecentListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<RecentListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list(regionCode, {}, query);
-    }
-    return this._client.get(`/data/obs/${regionCode}/recent`, { query, ...options });
+    query: RecentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<RecentListResponse> {
+    return this._client.get(path`/data/obs/${regionCode}/recent`, { query, ...options });
   }
 }
 

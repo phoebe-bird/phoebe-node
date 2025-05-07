@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../../resource';
-import * as Core from '../../../../../core';
+import { APIResource } from '../../../../../core/resource';
 import * as ObservationsAPI from '../../observations';
+import { APIPromise } from '../../../../../core/api-promise';
+import { RequestOptions } from '../../../../../internal/request-options';
 
 export class Notable extends APIResource {
   /**
@@ -12,7 +13,7 @@ export class Notable extends APIResource {
    * or are otherwise unusual, for example over-wintering birds in a species which is
    * normally only a summer visitor.
    */
-  list(query: NotableListParams, options?: Core.RequestOptions): Core.APIPromise<NotableListResponse> {
+  list(query: NotableListParams, options?: RequestOptions): APIPromise<NotableListResponse> {
     return this._client.get('/data/obs/geo/recent/notable', { query, ...options });
   }
 }

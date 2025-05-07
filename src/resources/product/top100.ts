@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class Top100 extends APIResource {
   /**
@@ -25,32 +26,12 @@ export class Top100 extends APIResource {
    * checklistSort parameter is false
    */
   retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
     d: number,
-    query?: Top100RetrieveParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Top100RetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
-    d: number,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Top100RetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
-    d: number,
-    query: Top100RetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Top100RetrieveResponse> {
-    if (isRequestOptions(query)) {
-      return this.retrieve(regionCode, y, m, d, {}, query);
-    }
-    return this._client.get(`/product/top100/${regionCode}/${y}/${m}/${d}`, { query, ...options });
+    params: Top100RetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<Top100RetrieveResponse> {
+    const { regionCode, y, m, ...query } = params;
+    return this._client.get(path`/product/top100/${regionCode}/${y}/${m}/${d}`, { query, ...options });
   }
 }
 
@@ -74,12 +55,28 @@ export namespace Top100RetrieveResponse {
 
 export interface Top100RetrieveParams {
   /**
-   * Only fetch this number of contributors.
+   * Path param: The country, subnational1, or location code.
+   */
+  regionCode: string;
+
+  /**
+   * Path param: The year, from 1800 to the present.
+   */
+  y: number;
+
+  /**
+   * Path param: The month, from 1-12.
+   */
+  m: number;
+
+  /**
+   * Query param: Only fetch this number of contributors.
    */
   maxResults?: number;
 
   /**
-   * Order by number of complete checklists (cl) or by number of species seen (spp).
+   * Query param: Order by number of complete checklists (cl) or by number of species
+   * seen (spp).
    */
   rankedBy?: 'spp' | 'cl';
 }

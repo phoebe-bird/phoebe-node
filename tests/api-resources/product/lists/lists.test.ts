@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Phoebe from 'phoebe-ebird';
-import { Response } from 'node-fetch';
 
 const client = new Phoebe({
   apiKey: 'My API Key',
@@ -18,13 +17,6 @@ describe('resource lists', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.product.lists.retrieve('regionCode', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Phoebe.NotFoundError);
   });
 
   test('retrieve: request options and params are passed correctly', async () => {

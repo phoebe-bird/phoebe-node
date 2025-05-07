@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class Stats extends APIResource {
   /**
@@ -11,13 +13,12 @@ export class Stats extends APIResource {
    * #### Notes The results are updated every 15 minutes.
    */
   retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
     d: number,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<StatRetrieveResponse> {
-    return this._client.get(`/product/stats/${regionCode}/${y}/${m}/${d}`, options);
+    params: StatRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<StatRetrieveResponse> {
+    const { regionCode, y, m } = params;
+    return this._client.get(path`/product/stats/${regionCode}/${y}/${m}/${d}`, options);
   }
 }
 
@@ -29,6 +30,23 @@ export interface StatRetrieveResponse {
   numSpecies?: number;
 }
 
+export interface StatRetrieveParams {
+  /**
+   * The country, subnational1, subnational2 or location code.
+   */
+  regionCode: string;
+
+  /**
+   * The year, from 1800 to the present.
+   */
+  y: number;
+
+  /**
+   * The month, from 1-12.
+   */
+  m: number;
+}
+
 export declare namespace Stats {
-  export { type StatRetrieveResponse as StatRetrieveResponse };
+  export { type StatRetrieveResponse as StatRetrieveResponse, type StatRetrieveParams as StatRetrieveParams };
 }

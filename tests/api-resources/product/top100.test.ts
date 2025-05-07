@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Phoebe from 'phoebe-ebird';
-import { Response } from 'node-fetch';
 
 const client = new Phoebe({
   apiKey: 'My API Key',
@@ -9,8 +8,8 @@ const client = new Phoebe({
 });
 
 describe('resource top100', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.product.top100.retrieve('regionCode', 0, 1, 1);
+  test('retrieve: only required params', async () => {
+    const responsePromise = client.product.top100.retrieve(1, { regionCode: 'regionCode', y: 0, m: 1 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,24 +19,13 @@ describe('resource top100', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.product.top100.retrieve('regionCode', 0, 1, 1, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Phoebe.NotFoundError);
-  });
-
-  test('retrieve: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.product.top100.retrieve(
-        'regionCode',
-        0,
-        1,
-        1,
-        { maxResults: 1, rankedBy: 'spp' },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Phoebe.NotFoundError);
+  test('retrieve: required and optional params', async () => {
+    const response = await client.product.top100.retrieve(1, {
+      regionCode: 'regionCode',
+      y: 0,
+      m: 1,
+      maxResults: 1,
+      rankedBy: 'spp',
+    });
   });
 });
