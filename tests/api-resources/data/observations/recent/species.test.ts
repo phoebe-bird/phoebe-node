@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Phoebe from 'phoebe-ebird';
-import { Response } from 'node-fetch';
 
 const client = new Phoebe({
   apiKey: 'My API Key',
@@ -9,8 +8,10 @@ const client = new Phoebe({
 });
 
 describe('resource species', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.data.observations.recent.species.retrieve('regionCode', 'speciesCode');
+  test('retrieve: only required params', async () => {
+    const responsePromise = client.data.observations.recent.species.retrieve('speciesCode', {
+      regionCode: 'regionCode',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,31 +21,15 @@ describe('resource species', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.data.observations.recent.species.retrieve('regionCode', 'speciesCode', {
-        path: '/_stainless_unknown_path',
-      }),
-    ).rejects.toThrow(Phoebe.NotFoundError);
-  });
-
-  test('retrieve: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.data.observations.recent.species.retrieve(
-        'regionCode',
-        'speciesCode',
-        {
-          back: 1,
-          hotspot: true,
-          includeProvisional: true,
-          maxResults: 1,
-          r: ['string'],
-          sppLocale: 'sppLocale',
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Phoebe.NotFoundError);
+  test('retrieve: required and optional params', async () => {
+    const response = await client.data.observations.recent.species.retrieve('speciesCode', {
+      regionCode: 'regionCode',
+      back: 1,
+      hotspot: true,
+      includeProvisional: true,
+      maxResults: 1,
+      r: ['string'],
+      sppLocale: 'sppLocale',
+    });
   });
 });

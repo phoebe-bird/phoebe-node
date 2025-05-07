@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../../resource';
-import * as Core from '../../../../../core';
+import { APIResource } from '../../../../../core/resource';
 import * as ObservationsAPI from '../../observations';
 import * as NotableAPI from './notable';
 import { Notable, NotableListParams, NotableListResponse } from './notable';
 import * as SpeciesAPI from './species';
 import { SpecieListParams, SpecieListResponse, Species } from './species';
+import { APIPromise } from '../../../../../core/api-promise';
+import { RequestOptions } from '../../../../../internal/request-options';
 
 export class Recent extends APIResource {
   species: SpeciesAPI.Species = new SpeciesAPI.Species(this._client);
@@ -18,7 +19,7 @@ export class Recent extends APIResource {
    * coordinates. Results include only the most recent observation for each species
    * in the region specified.
    */
-  list(query: RecentListParams, options?: Core.RequestOptions): Core.APIPromise<RecentListResponse> {
+  list(query: RecentListParams, options?: RequestOptions): APIPromise<RecentListResponse> {
     return this._client.get('/data/obs/geo/recent', { query, ...options });
   }
 }

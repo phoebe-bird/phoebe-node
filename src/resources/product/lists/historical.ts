@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
+import { path } from '../../../internal/utils/path';
 
 export class Historical extends APIResource {
   /**
@@ -10,32 +11,12 @@ export class Historical extends APIResource {
    * region.
    */
   retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
     d: number,
-    query?: HistoricalRetrieveParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<HistoricalRetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
-    d: number,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<HistoricalRetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    y: number,
-    m: number,
-    d: number,
-    query: HistoricalRetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<HistoricalRetrieveResponse> {
-    if (isRequestOptions(query)) {
-      return this.retrieve(regionCode, y, m, d, {}, query);
-    }
-    return this._client.get(`/product/lists/${regionCode}/${y}/${m}/${d}`, { query, ...options });
+    params: HistoricalRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<HistoricalRetrieveResponse> {
+    const { regionCode, y, m, ...query } = params;
+    return this._client.get(path`/product/lists/${regionCode}/${y}/${m}/${d}`, { query, ...options });
   }
 }
 
@@ -145,12 +126,28 @@ export namespace HistoricalRetrieveResponse {
 
 export interface HistoricalRetrieveParams {
   /**
-   * Only fetch this number of checklists.
+   * Path param: The country, subnational1, subnational2 or location code.
+   */
+  regionCode: string;
+
+  /**
+   * Path param: The year, from 1800 to the present.
+   */
+  y: number;
+
+  /**
+   * Path param: The month, from 1-12.
+   */
+  m: number;
+
+  /**
+   * Query param: Only fetch this number of checklists.
    */
   maxResults?: number;
 
   /**
-   * Order the results by the date of the checklist or by the date it was submitted.
+   * Query param: Order the results by the date of the checklist or by the date it
+   * was submitted.
    */
   sortKey?: 'obs_dt' | 'creation_dt';
 }

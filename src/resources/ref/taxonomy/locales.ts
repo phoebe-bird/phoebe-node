@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { buildHeaders } from '../../../internal/headers';
+import { RequestOptions } from '../../../internal/request-options';
 
 export class Locales extends APIResource {
   /**
@@ -13,22 +14,17 @@ export class Locales extends APIResource {
    * NOTE: The locale codes and names are stable but the other fields in this result
    * are not yet finalized and should be used with caution.
    */
-  list(params?: LocaleListParams, options?: Core.RequestOptions): Core.APIPromise<LocaleListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<LocaleListResponse>;
   list(
-    params: LocaleListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<LocaleListResponse> {
-    if (isRequestOptions(params)) {
-      return this.list({}, params);
-    }
-    const { 'Accept-Language': acceptLanguage } = params;
+    params: LocaleListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<LocaleListResponse> {
+    const { 'Accept-Language': acceptLanguage } = params ?? {};
     return this._client.get('/ref/taxa-locales/ebird', {
       ...options,
-      headers: {
-        ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined),
-        ...options?.headers,
-      },
+      headers: buildHeaders([
+        { ...(acceptLanguage != null ? { 'Accept-Language': acceptLanguage } : undefined) },
+        options?.headers,
+      ]),
     });
   }
 }

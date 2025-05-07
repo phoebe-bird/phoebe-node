@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
+import { APIResource } from '../../core/resource';
 import * as ChecklistAPI from './checklist';
 import { Checklist, ChecklistViewResponse } from './checklist';
 import * as SpeciesListAPI from './species-list';
 import { SpeciesList, SpeciesListListResponse } from './species-list';
 import * as StatsAPI from './stats';
-import { StatRetrieveResponse, Stats } from './stats';
+import { StatRetrieveParams, StatRetrieveResponse, Stats } from './stats';
 import * as Top100API from './top100';
 import { Top100, Top100RetrieveParams, Top100RetrieveResponse } from './top100';
 import * as ListsAPI from './lists/lists';
@@ -39,7 +39,11 @@ export declare namespace Product {
     type Top100RetrieveParams as Top100RetrieveParams,
   };
 
-  export { Stats as Stats, type StatRetrieveResponse as StatRetrieveResponse };
+  export {
+    Stats as Stats,
+    type StatRetrieveResponse as StatRetrieveResponse,
+    type StatRetrieveParams as StatRetrieveParams,
+  };
 
   export { SpeciesList as SpeciesList, type SpeciesListListResponse as SpeciesListListResponse };
 

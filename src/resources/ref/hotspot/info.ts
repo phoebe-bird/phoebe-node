@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
+import { path } from '../../../internal/utils/path';
 
 export class Info extends APIResource {
   /**
@@ -9,8 +11,8 @@ export class Info extends APIResource {
    * works for hotspots. If you pass the location code for a private location or an
    * invalid location code then an HTTP 410 (Gone) error is returned.
    */
-  retrieve(locId: string, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse> {
-    return this._client.get(`/ref/hotspot/info/${locId}`, options);
+  retrieve(locID: string, options?: RequestOptions): APIPromise<InfoRetrieveResponse> {
+    return this._client.get(path`/ref/hotspot/info/${locID}`, options);
   }
 }
 

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
+import { APIResource } from '../../../core/resource';
 import * as GeoAPI from './geo/geo';
 import { Geo } from './geo/geo';
 import * as NearestAPI from './nearest/nearest';

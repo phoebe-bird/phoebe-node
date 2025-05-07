@@ -1,0 +1,265 @@
+{
+  "pkg": "phoebe-ebird",
+  "githubRepo": "https://github.com/stainless-sdks/phoebe-typescript",
+  "clientClass": "Phoebe",
+  "methods": [
+    {
+      "base": "data.observations.recent.species",
+      "name": "retrieve",
+      "params": [
+        {
+          "type": "param",
+          "key": "speciesCode",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionCode",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "speciesCode",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": true
+        },
+        {
+          "type": "options"
+        }
+      ]
+    },
+    {
+      "base": "data.observations.recent.historic",
+      "name": "list",
+      "params": [
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionCode",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "y",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "m",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": true
+        },
+        {
+          "type": "options"
+        }
+      ]
+    },
+    {
+      "base": "product.lists.historical",
+      "name": "retrieve",
+      "params": [
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionCode",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "y",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "m",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": true
+        },
+        {
+          "type": "options"
+        }
+      ]
+    },
+    {
+      "base": "product.top100",
+      "name": "retrieve",
+      "params": [
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionCode",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "y",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "m",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": true
+        },
+        {
+          "type": "options"
+        }
+      ]
+    },
+    {
+      "base": "product.stats",
+      "name": "retrieve",
+      "params": [
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionCode",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "y",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "m",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "d",
+          "location": "path"
+        },
+        {
+          "type": "options"
+        }
+      ]
+    },
+    {
+      "base": "ref.region.list",
+      "name": "list",
+      "params": [
+        {
+          "type": "param",
+          "key": "parentRegionCode",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": false
+        },
+        {
+          "type": "options"
+        }
+      ],
+      "oldParams": [
+        {
+          "type": "param",
+          "key": "regionType",
+          "location": "path"
+        },
+        {
+          "type": "param",
+          "key": "parentRegionCode",
+          "location": "path"
+        },
+        {
+          "type": "params",
+          "maybeOverload": true
+        },
+        {
+          "type": "options"
+        }
+      ]
+    }
+  ]
+}

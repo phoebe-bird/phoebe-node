@@ -1,12 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "include": ["dist/src"],
-  "exclude": ["dist/src/_shims/*-deno.ts"],
+  "exclude": [],
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
       "phoebe-ebird/*": ["dist/src/*"],
-      "phoebe-ebird": ["dist/src/index.ts"],
+      "phoebe-ebird": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
