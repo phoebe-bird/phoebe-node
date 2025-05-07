@@ -9,6 +9,12 @@ export class SpeciesGroups extends APIResource {
    * Get the list of species groups, e.g. terns, finches, etc. #### Notes Merlin puts
    * like birds together, with Falcons next to Hawks, whereas eBird follows taxonomic
    * order.
+   *
+   * @example
+   * ```ts
+   * const speciesGroups =
+   *   await client.ref.taxonomy.speciesGroups.list('merlin');
+   * ```
    */
   list(
     speciesGrouping: 'merlin' | 'ebird',

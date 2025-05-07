@@ -7,6 +7,11 @@ export class Versions extends APIResource {
   /**
    * Returns a list of all versions of the taxonomy, with a flag indicating which is
    * the latest.
+   *
+   * @example
+   * ```ts
+   * const versions = await client.ref.taxonomy.versions.list();
+   * ```
    */
   list(options?: Core.RequestOptions): Core.APIPromise<VersionListResponse> {
     return this._client.get('/ref/taxonomy/versions', options);

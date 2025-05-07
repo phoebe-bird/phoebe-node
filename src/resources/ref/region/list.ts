@@ -10,6 +10,14 @@ export class List extends APIResource {
    * combinations of region type and region code are valid. You can fetch all the
    * subnational1 or subnational2 regions for a country however you can only specify
    * a region type of 'country' when using 'world' as a region code.
+   *
+   * @example
+   * ```ts
+   * const lists = await client.ref.region.list.list(
+   *   'regionType',
+   *   'parentRegionCode',
+   * );
+   * ```
    */
   list(
     regionType: string,

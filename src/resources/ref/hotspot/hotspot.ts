@@ -14,6 +14,13 @@ export class Hotspot extends APIResource {
 
   /**
    * Hotspots in a region
+   *
+   * @example
+   * ```ts
+   * const hotspots = await client.ref.hotspot.list(
+   *   'regionCode',
+   * );
+   * ```
    */
   list(
     regionCode: string,
