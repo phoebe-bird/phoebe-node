@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.8 (2025-05-07)
+
+Full Changelog: [v0.1.7...v0.1.8](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.7...v0.1.8)
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([6b5c455](https://github.com/phoebe-bird/phoebe-node/commit/6b5c455fb9c0c74b062cdce0702a8fe78a6a2ea4))
+* **ci:** bump node version for release workflows ([f29185b](https://github.com/phoebe-bird/phoebe-node/commit/f29185b0d62b097f192d6e5a599e4d193721c958))
+* **ci:** only use depot for staging repos ([a87aa0c](https://github.com/phoebe-bird/phoebe-node/commit/a87aa0cf3879e79ca8294637a8dc0169ac1655a3))
+* **internal:** codegen related update ([5a9ac54](https://github.com/phoebe-bird/phoebe-node/commit/5a9ac5410fa0daa1f81010983898bf23354b3b66))
+
+
+### Documentation
+
+* add examples to tsdocs ([2891ac1](https://github.com/phoebe-bird/phoebe-node/commit/2891ac1549f2ecf75b148956a505014a85d346d9))
+* **readme:** fix typo ([4daf96d](https://github.com/phoebe-bird/phoebe-node/commit/4daf96dc6a924ae38fe02cc1e01d92026d67e666))
+
 ## 0.1.7 (2025-04-15)
 
 Full Changelog: [v0.1.6...v0.1.7](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.6...v0.1.7)
