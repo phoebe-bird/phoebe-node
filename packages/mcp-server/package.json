@@ -1,5 +1,5 @@
 {
-  "name": "phoebe-mcp",
+  "name": "phoebe-ebird-mcp",
   "version": "0.2.0",
   "description": "The official MCP Server for the Phoebe API",
   "author": "Phoebe <sayornis.phoebe.apis@gmail.com>",
@@ -51,8 +51,8 @@
     "typescript": "5.8.3"
   },
   "imports": {
-    "phoebe-mcp": ".",
-    "phoebe-mcp/*": "./src/*"
+    "phoebe-ebird-mcp": ".",
+    "phoebe-ebird-mcp/*": "./src/*"
   },
   "exports": {
     ".": {
