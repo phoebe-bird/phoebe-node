@@ -1,6 +1,6 @@
 {
   "pkg": "phoebe-ebird",
-  "githubRepo": "https://github.com/stainless-sdks/phoebe-typescript",
+  "githubRepo": "https://github.com/phoebe-bird/phoebe-node",
   "clientClass": "Phoebe",
   "methods": [
     {
