@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.2.0 (2025-05-08)
+
+Full Changelog: [v0.1.7...v0.2.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.7...v0.2.0)
+
+### Features
+
+* **api:** actually do this the right way ([ad19a06](https://github.com/phoebe-bird/phoebe-node/commit/ad19a06d3ab489c841f190bb3861d458140a9d06))
+* **api:** add MCP server ([0690996](https://github.com/phoebe-bird/phoebe-node/commit/0690996c5393cb3fa9e7da076e6a1a3227388e66))
+* **api:** manual updates ([a5a2aa8](https://github.com/phoebe-bird/phoebe-node/commit/a5a2aa83cf0ccb32d50dc78fe86f3e716c0e7710))
+* **api:** manual updates ([76cb921](https://github.com/phoebe-bird/phoebe-node/commit/76cb9219a478ba31010ab74591ecad48bb9d7e67))
+* **api:** manual updates ([38d6cf5](https://github.com/phoebe-bird/phoebe-node/commit/38d6cf51441e1f933ad159178504d51ad1d98c25))
+* **api:** manual updates ([6a190c3](https://github.com/phoebe-bird/phoebe-node/commit/6a190c36a80596083e602e4346e5dc9fefe3987e))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([6b5c455](https://github.com/phoebe-bird/phoebe-node/commit/6b5c455fb9c0c74b062cdce0702a8fe78a6a2ea4))
+* **ci:** bump node version for release workflows ([57ce92b](https://github.com/phoebe-bird/phoebe-node/commit/57ce92ba0dafda2dc248fec4b4033655c2b15357))
+* **ci:** only use depot for staging repos ([a87aa0c](https://github.com/phoebe-bird/phoebe-node/commit/a87aa0cf3879e79ca8294637a8dc0169ac1655a3))
+* **docs:** update example script ([115fa9f](https://github.com/phoebe-bird/phoebe-node/commit/115fa9f7c6ea645862db910506f1f0d48d291dc7))
+* **internal:** codegen related update ([5a9ac54](https://github.com/phoebe-bird/phoebe-node/commit/5a9ac5410fa0daa1f81010983898bf23354b3b66))
+
+
+### Documentation
+
+* add examples to tsdocs ([56de77c](https://github.com/phoebe-bird/phoebe-node/commit/56de77c50a690f5f8f58eba58cb81311a497d77d))
+* **readme:** fix typo ([84cc4cd](https://github.com/phoebe-bird/phoebe-node/commit/84cc4cd99b11adee21c62b913ee02b17445ba9bb))
+
 ## 0.1.7 (2025-04-15)
 
 Full Changelog: [v0.1.6...v0.1.7](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.6...v0.1.7)
