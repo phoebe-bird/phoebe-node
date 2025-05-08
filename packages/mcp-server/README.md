@@ -10,7 +10,7 @@ You can run the MCP Server directly via `npx`:
 
 ```sh
 export EBIRD_API_KEY="My API Key"
-npx -y phoebe-mcp
+npx -y phoebe-ebird-mcp
 ```
 
 ### Via MCP Client
@@ -25,7 +25,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "phoebe_ebird_api": {
       "command": "npx",
-      "args": ["-y", "phoebe-mcp", "--client=claude"],
+      "args": ["-y", "phoebe-ebird-mcp", "--client=claude"],
       "env": {
         "EBIRD_API_KEY": "My API Key"
       }
@@ -108,10 +108,10 @@ over time, you can manually enable or disable certain capabilities:
 
 ```js
 // Import the server, generated endpoints, or the init function
-import { server, endpoints, init } from "phoebe-mcp/server";
+import { server, endpoints, init } from "phoebe-ebird-mcp/server";
 
 // import a specific tool
-import listObservationsDataRecent from "phoebe-mcp/tools/data/observations/recent/list-observations-data-recent";
+import listObservationsDataRecent from "phoebe-ebird-mcp/tools/data/observations/recent/list-observations-data-recent";
 
 // initialize the server and all endpoints
 init({ server, endpoints });
