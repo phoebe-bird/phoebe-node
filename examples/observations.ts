@@ -5,7 +5,9 @@ const phoebe = new Phoebe({
 });
 
 async function observations() {
-  const phoebes = await phoebe.data.observations.recent.species.retrieve('US-NY', 'easpho');
+  const phoebes = await phoebe.data.observations.recent.species.retrieve('easpho', {
+    regionCode: 'US-NY',
+  });
 
   console.debug(phoebes);
 
