@@ -34,7 +34,7 @@ Types:
 
 Methods:
 
-- <code title="get /data/obs/{regionCode}/recent/{speciesCode}">client.data.observations.recent.species.<a href="./src/resources/data/observations/recent/species.ts">retrieve</a>(regionCode, speciesCode, { ...params }) -> SpecieRetrieveResponse</code>
+- <code title="get /data/obs/{regionCode}/recent/{speciesCode}">client.data.observations.recent.species.<a href="./src/resources/data/observations/recent/species.ts">retrieve</a>(speciesCode, { ...params }) -> SpecieRetrieveResponse</code>
 
 #### Historic
 
@@ -44,7 +44,7 @@ Types:
 
 Methods:
 
-- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.observations.recent.historic.<a href="./src/resources/data/observations/recent/historic.ts">list</a>(regionCode, y, m, d, { ...params }) -> HistoricListResponse</code>
+- <code title="get /data/obs/{regionCode}/historic/{y}/{m}/{d}">client.data.observations.recent.historic.<a href="./src/resources/data/observations/recent/historic.ts">list</a>(d, { ...params }) -> HistoricListResponse</code>
 
 ### Geo
 
@@ -110,7 +110,7 @@ Types:
 
 Methods:
 
-- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.lists.historical.<a href="./src/resources/product/lists/historical.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> HistoricalRetrieveResponse</code>
+- <code title="get /product/lists/{regionCode}/{y}/{m}/{d}">client.product.lists.historical.<a href="./src/resources/product/lists/historical.ts">retrieve</a>(d, { ...params }) -> HistoricalRetrieveResponse</code>
 
 ## Top100
 
@@ -120,7 +120,7 @@ Types:
 
 Methods:
 
-- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">retrieve</a>(regionCode, y, m, d, { ...params }) -> Top100RetrieveResponse</code>
+- <code title="get /product/top100/{regionCode}/{y}/{m}/{d}">client.product.top100.<a href="./src/resources/product/top100.ts">retrieve</a>(d, { ...params }) -> Top100RetrieveResponse</code>
 
 ## Stats
 
@@ -130,7 +130,7 @@ Types:
 
 Methods:
 
-- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.stats.<a href="./src/resources/product/stats.ts">retrieve</a>(regionCode, y, m, d) -> StatRetrieveResponse</code>
+- <code title="get /product/stats/{regionCode}/{y}/{m}/{d}">client.product.stats.<a href="./src/resources/product/stats.ts">retrieve</a>(d, { ...params }) -> StatRetrieveResponse</code>
 
 ## SpeciesList
 
@@ -150,7 +150,7 @@ Types:
 
 Methods:
 
-- <code title="get /product/checklist/view/{subId}">client.product.checklist.<a href="./src/resources/product/checklist.ts">view</a>(subId) -> ChecklistViewResponse</code>
+- <code title="get /product/checklist/view/{subId}">client.product.checklist.<a href="./src/resources/product/checklist.ts">view</a>(subID) -> ChecklistViewResponse</code>
 
 # Ref
 
@@ -184,7 +184,7 @@ Types:
 
 Methods:
 
-- <code title="get /ref/region/list/{regionType}/{parentRegionCode}">client.ref.region.list.<a href="./src/resources/ref/region/list.ts">list</a>(regionType, parentRegionCode, { ...params }) -> ListListResponse</code>
+- <code title="get /ref/region/list/{regionType}/{parentRegionCode}">client.ref.region.list.<a href="./src/resources/ref/region/list.ts">list</a>(parentRegionCode, { ...params }) -> ListListResponse</code>
 
 ## Hotspot
 
@@ -214,7 +214,7 @@ Types:
 
 Methods:
 
-- <code title="get /ref/hotspot/info/{locId}">client.ref.hotspot.info.<a href="./src/resources/ref/hotspot/info.ts">retrieve</a>(locId) -> InfoRetrieveResponse</code>
+- <code title="get /ref/hotspot/info/{locId}">client.ref.hotspot.info.<a href="./src/resources/ref/hotspot/info.ts">retrieve</a>(locID) -> InfoRetrieveResponse</code>
 
 ## Taxonomy
 

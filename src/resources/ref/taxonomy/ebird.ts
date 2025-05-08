@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
 
 export class Ebird extends APIResource {
   /**
@@ -10,19 +10,16 @@ export class Ebird extends APIResource {
    * species code for example, barswa for Barn Swallow. You can download the taxonomy
    * for selected species using the _species_ query parameter with a comma separating
    * each code. Otherwise the full taxonomy is downloaded.
+   *
+   * @example
+   * ```ts
+   * const ebirds = await client.ref.taxonomy.ebird.retrieve();
+   * ```
    */
   retrieve(
-    query?: EbirdRetrieveParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<EbirdRetrieveResponse>;
-  retrieve(options?: Core.RequestOptions): Core.APIPromise<EbirdRetrieveResponse>;
-  retrieve(
-    query: EbirdRetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<EbirdRetrieveResponse> {
-    if (isRequestOptions(query)) {
-      return this.retrieve({}, query);
-    }
+    query: EbirdRetrieveParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<EbirdRetrieveResponse> {
     return this._client.get('/ref/taxonomy/ebird', { query, ...options });
   }
 }

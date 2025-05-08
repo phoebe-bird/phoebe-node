@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class SpeciesList extends APIResource {
   /**
@@ -10,8 +12,8 @@ export class SpeciesList extends APIResource {
    *
    * #### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.
    */
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<SpeciesListListResponse> {
-    return this._client.get(`/product/spplist/${regionCode}`, options);
+  list(regionCode: string, options?: RequestOptions): APIPromise<SpeciesListListResponse> {
+    return this._client.get(path`/product/spplist/${regionCode}`, options);
   }
 }
 

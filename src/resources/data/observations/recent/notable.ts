@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import { isRequestOptions } from '../../../../core';
-import * as Core from '../../../../core';
+import { APIResource } from '../../../../core/resource';
 import * as ObservationsAPI from '../observations';
+import { APIPromise } from '../../../../core/api-promise';
+import { RequestOptions } from '../../../../internal/request-options';
+import { path } from '../../../../internal/utils/path';
 
 export class Notable extends APIResource {
   /**
@@ -14,19 +15,10 @@ export class Notable extends APIResource {
    */
   list(
     regionCode: string,
-    query?: NotableListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<NotableListResponse>;
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<NotableListResponse>;
-  list(
-    regionCode: string,
-    query: NotableListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<NotableListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list(regionCode, {}, query);
-    }
-    return this._client.get(`/data/obs/${regionCode}/recent/notable`, { query, ...options });
+    query: NotableListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<NotableListResponse> {
+    return this._client.get(path`/data/obs/${regionCode}/recent/notable`, { query, ...options });
   }
 }
 

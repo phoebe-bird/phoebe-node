@@ -1,33 +1,28 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
+import { path } from '../../../internal/utils/path';
 
 export class SpeciesGroups extends APIResource {
   /**
    * Get the list of species groups, e.g. terns, finches, etc. #### Notes Merlin puts
    * like birds together, with Falcons next to Hawks, whereas eBird follows taxonomic
    * order.
+   *
+   * @example
+   * ```ts
+   * const speciesGroups =
+   *   await client.ref.taxonomy.speciesGroups.list('merlin');
+   * ```
    */
   list(
     speciesGrouping: 'merlin' | 'ebird',
-    query?: SpeciesGroupListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpeciesGroupListResponse>;
-  list(
-    speciesGrouping: 'merlin' | 'ebird',
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpeciesGroupListResponse>;
-  list(
-    speciesGrouping: 'merlin' | 'ebird',
-    query: SpeciesGroupListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SpeciesGroupListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list(speciesGrouping, {}, query);
-    }
-    return this._client.get(`/ref/sppgroup/${speciesGrouping}`, { query, ...options });
+    query: SpeciesGroupListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<SpeciesGroupListResponse> {
+    return this._client.get(path`/ref/sppgroup/${speciesGrouping}`, { query, ...options });
   }
 }
 

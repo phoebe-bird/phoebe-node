@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
+import { path } from '../../../internal/utils/path';
 
 export class Info extends APIResource {
   /**
@@ -21,22 +22,20 @@ export class Info extends APIResource {
    * | namequal       | return the qualified name                  | Madison County                   |
    * | nameonly       | return only the name of the region         | Madison                          |
    * | revdetailed    | return the detailed description in reverse | US, New York, Madison County     |
+   *
+   * @example
+   * ```ts
+   * const info = await client.ref.region.info.retrieve(
+   *   'regionCode',
+   * );
+   * ```
    */
   retrieve(
     regionCode: string,
-    query?: InfoRetrieveParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InfoRetrieveResponse>;
-  retrieve(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<InfoRetrieveResponse>;
-  retrieve(
-    regionCode: string,
-    query: InfoRetrieveParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InfoRetrieveResponse> {
-    if (isRequestOptions(query)) {
-      return this.retrieve(regionCode, {}, query);
-    }
-    return this._client.get(`/ref/region/info/${regionCode}`, { query, ...options });
+    query: InfoRetrieveParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<InfoRetrieveResponse> {
+    return this._client.get(path`/ref/region/info/${regionCode}`, { query, ...options });
   }
 }
 

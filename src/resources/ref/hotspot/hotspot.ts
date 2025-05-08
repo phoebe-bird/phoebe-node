@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
 import * as GeoAPI from './geo';
 import { Geo, GeoRetrieveParams, GeoRetrieveResponse } from './geo';
 import * as InfoAPI from './info';
 import { Info, InfoRetrieveResponse } from './info';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
+import { path } from '../../../internal/utils/path';
 
 export class Hotspot extends APIResource {
   geo: GeoAPI.Geo = new GeoAPI.Geo(this._client);
@@ -14,22 +15,20 @@ export class Hotspot extends APIResource {
 
   /**
    * Hotspots in a region
+   *
+   * @example
+   * ```ts
+   * const hotspots = await client.ref.hotspot.list(
+   *   'regionCode',
+   * );
+   * ```
    */
   list(
     regionCode: string,
-    query?: HotspotListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<HotspotListResponse>;
-  list(regionCode: string, options?: Core.RequestOptions): Core.APIPromise<HotspotListResponse>;
-  list(
-    regionCode: string,
-    query: HotspotListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<HotspotListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list(regionCode, {}, query);
-    }
-    return this._client.get(`/ref/hotspot/${regionCode}`, { query, ...options });
+    query: HotspotListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<HotspotListResponse> {
+    return this._client.get(path`/ref/hotspot/${regionCode}`, { query, ...options });
   }
 }
 

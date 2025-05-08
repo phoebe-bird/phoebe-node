@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../../core/resource';
+import { APIPromise } from '../../core/api-promise';
+import { RequestOptions } from '../../internal/request-options';
+import { path } from '../../internal/utils/path';
 
 export class Checklist extends APIResource {
   /**
@@ -9,8 +11,8 @@ export class Checklist extends APIResource {
    *
    * #### Notes Do NOT use this to download large amounts of data. You will be banned if you do. In the fields for each observation, the following fields are duplicates or obsolete and will be removed at a future date: _howManyAtleast_, _howManyAtmost_, _hideFlags_, _projId_, _subId_, _subnational1Code_ and _present_.
    */
-  view(subId: string, options?: Core.RequestOptions): Core.APIPromise<ChecklistViewResponse> {
-    return this._client.get(`/product/checklist/view/${subId}`, options);
+  view(subID: string, options?: RequestOptions): APIPromise<ChecklistViewResponse> {
+    return this._client.get(path`/product/checklist/view/${subID}`, options);
   }
 }
 

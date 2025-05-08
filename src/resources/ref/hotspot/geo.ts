@@ -1,14 +1,23 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
+import { APIResource } from '../../../core/resource';
+import { APIPromise } from '../../../core/api-promise';
+import { RequestOptions } from '../../../internal/request-options';
 
 export class Geo extends APIResource {
   /**
    * Get the list of hotspots, within a radius of up to 50 kilometers, from a given
    * set of coordinates.
+   *
+   * @example
+   * ```ts
+   * const geos = await client.ref.hotspot.geo.retrieve({
+   *   lat: -90,
+   *   lng: -180,
+   * });
+   * ```
    */
-  retrieve(query: GeoRetrieveParams, options?: Core.RequestOptions): Core.APIPromise<GeoRetrieveResponse> {
+  retrieve(query: GeoRetrieveParams, options?: RequestOptions): APIPromise<GeoRetrieveResponse> {
     return this._client.get('/ref/hotspot/geo', { query, ...options });
   }
 }
