@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "phoebe-mcp/*": ["src/*"],
-      "phoebe-mcp": ["src/index.ts"]
+      "phoebe-ebird-mcp/*": ["src/*"],
+      "phoebe-ebird-mcp": ["src/index.ts"]
     },
     "noEmit": true,
 
