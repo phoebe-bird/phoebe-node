@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.0 (2025-05-13)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **mcp:** support dynamically discovering and invoking tools for APIs with many endpoints ([d3c34c7](https://github.com/phoebe-bird/phoebe-node/commit/d3c34c77364a357e5153d48c6e8f341e93f40073))
+
+
+### Bug Fixes
+
+* **client:** always overwrite when merging headers ([f1b0587](https://github.com/phoebe-bird/phoebe-node/commit/f1b05876f23a774597d7a224808ee42c0a4fd638))
+* **mcp:** explicitly include zod and zod-to-json-schema in package.json ([6d6ee2a](https://github.com/phoebe-bird/phoebe-node/commit/6d6ee2ac41bcbf5217349c516c53262286ff2657))
+
+
+### Chores
+
+* **build:** automatically build subpackages if present ([1637b6b](https://github.com/phoebe-bird/phoebe-node/commit/1637b6b0bc92a18345065eddafeeba1fb465422c))
+* configure new SDK language ([d78e2b4](https://github.com/phoebe-bird/phoebe-node/commit/d78e2b4d59835841589f4e4450d8f393bb21a8b4))
+* **internal:** codegen related update ([ea7b65c](https://github.com/phoebe-bird/phoebe-node/commit/ea7b65c6f5b92d4860e327160c8793dc4312353e))
+* **package:** remove engines ([cf45430](https://github.com/phoebe-bird/phoebe-node/commit/cf45430f6b2e4528f3a3fc593f145476b4fd0870))
+* **tests:** use node 22 for CI tests ([d6076c5](https://github.com/phoebe-bird/phoebe-node/commit/d6076c56488afd5afdd02fdf2d4e98a19c0b2e0e))
+
 ## 0.2.0 (2025-05-08)
 
 Full Changelog: [v0.1.7...v0.2.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.1.7...v0.2.0)
