@@ -179,18 +179,17 @@ The following tools are available in this MCP server.
 - `retrieve_recent_observations_data_species` (`read`): Get the recent observations, up to 30 days ago, of a particular species
   in a country, region or location. Results include only the most recent observation from each location in the region specified.
 
-#### Notes
+  #### Notes
 
-The species code is typically a 6-letter code, e.g. cangoo for Canada Goose. You can
-get complete set of species code from the GET eBird Taxonomy end-point.
+  The species code is typically a 6-letter code, e.g. cangoo for Canada Goose. You can
+  get complete set of species code from the GET eBird Taxonomy end-point.
 
-When using the _r_ query parameter set the _regionCode_ URL parameter to an empty string.
+  When using the _r_ query parameter set the _regionCode_ URL parameter to an empty string.
 
 ### Resource `data.observations.recent.historic`:
 
 - `list_recent_observations_data_historic` (`read`): Get a list of all taxa seen in a country, region or location on a specific date, with the specific observations determined by the "rank" parameter (defaults to latest observation on the date).
-
-#### Notes Responses may be cached for 30 minutes
+  #### Notes Responses may be cached for 30 minutes
 
 ### Resource `data.observations.geo.recent`:
 
@@ -202,15 +201,15 @@ When using the _r_ query parameter set the _regionCode_ URL parameter to an empt
 
 - `list_recent_geo_observations_data_species` (`read`): Get all observations of a species, seen up to 30 days ago, at any location within a radius of up to 50 kilometers, from a given set of coordinates. Results include only the most recent observation from each location in the region specified.
 
-#### URL parameters
+  #### URL parameters
 
-| Name        | Description             |
-| ----------- | ----------------------- |
-| speciesCode | The eBird species code. |
+  | Name        | Description             |
+  | ----------- | ----------------------- |
+  | speciesCode | The eBird species code. |
 
-#### Notes
+  #### Notes
 
-The species code is typically a 6-letter code, e.g. horlar for Horned Lark. You can get complete set of species code from the GET eBird Taxonomy end-point.
+  The species code is typically a 6-letter code, e.g. horlar for Horned Lark. You can get complete set of species code from the GET eBird Taxonomy end-point.
 
 ### Resource `data.observations.geo.recent.notable`:
 
@@ -232,35 +231,32 @@ The species code is typically a 6-letter code, e.g. horlar for Horned Lark. You 
 
 - `retrieve_product_top100` (`read`): Get the top 100 contributors on a given date for a country or region.
 
-#### Notes
+  #### Notes
 
-The results are updated every 15 minutes.
+  The results are updated every 15 minutes.
 
-When ordering by the number of completed checklists, the number of species seen will always be zero. Similarly when ordering by the number of species seen the number of completed checklists will always be zero.
-<b>Selected Response Field Notes</b>
+  When ordering by the number of completed checklists, the number of species seen will always be zero. Similarly when ordering by the number of species seen the number of completed checklists will always be zero.
+  <b>Selected Response Field Notes</b>
 
-profileHandle - if a user has enabled their profile, this is the handle to reach it via ebird.org/ebird/profile/{profileHandle}
+  profileHandle - if a user has enabled their profile, this is the handle to reach it via ebird.org/ebird/profile/{profileHandle}
 
-numSpecies - always zero when checklistSort parameter is true. Invalid observations ARE included in this total
-numCompleteChecklists - always zero when checklistSort parameter is false
+  numSpecies - always zero when checklistSort parameter is true. Invalid observations ARE included in this total
+  numCompleteChecklists - always zero when checklistSort parameter is false
 
 ### Resource `product.stats`:
 
 - `retrieve_product_stats` (`read`): Get a summary of the number of checklist submitted, species seen and contributors on a given date for a country or region.
-
-#### Notes The results are updated every 15 minutes.
+  #### Notes The results are updated every 15 minutes.
 
 ### Resource `product.speciesList`:
 
 - `list_product_species_list` (`read`): Get a list of species codes ever seen in a region, in taxonomic order (species taxa only)
-
-#### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.
+  #### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.
 
 ### Resource `product.checklist`:
 
 - `view_product_checklist` (`read`): Get the details and observations of a checklist.
-
-#### Notes Do NOT use this to download large amounts of data. You will be banned if you do. In the fields for each observation, the following fields are duplicates or obsolete and will be removed at a future date: _howManyAtleast_, _howManyAtmost_, _hideFlags_, _projId_, _subId_, _subnational1Code_ and _present_.
+  #### Notes Do NOT use this to download large amounts of data. You will be banned if you do. In the fields for each observation, the following fields are duplicates or obsolete and will be removed at a future date: _howManyAtleast_, _howManyAtmost_, _hideFlags_, _projId_, _subId_, _subnational1Code_ and _present_.
 
 ### Resource `ref.region.adjacent`:
 
@@ -270,19 +266,19 @@ numCompleteChecklists - always zero when checklistSort parameter is false
 
 - `retrieve_region_ref_info` (`read`): Get information on the name and geographical area covered by a region.
 
-#### Notes
+  #### Notes
 
-Taking Madison County, New York, USA (location code US-NY-053) as an example
-the various values for the regionNameFormat query parameter work as follows:
+  Taking Madison County, New York, USA (location code US-NY-053) as an example
+  the various values for the regionNameFormat query parameter work as follows:
 
-| Value          | Description                                | Result                           |
-| -------------- | ------------------------------------------ | -------------------------------- |
-| detailed       | return a detailed description              | Madison County, New York, US     |
-| detailednoqual | return the name to the subnational1 level  | Madison, New York                |
-| full           | return the full description                | Madison, New York, United States |
-| namequal       | return the qualified name                  | Madison County                   |
-| nameonly       | return only the name of the region         | Madison                          |
-| revdetailed    | return the detailed description in reverse | US, New York, Madison County     |
+  | Value          | Description                                | Result                           |
+  | -------------- | ------------------------------------------ | -------------------------------- |
+  | detailed       | return a detailed description              | Madison County, New York, US     |
+  | detailednoqual | return the name to the subnational1 level  | Madison, New York                |
+  | full           | return the full description                | Madison, New York, United States |
+  | namequal       | return the qualified name                  | Madison County                   |
+  | nameonly       | return only the name of the region         | Madison                          |
+  | revdetailed    | return the detailed description in reverse | US, New York, Madison County     |
 
 ### Resource `ref.region.list`:
 
@@ -312,7 +308,7 @@ the various values for the regionNameFormat query parameter work as follows:
 
 - `list_taxonomy_ref_locales` (`read`): Returns the list of supported locale codes and names for species common names, with the last time they were updated. Use the accept-language header to get translated language names when available.
 
-NOTE: The locale codes and names are stable but the other fields in this result are not yet finalized and should be used with caution.
+  NOTE: The locale codes and names are stable but the other fields in this result are not yet finalized and should be used with caution.
 
 ### Resource `ref.taxonomy.versions`:
 

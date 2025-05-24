@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.1 (2025-05-24)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* **mcp:** fix cursor schema transformation issue with recursive references ([c41b642](https://github.com/phoebe-bird/phoebe-node/commit/c41b64236e35d17f36ebcb7a1771c3660d3ea2ad))
+
+
+### Chores
+
+* **docs:** grammar improvements ([e8019eb](https://github.com/phoebe-bird/phoebe-node/commit/e8019ebb3a81c76b315d38012235f5fe2b1041ef))
+* improve docs for MCP servers ([b690487](https://github.com/phoebe-bird/phoebe-node/commit/b690487a94c6dc7d61f9ac5075df9f101b3f5c2a))
+* **internal:** codegen related update ([1e11355](https://github.com/phoebe-bird/phoebe-node/commit/1e113557e0bbb62ca2a4528b15e42343d15d73e7))
+
 ## 0.3.0 (2025-05-13)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.2.0...v0.3.0)
