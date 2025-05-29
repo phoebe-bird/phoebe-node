@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'product.lists.historical',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/product/lists/{regionCode}/{y}/{m}/{d}',
 };
 
 export const tool: Tool = {

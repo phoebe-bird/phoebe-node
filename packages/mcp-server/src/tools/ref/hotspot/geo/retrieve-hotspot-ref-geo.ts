@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.hotspot.geo',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/hotspot/geo',
 };
 
 export const tool: Tool = {

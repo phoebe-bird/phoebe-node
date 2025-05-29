@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'data.observations.nearest.geo_species',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/data/nearest/geo/recent/{speciesCode}',
 };
 
 export const tool: Tool = {

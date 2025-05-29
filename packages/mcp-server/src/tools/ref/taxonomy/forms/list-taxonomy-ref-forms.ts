@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.taxonomy.forms',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/taxon/forms/{speciesCode}',
 };
 
 export const tool: Tool = {

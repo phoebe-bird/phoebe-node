@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.4.0 (2025-05-29)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **mcp:** include http information in tools ([a322a11](https://github.com/phoebe-bird/phoebe-node/commit/a322a117d8a8b19e7643d49bfd936cbf08875e27))
+
+
+### Bug Fixes
+
+* **mcp:** fix cursor schema transformation issue with recursive references ([c41b642](https://github.com/phoebe-bird/phoebe-node/commit/c41b64236e35d17f36ebcb7a1771c3660d3ea2ad))
+* **mcp:** include description in dynamic tool search ([4f7a356](https://github.com/phoebe-bird/phoebe-node/commit/4f7a356af028d82eb7347fc93ac703d4187b5bd8))
+
+
+### Chores
+
+* **docs:** grammar improvements ([e8019eb](https://github.com/phoebe-bird/phoebe-node/commit/e8019ebb3a81c76b315d38012235f5fe2b1041ef))
+* improve docs for MCP servers ([b690487](https://github.com/phoebe-bird/phoebe-node/commit/b690487a94c6dc7d61f9ac5075df9f101b3f5c2a))
+* improve publish-npm script --latest tag logic ([b821660](https://github.com/phoebe-bird/phoebe-node/commit/b821660285069846642421c4af5c08a79cefee23))
+* **internal:** codegen related update ([1e11355](https://github.com/phoebe-bird/phoebe-node/commit/1e113557e0bbb62ca2a4528b15e42343d15d73e7))
+* **mcp:** remove duplicate assignment ([08e59c4](https://github.com/phoebe-bird/phoebe-node/commit/08e59c44c97d9890f84c9e47cc86c6e1788061dc))
+
 ## 0.3.0 (2025-05-13)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.2.0...v0.3.0)

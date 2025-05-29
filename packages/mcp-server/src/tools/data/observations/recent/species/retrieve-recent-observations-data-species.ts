@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'data.observations.recent.species',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/data/obs/{regionCode}/recent/{speciesCode}',
 };
 
 export const tool: Tool = {

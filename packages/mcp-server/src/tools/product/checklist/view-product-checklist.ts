@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'product.checklist',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/product/checklist/view/{subId}',
 };
 
 export const tool: Tool = {
