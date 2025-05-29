@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'product.speciesList',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/product/spplist/{regionCode}',
 };
 
 export const tool: Tool = {

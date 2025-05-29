@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'data.observations.geo.recent.species',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/data/obs/geo/recent/{speciesCode}',
 };
 
 export const tool: Tool = {

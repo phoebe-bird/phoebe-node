@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.region.list',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/region/list/{regionType}/{parentRegionCode}',
 };
 
 export const tool: Tool = {

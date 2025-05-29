@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.taxonomy.speciesGroups',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/sppgroup/{speciesGrouping}',
 };
 
 export const tool: Tool = {

@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.taxonomy.versions',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/taxonomy/versions',
 };
 
 export const tool: Tool = {
