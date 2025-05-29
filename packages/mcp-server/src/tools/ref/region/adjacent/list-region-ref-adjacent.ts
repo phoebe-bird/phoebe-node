@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.region.adjacent',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/adjacent/{regionCode}',
 };
 
 export const tool: Tool = {

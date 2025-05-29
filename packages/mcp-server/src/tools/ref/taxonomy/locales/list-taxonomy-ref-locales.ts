@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.taxonomy.locales',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/taxa-locales/ebird',
 };
 
 export const tool: Tool = {

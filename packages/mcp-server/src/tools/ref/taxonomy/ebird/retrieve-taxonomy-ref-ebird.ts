@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'ref.taxonomy.ebird',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/ref/taxonomy/ebird',
 };
 
 export const tool: Tool = {

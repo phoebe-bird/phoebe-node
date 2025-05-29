@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   resource: 'product.lists',
   operation: 'read',
   tags: [],
+  httpMethod: 'get',
+  httpPath: '/product/lists/{regionCode}',
 };
 
 export const tool: Tool = {
