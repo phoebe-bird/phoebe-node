@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.1 (2025-05-31)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* compat with more runtimes ([f296b57](https://github.com/phoebe-bird/phoebe-node/commit/f296b577bc619535df57a555278e1b46c183fbcb))
+
+
+### Chores
+
+* **deps:** bump eslint-plugin-prettier ([4dde732](https://github.com/phoebe-bird/phoebe-node/commit/4dde7320d3205f5df17578dad525c4c97830fb3b))
+* **internal:** update jest config ([1a507ef](https://github.com/phoebe-bird/phoebe-node/commit/1a507efb94051b712ed0dd9b19732b47cc8fd823))
+
 ## 0.4.0 (2025-05-29)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.4.0)
