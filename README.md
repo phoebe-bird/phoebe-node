@@ -26,13 +26,9 @@ const client = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const info = await client.ref.hotspot.info.retrieve('L99381');
+const info = await client.ref.hotspot.info.retrieve('L99381');
 
-  console.log(info.countryCode);
-}
-
-main();
+console.log(info.countryCode);
 ```
 
 ### Request & Response types
@@ -47,11 +43,7 @@ const client = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const info: Phoebe.Ref.Hotspot.InfoRetrieveResponse = await client.ref.hotspot.info.retrieve('L99381');
-}
-
-main();
+const info: Phoebe.Ref.Hotspot.InfoRetrieveResponse = await client.ref.hotspot.info.retrieve('L99381');
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -64,19 +56,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const info = await client.ref.hotspot.info.retrieve('L99381').catch(async (err) => {
-    if (err instanceof Phoebe.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const info = await client.ref.hotspot.info.retrieve('L99381').catch(async (err) => {
+  if (err instanceof Phoebe.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
