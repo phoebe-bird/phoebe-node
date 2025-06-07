@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.5.0 (2025-06-07)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **mcp:** implement support for binary responses ([da0758e](https://github.com/phoebe-bird/phoebe-node/commit/da0758e3b5aa0c6615ebbc4bc6153cd0eecb16d6))
+
+
+### Bug Fixes
+
+* compat with more runtimes ([f296b57](https://github.com/phoebe-bird/phoebe-node/commit/f296b577bc619535df57a555278e1b46c183fbcb))
+
+
+### Chores
+
+* adjust eslint.config.mjs ignore pattern ([0cbf0ce](https://github.com/phoebe-bird/phoebe-node/commit/0cbf0ce33530c5ef1076171e8b93680ccbfde42e))
+* avoid type error in certain environments ([868085e](https://github.com/phoebe-bird/phoebe-node/commit/868085e80797fd31b428ac572dfb72b198ec3eef))
+* **deps:** bump eslint-plugin-prettier ([4dde732](https://github.com/phoebe-bird/phoebe-node/commit/4dde7320d3205f5df17578dad525c4c97830fb3b))
+* **docs:** use top-level-await in example snippets ([ccef865](https://github.com/phoebe-bird/phoebe-node/commit/ccef8650abe6d0c27d32a73efdab9d4d87633d36))
+* **internal:** fix readablestream types in node 20 ([c9c55d7](https://github.com/phoebe-bird/phoebe-node/commit/c9c55d77c6ed026a0abbcf158aa29183b980d3ff))
+* **internal:** update jest config ([1a507ef](https://github.com/phoebe-bird/phoebe-node/commit/1a507efb94051b712ed0dd9b19732b47cc8fd823))
+
 ## 0.4.0 (2025-05-29)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.4.0)
