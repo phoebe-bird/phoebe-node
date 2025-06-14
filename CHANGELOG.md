@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.5.0 (2025-06-14)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **mcp:** implement support for binary responses ([da0758e](https://github.com/phoebe-bird/phoebe-node/commit/da0758e3b5aa0c6615ebbc4bc6153cd0eecb16d6))
+* **mcp:** set X-Stainless-MCP header ([173d519](https://github.com/phoebe-bird/phoebe-node/commit/173d5197c9d68461d3b1b8eaa52d555c50385ebe))
+
+
+### Bug Fixes
+
+* compat with more runtimes ([f296b57](https://github.com/phoebe-bird/phoebe-node/commit/f296b577bc619535df57a555278e1b46c183fbcb))
+* publish script — handle NPM errors correctly ([2d50cbd](https://github.com/phoebe-bird/phoebe-node/commit/2d50cbd59d5bb517e31c97ac2b1f1016e331792b))
+
+
+### Chores
+
+* adjust eslint.config.mjs ignore pattern ([0cbf0ce](https://github.com/phoebe-bird/phoebe-node/commit/0cbf0ce33530c5ef1076171e8b93680ccbfde42e))
+* avoid type error in certain environments ([868085e](https://github.com/phoebe-bird/phoebe-node/commit/868085e80797fd31b428ac572dfb72b198ec3eef))
+* **deps:** bump eslint-plugin-prettier ([4dde732](https://github.com/phoebe-bird/phoebe-node/commit/4dde7320d3205f5df17578dad525c4c97830fb3b))
+* **docs:** use top-level-await in example snippets ([ccef865](https://github.com/phoebe-bird/phoebe-node/commit/ccef8650abe6d0c27d32a73efdab9d4d87633d36))
+* **internal:** add pure annotations, make base APIResource abstract ([ba69ec9](https://github.com/phoebe-bird/phoebe-node/commit/ba69ec9681f201b42c70a009daf20fa2df106f3b))
+* **internal:** fix readablestream types in node 20 ([c9c55d7](https://github.com/phoebe-bird/phoebe-node/commit/c9c55d77c6ed026a0abbcf158aa29183b980d3ff))
+* **internal:** update jest config ([1a507ef](https://github.com/phoebe-bird/phoebe-node/commit/1a507efb94051b712ed0dd9b19732b47cc8fd823))
+* **mcp:** provides high-level initMcpServer function and exports known clients ([f5b7b3c](https://github.com/phoebe-bird/phoebe-node/commit/f5b7b3cc45b2f487908dc16fb81119516aa727be))
+
 ## 0.4.0 (2025-05-29)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.4.0)
