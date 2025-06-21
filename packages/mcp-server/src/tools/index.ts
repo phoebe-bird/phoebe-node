@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Phoebe from 'phoebe-ebird';
-import { Tool } from '@modelcontextprotocol/sdk/types.js';
+import { Metadata, Endpoint, HandlerFunction } from './types';
+
+export { Metadata, Endpoint, HandlerFunction };
 
 import list_observations_data_recent from './data/observations/recent/list-observations-data-recent';
 import list_recent_observations_data_notable from './data/observations/recent/notable/list-recent-observations-data-notable';
@@ -28,24 +29,6 @@ import list_taxonomy_ref_forms from './ref/taxonomy/forms/list-taxonomy-ref-form
 import list_taxonomy_ref_locales from './ref/taxonomy/locales/list-taxonomy-ref-locales';
 import list_taxonomy_ref_versions from './ref/taxonomy/versions/list-taxonomy-ref-versions';
 import list_taxonomy_ref_species_groups from './ref/taxonomy/species-groups/list-taxonomy-ref-species-groups';
-
-export type HandlerFunction = (client: Phoebe, args: Record<string, unknown> | undefined) => Promise<any>;
-
-export type Metadata = {
-  resource: string;
-  operation: 'read' | 'write';
-  tags: string[];
-
-  httpMethod?: string;
-  httpPath?: string;
-  operationId?: string;
-};
-
-export type Endpoint = {
-  metadata: Metadata;
-  tool: Tool;
-  handler: HandlerFunction;
-};
 
 export const endpoints: Endpoint[] = [];
 
@@ -103,9 +86,10 @@ export function query(filters: Filter[], endpoints: Endpoint[]): Endpoint[] {
   });
 
   // Check if any filters didn't match
-  if (unmatchedFilters.size > 0) {
+  const unmatched = Array.from(unmatchedFilters).filter((f) => f.type === 'tool' || f.type === 'resource');
+  if (unmatched.length > 0) {
     throw new Error(
-      `The following filters did not match any endpoints: ${[...unmatchedFilters]
+      `The following filters did not match any endpoints: ${unmatched
         .map((f) => `${f.type}=${f.value}`)
         .join(', ')}`,
     );

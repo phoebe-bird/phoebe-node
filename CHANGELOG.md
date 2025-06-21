@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.5.0 (2025-06-21)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([054588c](https://github.com/phoebe-bird/phoebe-node/commit/054588cb22c56fbe975c3e33dc91b929ac865a40))
+* **mcp:** implement support for binary responses ([da0758e](https://github.com/phoebe-bird/phoebe-node/commit/da0758e3b5aa0c6615ebbc4bc6153cd0eecb16d6))
+* **mcp:** set X-Stainless-MCP header ([173d519](https://github.com/phoebe-bird/phoebe-node/commit/173d5197c9d68461d3b1b8eaa52d555c50385ebe))
+
+
+### Bug Fixes
+
+* **client:** explicitly copy fetch in withOptions ([1ef36f2](https://github.com/phoebe-bird/phoebe-node/commit/1ef36f2cc4ecdcfd83a9a7920aa1c311ab6995ae))
+* compat with more runtimes ([f296b57](https://github.com/phoebe-bird/phoebe-node/commit/f296b577bc619535df57a555278e1b46c183fbcb))
+* publish script — handle NPM errors correctly ([2d50cbd](https://github.com/phoebe-bird/phoebe-node/commit/2d50cbd59d5bb517e31c97ac2b1f1016e331792b))
+
+
+### Chores
+
+* adjust eslint.config.mjs ignore pattern ([0cbf0ce](https://github.com/phoebe-bird/phoebe-node/commit/0cbf0ce33530c5ef1076171e8b93680ccbfde42e))
+* avoid type error in certain environments ([868085e](https://github.com/phoebe-bird/phoebe-node/commit/868085e80797fd31b428ac572dfb72b198ec3eef))
+* **ci:** enable for pull requests ([d93c780](https://github.com/phoebe-bird/phoebe-node/commit/d93c78099cbc03d90a043cb8f8d2ce302e470042))
+* **client:** refactor imports ([00adfeb](https://github.com/phoebe-bird/phoebe-node/commit/00adfeb22e584ac5e72dc2be8dbcfbab95417d89))
+* **deps:** bump eslint-plugin-prettier ([4dde732](https://github.com/phoebe-bird/phoebe-node/commit/4dde7320d3205f5df17578dad525c4c97830fb3b))
+* **docs:** use top-level-await in example snippets ([ccef865](https://github.com/phoebe-bird/phoebe-node/commit/ccef8650abe6d0c27d32a73efdab9d4d87633d36))
+* **internal:** add pure annotations, make base APIResource abstract ([ba69ec9](https://github.com/phoebe-bird/phoebe-node/commit/ba69ec9681f201b42c70a009daf20fa2df106f3b))
+* **internal:** fix readablestream types in node 20 ([c9c55d7](https://github.com/phoebe-bird/phoebe-node/commit/c9c55d77c6ed026a0abbcf158aa29183b980d3ff))
+* **internal:** update jest config ([1a507ef](https://github.com/phoebe-bird/phoebe-node/commit/1a507efb94051b712ed0dd9b19732b47cc8fd823))
+* **mcp:** provides high-level initMcpServer function and exports known clients ([f5b7b3c](https://github.com/phoebe-bird/phoebe-node/commit/f5b7b3cc45b2f487908dc16fb81119516aa727be))
+* **readme:** update badges ([f7aab69](https://github.com/phoebe-bird/phoebe-node/commit/f7aab69c037af0a25da931be3a0d15397e66139c))
+* **readme:** use better example snippet for undocumented params ([e96ce00](https://github.com/phoebe-bird/phoebe-node/commit/e96ce00b183bb74610e261cafc050825bd9a7ee5))
+
 ## 0.4.0 (2025-05-29)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.3.0...v0.4.0)

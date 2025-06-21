@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { asTextContentResult } from 'phoebe-ebird-mcp/tools/types';
+
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import type { Metadata } from '../../../';
 import Phoebe from 'phoebe-ebird';
@@ -34,9 +36,9 @@ export const tool: Tool = {
   },
 };
 
-export const handler = (client: Phoebe, args: Record<string, unknown> | undefined) => {
+export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
   const { parentRegionCode, ...body } = args as any;
-  return client.ref.region.list.list(parentRegionCode, body);
+  return asTextContentResult(await client.ref.region.list.list(parentRegionCode, body));
 };
 
 export default { metadata, tool, handler };
