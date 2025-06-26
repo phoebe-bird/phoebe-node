@@ -26,7 +26,7 @@ export { endpoints } from './tools';
 export const server = new McpServer(
   {
     name: 'phoebe_ebird_api',
-    version: '0.4.0',
+    version: '0.5.0',
   },
   {
     capabilities: {
