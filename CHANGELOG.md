@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.1 (2025-06-27)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.0...v0.5.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([00ed1a4](https://github.com/phoebe-bird/phoebe-node/commit/00ed1a4ed2cba6270ddcd94da02f15f3b67270de))
+* **client:** get fetchOptions type more reliably ([6a05910](https://github.com/phoebe-bird/phoebe-node/commit/6a059105f9f9015935b66f26eece6134ac236bd3))
+
 ## 0.5.0 (2025-06-21)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.4.0...v0.5.0)
