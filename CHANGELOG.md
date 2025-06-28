@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2 (2025-06-28)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([0c6c976](https://github.com/phoebe-bird/phoebe-node/commit/0c6c9766f3661ca440c098f975299d5a02d23ff4))
+
 ## 0.5.1 (2025-06-27)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.0...v0.5.1)
