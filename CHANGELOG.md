@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.2 (2025-07-03)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* add docs to RequestOptions type ([ea8173e](https://github.com/phoebe-bird/phoebe-node/commit/ea8173e516b7bb34ae4e505dca7f077bb044107a))
+* **ci:** only run for pushes and fork pull requests ([0c6c976](https://github.com/phoebe-bird/phoebe-node/commit/0c6c9766f3661ca440c098f975299d5a02d23ff4))
+* **client:** improve path param validation ([aee7ca9](https://github.com/phoebe-bird/phoebe-node/commit/aee7ca9177517ef88c922508fe8ce63e506014a9))
+
 ## 0.5.1 (2025-06-27)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.0...v0.5.1)
