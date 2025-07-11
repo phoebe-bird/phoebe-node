@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.6.0 (2025-07-11)
+
+Full Changelog: [v0.5.1...v0.6.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.1...v0.6.0)
+
+### Features
+
+* **mcp:** support filtering tool results by a jq expression ([5f4197f](https://github.com/phoebe-bird/phoebe-node/commit/5f4197f9e4931b51c7dee996ea8c43509990f127))
+
+
+### Bug Fixes
+
+* **mcp:** relax input type for asTextContextResult ([b604005](https://github.com/phoebe-bird/phoebe-node/commit/b6040055506ebd95a3d25c7652c093aa4399b51f))
+
+
+### Chores
+
+* add docs to RequestOptions type ([ea8173e](https://github.com/phoebe-bird/phoebe-node/commit/ea8173e516b7bb34ae4e505dca7f077bb044107a))
+* **ci:** only run for pushes and fork pull requests ([0c6c976](https://github.com/phoebe-bird/phoebe-node/commit/0c6c9766f3661ca440c098f975299d5a02d23ff4))
+* **client:** improve path param validation ([aee7ca9](https://github.com/phoebe-bird/phoebe-node/commit/aee7ca9177517ef88c922508fe8ce63e506014a9))
+* make some internal functions async ([da22c40](https://github.com/phoebe-bird/phoebe-node/commit/da22c407f03c236484ff0074344fda3ba2f0eaa8))
+
 ## 0.5.1 (2025-06-27)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.0...v0.5.1)
