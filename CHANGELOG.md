@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1 (2025-07-16)
+
+Full Changelog: [v0.6.0...v0.6.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.0...v0.6.1)
+
+### Bug Fixes
+
+* **mcp:** support jq filtering on cloudflare workers ([1f631fe](https://github.com/phoebe-bird/phoebe-node/commit/1f631fee6fc0ff43507d7dd1ea22e77d3fd87cbe))
+
 ## 0.6.0 (2025-07-11)
 
 Full Changelog: [v0.5.1...v0.6.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.5.1...v0.6.0)
