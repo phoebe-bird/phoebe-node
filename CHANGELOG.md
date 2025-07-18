@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.6.2 (2025-07-18)
+
+Full Changelog: [v0.6.1...v0.6.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.1...v0.6.2)
+
+### Bug Fixes
+
+* **mcp:** include required section for top-level properties and support naming transformations ([1ef3267](https://github.com/phoebe-bird/phoebe-node/commit/1ef3267f99eea1885f639dafdbaa1a3b7ec5a496))
+
+
+### Chores
+
+* **mcp:** formatting ([51b87b8](https://github.com/phoebe-bird/phoebe-node/commit/51b87b8bfc0142663bcb9b6075e00f3bec8de4fb))
+* **mcp:** rework imports in tools ([9d7301f](https://github.com/phoebe-bird/phoebe-node/commit/9d7301ff9f45a63e6c369835312a44827755ffdb))
+* **ts:** reorder package.json imports ([abab014](https://github.com/phoebe-bird/phoebe-node/commit/abab014645f6f2975a0cc0fe8ff5b6601011bcf0))
+
 ## 0.6.1 (2025-07-16)
 
 Full Changelog: [v0.6.0...v0.6.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.0...v0.6.1)
