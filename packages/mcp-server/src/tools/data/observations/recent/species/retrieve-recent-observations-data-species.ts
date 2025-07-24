@@ -63,6 +63,9 @@ export const tool: Tool = {
     },
     required: ['regionCode', 'speciesCode'],
   },
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
