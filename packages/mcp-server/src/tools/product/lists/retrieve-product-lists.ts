@@ -37,6 +37,9 @@ export const tool: Tool = {
     },
     required: ['regionCode'],
   },
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
