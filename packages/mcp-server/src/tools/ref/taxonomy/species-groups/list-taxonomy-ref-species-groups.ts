@@ -40,6 +40,9 @@ export const tool: Tool = {
     },
     required: ['speciesGrouping'],
   },
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {

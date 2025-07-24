@@ -33,6 +33,9 @@ export const tool: Tool = {
     },
     required: ['locId'],
   },
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
