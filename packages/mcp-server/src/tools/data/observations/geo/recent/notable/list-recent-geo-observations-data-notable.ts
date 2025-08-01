@@ -67,9 +67,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const body = args as any;
+  const { jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.data.observations.geo.recent.notable.list(body)),
+    await maybeFilter(jq_filter, await client.data.observations.geo.recent.notable.list(body)),
   );
 };
 

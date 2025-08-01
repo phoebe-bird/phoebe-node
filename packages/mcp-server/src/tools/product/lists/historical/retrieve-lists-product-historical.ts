@@ -57,9 +57,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const { d, ...body } = args as any;
+  const { d, jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.product.lists.historical.retrieve(d, body)),
+    await maybeFilter(jq_filter, await client.product.lists.historical.retrieve(d, body)),
   );
 };
 

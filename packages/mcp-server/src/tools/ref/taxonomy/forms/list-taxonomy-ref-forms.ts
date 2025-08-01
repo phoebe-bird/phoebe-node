@@ -39,8 +39,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const { speciesCode, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.ref.taxonomy.forms.list(speciesCode)));
+  const { speciesCode, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.ref.taxonomy.forms.list(speciesCode)));
 };
 
 export default { metadata, tool, handler };
