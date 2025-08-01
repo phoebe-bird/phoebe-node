@@ -48,8 +48,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const { regionCode, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.ref.hotspot.list(regionCode, body)));
+  const { regionCode, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.ref.hotspot.list(regionCode, body)));
 };
 
 export default { metadata, tool, handler };

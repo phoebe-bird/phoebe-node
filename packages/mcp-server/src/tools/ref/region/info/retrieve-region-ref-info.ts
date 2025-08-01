@@ -48,9 +48,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const { regionCode, ...body } = args as any;
+  const { regionCode, jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.ref.region.info.retrieve(regionCode, body)),
+    await maybeFilter(jq_filter, await client.ref.region.info.retrieve(regionCode, body)),
   );
 };
 
