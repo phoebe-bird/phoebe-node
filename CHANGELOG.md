@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4 (2025-08-01)
+
+Full Changelog: [v0.6.3...v0.6.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.3...v0.6.4)
+
+### Bug Fixes
+
+* **mcp:** avoid sending `jq_filter` to base API ([dd2e520](https://github.com/phoebe-bird/phoebe-node/commit/dd2e520be49f19458132f317cc489340d46c6dbb))
+
 ## 0.6.3 (2025-08-01)
 
 Full Changelog: [v0.6.2...v0.6.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.2...v0.6.3)
