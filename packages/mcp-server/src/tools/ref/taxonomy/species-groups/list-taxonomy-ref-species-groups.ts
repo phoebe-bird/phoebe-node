@@ -46,9 +46,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
-  const { speciesGrouping, ...body } = args as any;
+  const { speciesGrouping, jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.ref.taxonomy.speciesGroups.list(speciesGrouping, body)),
+    await maybeFilter(jq_filter, await client.ref.taxonomy.speciesGroups.list(speciesGrouping, body)),
   );
 };
 
