@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.3 (2025-08-01)
+
+Full Changelog: [v0.6.2...v0.6.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.2...v0.6.3)
+
+### Bug Fixes
+
+* **mcp:** reverse validJson capability option and limit scope ([e3bfb29](https://github.com/phoebe-bird/phoebe-node/commit/e3bfb296ca70660358dc7e5548fd8869c863053d))
+
+
+### Chores
+
+* **internal:** codegen related update ([9811105](https://github.com/phoebe-bird/phoebe-node/commit/9811105d692173c2ca42313b294e1b65d595e5a9))
+* **internal:** remove redundant imports config ([5825f44](https://github.com/phoebe-bird/phoebe-node/commit/5825f4463f9789047761b52e9b35c519de31e9c5))
+
 ## 0.6.2 (2025-07-18)
 
 Full Changelog: [v0.6.1...v0.6.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.1...v0.6.2)
