@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2025-08-02)
+
+Full Changelog: [v0.6.4...v0.7.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.4...v0.7.0)
+
+### Features
+
+* **mcp:** add logging when environment variable is set ([543b4ac](https://github.com/phoebe-bird/phoebe-node/commit/543b4ac7906d24b7429a78aa4c44b0302e5f3c34))
+
 ## 0.6.4 (2025-08-01)
 
 Full Changelog: [v0.6.3...v0.6.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.3...v0.6.4)
