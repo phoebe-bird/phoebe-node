@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.7.0 (2025-08-09)
+
+Full Changelog: [v0.6.4...v0.7.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.4...v0.7.0)
+
+### Features
+
+* **mcp:** add logging when environment variable is set ([543b4ac](https://github.com/phoebe-bird/phoebe-node/commit/543b4ac7906d24b7429a78aa4c44b0302e5f3c34))
+* **mcp:** add unix socket option for remote MCP ([aa0f15b](https://github.com/phoebe-bird/phoebe-node/commit/aa0f15bf18ca48f386526fba4d85b8ef79cc6bc6))
+* **mcp:** remote server with passthru auth ([efb7944](https://github.com/phoebe-bird/phoebe-node/commit/efb794468977fde20b93e5d59b899099b4022891))
+
+
+### Chores
+
+* **internal:** move publish config ([70d31e0](https://github.com/phoebe-bird/phoebe-node/commit/70d31e0388c603da3fb865e240a9313f1f66a589))
+* **internal:** update comment in script ([6140757](https://github.com/phoebe-bird/phoebe-node/commit/6140757eb7be2c051df93fb86bbed49db30c98d0))
+* **mcp:** refactor streamable http transport ([25fa4da](https://github.com/phoebe-bird/phoebe-node/commit/25fa4da71e84ce3f803764fed4e2b3bd60520b82))
+* update @stainless-api/prism-cli to v5.15.0 ([25b772e](https://github.com/phoebe-bird/phoebe-node/commit/25b772e46b613532394e3a045fce7582ae4a52f4))
+
 ## 0.6.4 (2025-08-01)
 
 Full Changelog: [v0.6.3...v0.6.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.3...v0.6.4)

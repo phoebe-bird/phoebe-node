@@ -22,14 +22,17 @@ export { Filter } from './tools';
 export { ClientOptions } from 'phoebe-ebird';
 export { endpoints } from './tools';
 
+export const newMcpServer = () =>
+  new McpServer(
+    {
+      name: 'phoebe_ebird_api',
+      version: '0.7.0',
+    },
+    { capabilities: { tools: {}, logging: {} } },
+  );
+
 // Create server instance
-export const server = new McpServer(
-  {
-    name: 'phoebe_ebird_api',
-    version: '0.6.4',
-  },
-  { capabilities: { tools: {} } },
-);
+export const server = newMcpServer();
 
 /**
  * Initializes the provided MCP Server with the given tools and handlers.
@@ -61,7 +64,23 @@ export function init(params: {
 
   const endpointMap = Object.fromEntries(providedEndpoints.map((endpoint) => [endpoint.tool.name, endpoint]));
 
-  const client = params.client || new Phoebe({ defaultHeaders: { 'X-Stainless-MCP': 'true' } });
+  const logAtLevel =
+    (level: 'debug' | 'info' | 'warning' | 'error') =>
+    (message: string, ...rest: unknown[]) => {
+      void server.sendLoggingMessage({
+        level,
+        data: { message, rest },
+      });
+    };
+  const logger = {
+    debug: logAtLevel('debug'),
+    info: logAtLevel('info'),
+    warn: logAtLevel('warning'),
+    error: logAtLevel('error'),
+  };
+
+  const client =
+    params.client || new Phoebe({ defaultHeaders: { 'X-Stainless-MCP': 'true' }, logger: logger });
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     return {
@@ -83,7 +102,7 @@ export function init(params: {
 /**
  * Selects the tools to include in the MCP Server based on the provided options.
  */
-export function selectTools(endpoints: Endpoint[], options: McpOptions) {
+export function selectTools(endpoints: Endpoint[], options: McpOptions): Endpoint[] {
   const filteredEndpoints = query(options.filters, endpoints);
 
   let includedTools = filteredEndpoints;
