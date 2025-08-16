@@ -705,9 +705,11 @@ export class Phoebe {
   product: API.Product = new API.Product(this);
   ref: API.Ref = new API.Ref(this);
 }
+
 Phoebe.Data = Data;
 Phoebe.Product = Product;
 Phoebe.Ref = Ref;
+
 export declare namespace Phoebe {
   export type RequestOptions = Opts.RequestOptions;
 
