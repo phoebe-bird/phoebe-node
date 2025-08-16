@@ -135,15 +135,15 @@ Authorization can be provided via the following headers:
 | ----------------- | ------------------------ | --------------- |
 | `X-eBirdApiToken` | `apiKey` | APIKeyHeader |
 
-A configuration JSON for this server might look like this:
+A configuration JSON for this server might look like this, assuming the server is hosted at `http://localhost:3000`:
 
 ```json
 {
   "mcpServers": {
     "phoebe_ebird_api": {
-      "url": "http://localhost:3000", # or wherever the server is hosted
+      "url": "http://localhost:3000",
       "headers": {
-        'X-eBirdApiToken': 'My API Key'
+        "X-eBirdApiToken": "My API Key"
       }
     }
   }
