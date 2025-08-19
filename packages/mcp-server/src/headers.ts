@@ -6,7 +6,7 @@ import { IncomingMessage } from 'node:http';
 
 export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
   const apiKey =
-    req.headers['x-ebirdapitoken'] instanceof Array ?
+    Array.isArray(req.headers['x-ebirdapitoken']) ?
       req.headers['x-ebirdapitoken'][0]
     : req.headers['x-ebirdapitoken'];
   return { apiKey };
