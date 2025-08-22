@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from 'phoebe-ebird/client';
+import { ClientOptions } from 'phoebe-ebird';
 
 export type WorkerInput = {
   opts: ClientOptions;
