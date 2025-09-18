@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.7.0 (2025-09-18)
+
+Full Changelog: [v0.6.4...v0.7.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.4...v0.7.0)
+
+### Features
+
+* **mcp:** add code execution tool ([c09c1cd](https://github.com/phoebe-bird/phoebe-node/commit/c09c1cd00d488bd742e9ecc68df228ca11267c49))
+* **mcp:** add logging when environment variable is set ([543b4ac](https://github.com/phoebe-bird/phoebe-node/commit/543b4ac7906d24b7429a78aa4c44b0302e5f3c34))
+* **mcp:** add option to infer mcp client ([abc4c0d](https://github.com/phoebe-bird/phoebe-node/commit/abc4c0ddb73dc2adec6e93e9b366732b602ae3bb))
+* **mcp:** add unix socket option for remote MCP ([aa0f15b](https://github.com/phoebe-bird/phoebe-node/commit/aa0f15bf18ca48f386526fba4d85b8ef79cc6bc6))
+* **mcp:** allow setting logging level ([796c258](https://github.com/phoebe-bird/phoebe-node/commit/796c2581c957c8a11693b43d87d309eb13b45401))
+* **mcp:** expose client options in `streamableHTTPApp` ([98a2c14](https://github.com/phoebe-bird/phoebe-node/commit/98a2c14f6496b37e6c95a1702df61a889a0fddba))
+* **mcp:** parse query string as mcp client options in mcp server ([546e3c5](https://github.com/phoebe-bird/phoebe-node/commit/546e3c5c84b4cbf6fb577d6dba76f67012645f48))
+* **mcp:** remote server with passthru auth ([efb7944](https://github.com/phoebe-bird/phoebe-node/commit/efb794468977fde20b93e5d59b899099b4022891))
+
+
+### Bug Fixes
+
+* **ci:** set permissions for DXT publish action ([65abbaf](https://github.com/phoebe-bird/phoebe-node/commit/65abbaf706dda26dcc3d8cf1b414d17faf6ab22d))
+* coerce nullable values to undefined ([f41d448](https://github.com/phoebe-bird/phoebe-node/commit/f41d448b0378f520086f0a53029d064e28252941))
+* **mcp:** fix query options parsing ([1bb832d](https://github.com/phoebe-bird/phoebe-node/commit/1bb832dd1bdb94feb67188ca09a8c4fd9d4ec177))
+* **mcp:** fix uploading dxt release assets ([6d0812a](https://github.com/phoebe-bird/phoebe-node/commit/6d0812a24f3013f5edee77b905663e8aa1ed7fce))
+
+
+### Chores
+
+* add package to package.json ([9b4a6e3](https://github.com/phoebe-bird/phoebe-node/commit/9b4a6e3b681d75779819f0502acd8d1c90c3dca0))
+* ci build action ([e25cd0f](https://github.com/phoebe-bird/phoebe-node/commit/e25cd0ff84af80d8a8a292dc646bea3f114a762b))
+* **client:** qualify global Blob ([8a05f9c](https://github.com/phoebe-bird/phoebe-node/commit/8a05f9cbd72d5d74fe10414f3b65f6f494852a6f))
+* **deps:** update dependency @types/node to v20.17.58 ([97e9fd4](https://github.com/phoebe-bird/phoebe-node/commit/97e9fd4dc9d55f49a5536a202ff3bf63921fb8b9))
+* **internal:** codegen related update ([cbf7e0e](https://github.com/phoebe-bird/phoebe-node/commit/cbf7e0ee1708db2a3108085b6d6e15223668845d))
+* **internal:** codegen related update ([f3a8eef](https://github.com/phoebe-bird/phoebe-node/commit/f3a8eef5e405bb32c87e32a55c6f0ab2a2f10a8e))
+* **internal:** codegen related update ([d245e38](https://github.com/phoebe-bird/phoebe-node/commit/d245e38a46a7dc2745ab6e92da03a1311b64adfa))
+* **internal:** codegen related update ([1d2aafb](https://github.com/phoebe-bird/phoebe-node/commit/1d2aafb11556dd7055a579e864c7afbc705c81b3))
+* **internal:** codegen related update ([5aa1825](https://github.com/phoebe-bird/phoebe-node/commit/5aa18251826016599bfe445e462be4f6cffa6d32))
+* **internal:** formatting change ([e737791](https://github.com/phoebe-bird/phoebe-node/commit/e737791777ac80d2c2a14080cf58802f01629fb8))
+* **internal:** make mcp-server publishing public by defaut ([5506ec9](https://github.com/phoebe-bird/phoebe-node/commit/5506ec9daa3a872f5c279709e7be1ee16c377bd6))
+* **internal:** move publish config ([70d31e0](https://github.com/phoebe-bird/phoebe-node/commit/70d31e0388c603da3fb865e240a9313f1f66a589))
+* **internal:** refactor array check ([9d44ffd](https://github.com/phoebe-bird/phoebe-node/commit/9d44ffdd2381a67e0630182a919013fc0e7b736a))
+* **internal:** update comment in script ([6140757](https://github.com/phoebe-bird/phoebe-node/commit/6140757eb7be2c051df93fb86bbed49db30c98d0))
+* **internal:** update global Error reference ([d435912](https://github.com/phoebe-bird/phoebe-node/commit/d435912d7d5851bd66adbd7693c5f5709909a9f6))
+* **mcp:** add cors to oauth metadata route ([76a062b](https://github.com/phoebe-bird/phoebe-node/commit/76a062b02b0a8b319fa7df07ef645ab15594bcd7))
+* **mcp:** document remote server in README.md ([622c1d6](https://github.com/phoebe-bird/phoebe-node/commit/622c1d613aaf43c998349b523a19d34b84928d3a))
+* **mcp:** minor cleanup of types and package.json ([00f74c0](https://github.com/phoebe-bird/phoebe-node/commit/00f74c07029acd459b3c62a447c2271406f745fc))
+* **mcp:** refactor streamable http transport ([25fa4da](https://github.com/phoebe-bird/phoebe-node/commit/25fa4da71e84ce3f803764fed4e2b3bd60520b82))
+* **mcp:** rename dxt to mcpb ([3764152](https://github.com/phoebe-bird/phoebe-node/commit/3764152bd69d6b9ea15848442574bbcf8411413e))
+* **mcp:** update package.json ([10b1be0](https://github.com/phoebe-bird/phoebe-node/commit/10b1be0c5a5efdc6e56f05a906d3dc5a81dc0e12))
+* **mcp:** update README ([1d8915a](https://github.com/phoebe-bird/phoebe-node/commit/1d8915a10ef9b1c8e82191292c78e05a98322e23))
+* **mcp:** update types ([d1aa7e3](https://github.com/phoebe-bird/phoebe-node/commit/d1aa7e3658e619e613d3a571c8bd2d11fc8a38cc))
+* **mcp:** upload dxt as release asset ([f6bb8d9](https://github.com/phoebe-bird/phoebe-node/commit/f6bb8d9fa58ec15da18c15a2a70b90fe16dee76a))
+* update @stainless-api/prism-cli to v5.15.0 ([25b772e](https://github.com/phoebe-bird/phoebe-node/commit/25b772e46b613532394e3a045fce7582ae4a52f4))
+* update CI script ([b0c1bfb](https://github.com/phoebe-bird/phoebe-node/commit/b0c1bfbc84de8080fabc2e2ff50950b425153c7c))
+
 ## 0.6.4 (2025-08-01)
 
 Full Changelog: [v0.6.3...v0.6.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.3...v0.6.4)
