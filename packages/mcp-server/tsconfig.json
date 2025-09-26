@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "phoebe-ebird-mcp/*": ["src/*"],
-      "phoebe-ebird-mcp": ["src/index.ts"]
+      "phoebe-ebird-mcp/*": ["./src/*"],
+      "phoebe-ebird-mcp": ["./src/index.ts"]
     },
     "noEmit": true,
 
