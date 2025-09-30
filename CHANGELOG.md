@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.8.0 (2025-09-30)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **mcp:** add docs search tool ([cecab63](https://github.com/phoebe-bird/phoebe-node/commit/cecab6395a52e535fd3ca67993d770182e35c1fa))
+* **mcp:** add option for including docs tools ([24a2479](https://github.com/phoebe-bird/phoebe-node/commit/24a2479cfcb5ae807a2de643c738b7854f6787f9))
+* **mcp:** enable experimental docs search tool ([9cde2c6](https://github.com/phoebe-bird/phoebe-node/commit/9cde2c6e71399a1bbdbe19cda61fe01ecce96222))
+
+
+### Bug Fixes
+
+* **mcp:** fix cli argument parsing logic ([671c752](https://github.com/phoebe-bird/phoebe-node/commit/671c7527150503688fb7e16e89f3a38a536fc55e))
+* **mcp:** resolve a linting issue in server code ([8f12cd4](https://github.com/phoebe-bird/phoebe-node/commit/8f12cd48ae389788b5b4196809b0d4cefebdb37e))
+
+
+### Performance Improvements
+
+* faster formatting ([edc6896](https://github.com/phoebe-bird/phoebe-node/commit/edc6896258605ab7cde718d527e12cf4a83e0865))
+
+
+### Chores
+
+* **codegen:** internal codegen update ([408b2ee](https://github.com/phoebe-bird/phoebe-node/commit/408b2eeab3e5cbec2750ac48af86e7d9c1f5c9fd))
+* do not install brew dependencies in ./scripts/bootstrap by default ([8ed624e](https://github.com/phoebe-bird/phoebe-node/commit/8ed624e2ca7d386ba92d6a639d9dcab26b7e98db))
+* **internal:** codegen related update ([15b3ce6](https://github.com/phoebe-bird/phoebe-node/commit/15b3ce6e95dedaebc7327e6d1b10901702587eff))
+* **internal:** fix incremental formatting in some cases ([49df5fc](https://github.com/phoebe-bird/phoebe-node/commit/49df5fcfc8cf2b82dc3e6218c5cbb2718d75a49a))
+* **internal:** gitignore .mcpb files ([9b8b289](https://github.com/phoebe-bird/phoebe-node/commit/9b8b2896dca695fbb5edcd25a7b6e4d58b214164))
+* **internal:** ignore .eslintcache ([cde8e22](https://github.com/phoebe-bird/phoebe-node/commit/cde8e22629d944a0f1f8404d0eb5d4f7e4e5558c))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([12e0491](https://github.com/phoebe-bird/phoebe-node/commit/12e049180a7a4e226fdc43f7d99f573d786a060f))
+* **mcp:** allow pointing `docs_search` tool at other URLs ([b50c204](https://github.com/phoebe-bird/phoebe-node/commit/b50c2040b4aa199d8dafc7666e0b1fda39581e09))
+* update lockfile ([ea38250](https://github.com/phoebe-bird/phoebe-node/commit/ea3825068cf6e2e2a613ab6930bcd638082f3e4c))
+
 ## 0.7.0 (2025-09-18)
 
 Full Changelog: [v0.6.4...v0.7.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.6.4...v0.7.0)
