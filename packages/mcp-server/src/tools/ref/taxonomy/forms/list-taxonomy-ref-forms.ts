@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'list_taxonomy_ref_forms',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nFor a species, get the list of subspecies recognised in the taxonomy. The results include the species that was passed in.\n\n# Response Schema\n```json\n{\n  type: 'array',\n  items: {\n    type: 'string'\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nFor a species, get the list of subspecies recognised in the taxonomy. The results include the species that was passed in.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/form_list_response',\n  $defs: {\n    form_list_response: {\n      type: 'array',\n      items: {\n        type: 'string'\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {

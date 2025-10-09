@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'list_product_species_list',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nGet a list of species codes ever seen in a region, in taxonomic order (species taxa only)\n#### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.\n\n# Response Schema\n```json\n{\n  type: 'array',\n  items: {\n    type: 'string'\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nGet a list of species codes ever seen in a region, in taxonomic order (species taxa only)\n#### Notes The results are usually updated every 10 seconds for locations, every day for larger regions.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/species_list_list_response',\n  $defs: {\n    species_list_list_response: {\n      type: 'array',\n      items: {\n        type: 'string'\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
