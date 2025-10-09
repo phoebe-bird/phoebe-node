@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'list_taxonomy_ref_versions',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nReturns a list of all versions of the taxonomy, with a flag indicating which is the latest.\n\n# Response Schema\n```json\n{\n  type: 'array',\n  items: {\n    type: 'object',\n    properties: {\n      authorityVer: {\n        type: 'number'\n      },\n      latest: {\n        type: 'boolean'\n      }\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nReturns a list of all versions of the taxonomy, with a flag indicating which is the latest.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/version_list_response',\n  $defs: {\n    version_list_response: {\n      type: 'array',\n      items: {\n        type: 'object',\n        properties: {\n          authorityVer: {\n            type: 'number'\n          },\n          latest: {\n            type: 'boolean'\n          }\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
