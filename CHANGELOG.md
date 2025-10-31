@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.8.1 (2025-10-31)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.8.0...v0.8.1)
+
+### Bug Fixes
+
+* **mcpb:** pin @anthropic-ai/mcpb version ([90d3553](https://github.com/phoebe-bird/phoebe-node/commit/90d3553fae3d074e0f66af9895c429a3982c979b))
+
+
+### Chores
+
+* extract some types in mcp docs ([068368e](https://github.com/phoebe-bird/phoebe-node/commit/068368eb50bb528f55a9542877842280704cb459))
+* **internal:** remove .eslintcache ([cde911a](https://github.com/phoebe-bird/phoebe-node/commit/cde911adcced2346c49721965c5a0ff0255accd4))
+* **internal:** use npm pack for build uploads ([d30ba00](https://github.com/phoebe-bird/phoebe-node/commit/d30ba009585b8fadbefb32c6045f3b227c67bdf9))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([07fcfc8](https://github.com/phoebe-bird/phoebe-node/commit/07fcfc89586db198a1e57dde1e17310a767b49fc))
+
 ## 0.8.0 (2025-09-30)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.7.0...v0.8.0)
