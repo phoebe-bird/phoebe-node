@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { maybeFilter } from 'phoebe-ebird-mcp/filtering';
-import { Metadata, asTextContentResult } from 'phoebe-ebird-mcp/tools/types';
+import { isJqError, maybeFilter } from 'phoebe-ebird-mcp/filtering';
+import { Metadata, asErrorResult, asTextContentResult } from 'phoebe-ebird-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Phoebe from 'phoebe-ebird';
@@ -56,7 +56,14 @@ export const tool: Tool = {
 
 export const handler = async (client: Phoebe, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(jq_filter, await client.ref.hotspot.geo.retrieve(body)));
+  try {
+    return asTextContentResult(await maybeFilter(jq_filter, await client.ref.hotspot.geo.retrieve(body)));
+  } catch (error) {
+    if (isJqError(error)) {
+      return asErrorResult(error.message);
+    }
+    throw error;
+  }
 };
 
 export default { metadata, tool, handler };
