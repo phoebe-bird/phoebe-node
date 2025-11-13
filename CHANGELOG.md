@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 (2025-11-13)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.9.0...v0.9.1)
+
+### Chores
+
+* **mcp:** upgrade jq-web ([54053c6](https://github.com/phoebe-bird/phoebe-node/commit/54053c6a880b45d94250851a1b38b6ec6bdfac4c))
+
 ## 0.9.0 (2025-11-13)
 
 Full Changelog: [v0.8.1...v0.9.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.8.1...v0.9.0)
