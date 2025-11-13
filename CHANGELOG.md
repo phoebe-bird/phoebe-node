@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.9.0 (2025-11-13)
+
+Full Changelog: [v0.8.1...v0.9.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.8.1...v0.9.0)
+
+### Features
+
+* **mcp:** enable optional code execution tool on http mcp servers ([eed9f6d](https://github.com/phoebe-bird/phoebe-node/commit/eed9f6dc928afbfb6c92f72f385e70d966dd18db))
+
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on jq failure ([d5d06a8](https://github.com/phoebe-bird/phoebe-node/commit/d5d06a859a3bd6aa5dfc07caf6a05112f2513384))
+
+
+### Chores
+
+* **internal:** codegen related update ([05b4f30](https://github.com/phoebe-bird/phoebe-node/commit/05b4f30e4c2f71f380f7e284e6f3a47841f1fe2a))
+* **internal:** codegen related update ([f35c534](https://github.com/phoebe-bird/phoebe-node/commit/f35c53482af16f2141a1e2ab32b3bee38d03bb62))
+* **internal:** grammar fix (it's -&gt; its) ([d884273](https://github.com/phoebe-bird/phoebe-node/commit/d884273d497d214aaac7556dc4eb34f3e166e847))
+* mcp code tool explicit error message when missing a run function ([e1c5fb2](https://github.com/phoebe-bird/phoebe-node/commit/e1c5fb214865e9f130ad2cc0533435e76929c53b))
+* **mcp:** add friendlier MCP code tool errors on incorrect method invocations ([4be10f7](https://github.com/phoebe-bird/phoebe-node/commit/4be10f7b193625f60c0f47d4510fa1e211937148))
+* **mcp:** add line numbers to code tool errors ([b9a1fb0](https://github.com/phoebe-bird/phoebe-node/commit/b9a1fb0c4a747786ff3cecd9addabb360d5e91ff))
+* **mcp:** clarify http auth error ([7ad5ec1](https://github.com/phoebe-bird/phoebe-node/commit/7ad5ec1c2f97d8ea2d1638c6e32c20a3ab1ff8b5))
+* use structured error when code execution tool errors ([1244f47](https://github.com/phoebe-bird/phoebe-node/commit/1244f47a480892dfe8e8557ed87b078161a68b25))
+
+
+### Documentation
+
+* **mcp:** add a README button for one-click add to Cursor ([b435240](https://github.com/phoebe-bird/phoebe-node/commit/b43524097ef076ec0d151b40c0ace60f98298d8a))
+* **mcp:** add a README link to add server to VS Code or Claude Code ([3f83fe8](https://github.com/phoebe-bird/phoebe-node/commit/3f83fe8c7f12e91c01db4fa4a982f6f6ca054612))
+
 ## 0.8.1 (2025-10-31)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.8.0...v0.8.1)
