@@ -49,7 +49,7 @@ export const handler = async (client: Phoebe, args: Record<string, unknown> | un
       await maybeFilter(jq_filter, await client.product.lists.retrieve(regionCode, body)),
     );
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Phoebe.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
