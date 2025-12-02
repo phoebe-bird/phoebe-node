@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.10.0 (2025-12-02)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **mcp:** add detail field to docs search tool ([a810e02](https://github.com/phoebe-bird/phoebe-node/commit/a810e02612622b85fdc8d183912d98534805315a))
+
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on api error ([721cf54](https://github.com/phoebe-bird/phoebe-node/commit/721cf54e621bf7a546024cd72c2bf1b8201475d7))
+
+
+### Chores
+
+* **client:** fix logger property type ([a7c0cc3](https://github.com/phoebe-bird/phoebe-node/commit/a7c0cc36167c58bd0ed90005a1122d64390c1530))
+* **mcp:** upgrade jq-web ([54053c6](https://github.com/phoebe-bird/phoebe-node/commit/54053c6a880b45d94250851a1b38b6ec6bdfac4c))
+
 ## 0.9.0 (2025-11-13)
 
 Full Changelog: [v0.8.1...v0.9.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.8.1...v0.9.0)
