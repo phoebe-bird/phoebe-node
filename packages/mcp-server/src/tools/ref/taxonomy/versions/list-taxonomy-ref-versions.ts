@@ -40,7 +40,7 @@ export const handler = async (client: Phoebe, args: Record<string, unknown> | un
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.ref.taxonomy.versions.list()));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Phoebe.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
