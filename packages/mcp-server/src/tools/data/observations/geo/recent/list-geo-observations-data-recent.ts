@@ -82,7 +82,7 @@ export const handler = async (client: Phoebe, args: Record<string, unknown> | un
       await maybeFilter(jq_filter, await client.data.observations.geo.recent.list(body)),
     );
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Phoebe.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
