@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.11.0 (2025-12-03)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **mcp:** return logs on code tool errors ([46ad699](https://github.com/phoebe-bird/phoebe-node/commit/46ad699ffce940709f9a3e88294ecb913c99b82f))
+
+
+### Chores
+
+* **internal:** upgrade eslint ([4906cf6](https://github.com/phoebe-bird/phoebe-node/commit/4906cf694a37e06d515ddac31d813770a576cdcb))
+
 ## 0.10.0 (2025-12-02)
 
 Full Changelog: [v0.9.0...v0.10.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.9.0...v0.10.0)
