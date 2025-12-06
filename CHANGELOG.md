@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.2 (2025-12-06)
+
+Full Changelog: [v0.12.1...v0.12.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.1...v0.12.2)
+
+### Chores
+
+* **internal:** codegen related update ([0e47b88](https://github.com/phoebe-bird/phoebe-node/commit/0e47b88a3af0deced0557cd5a104889661bcebe6))
+
 ## 0.12.1 (2025-12-06)
 
 Full Changelog: [v0.12.0...v0.12.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.0...v0.12.1)
