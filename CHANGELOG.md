@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.12.0 (2025-12-06)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **mcp:** add typescript check to code execution tool ([87bb93c](https://github.com/phoebe-bird/phoebe-node/commit/87bb93c30d485bdab4bfdb20a302a9418cb1d91f))
+* **mcp:** handle code mode calls in the Stainless API ([1e5ac8c](https://github.com/phoebe-bird/phoebe-node/commit/1e5ac8c0947ebd7c0b84c7a76ec994cc09ed1e3a))
+
+
+### Bug Fixes
+
+* **mcp:** return correct lines on typescript errors ([c8103c0](https://github.com/phoebe-bird/phoebe-node/commit/c8103c0d474b8fab845fd8472b9f7f17e6302185))
+
+
+### Chores
+
+* use latest @modelcontextprotocol/sdk ([ba731dd](https://github.com/phoebe-bird/phoebe-node/commit/ba731dd755bf9687b76b82a5db3b5210fb487732))
+
 ## 0.11.0 (2025-12-03)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.10.0...v0.11.0)
