@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.12.1 (2025-12-06)
+
+Full Changelog: [v0.12.0...v0.12.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.0...v0.12.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([57598a7](https://github.com/phoebe-bird/phoebe-node/commit/57598a7a606391734cab3dcc6f5561e41fcad2f8))
+
+
+### Chores
+
+* **internal:** codegen related update ([c07e0a1](https://github.com/phoebe-bird/phoebe-node/commit/c07e0a1f18ee8664cb527e91022bc7dba640d6f1))
+
 ## 0.12.0 (2025-12-06)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.11.0...v0.12.0)
