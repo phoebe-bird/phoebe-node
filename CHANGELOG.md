@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.12.2 (2025-12-11)
+
+Full Changelog: [v0.12.1...v0.12.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.1...v0.12.2)
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([cbd66fe](https://github.com/phoebe-bird/phoebe-node/commit/cbd66fe117761a4ce26597f811141174088272d3))
+
+
+### Chores
+
+* **internal:** codegen related update ([0e47b88](https://github.com/phoebe-bird/phoebe-node/commit/0e47b88a3af0deced0557cd5a104889661bcebe6))
+* **mcp:** update lockfile ([02797c0](https://github.com/phoebe-bird/phoebe-node/commit/02797c0599011288a46fdddcbc3f0d498a3a848c))
+
 ## 0.12.1 (2025-12-06)
 
 Full Changelog: [v0.12.0...v0.12.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.0...v0.12.1)
