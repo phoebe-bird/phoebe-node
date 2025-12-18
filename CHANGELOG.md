@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.3 (2025-12-18)
+
+Full Changelog: [v0.12.2...v0.12.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.2...v0.12.3)
+
+### Bug Fixes
+
+* **mcp:** pass base url to code tool ([6d483c7](https://github.com/phoebe-bird/phoebe-node/commit/6d483c727cf92dfacdb846480e6aba91f9f79307))
+
 ## 0.12.2 (2025-12-11)
 
 Full Changelog: [v0.12.1...v0.12.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.1...v0.12.2)
