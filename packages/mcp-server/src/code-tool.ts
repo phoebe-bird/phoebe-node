@@ -35,7 +35,10 @@ export async function codeTool() {
       headers: {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
-        client_envs: JSON.stringify({ EBIRD_API_KEY: readEnv('EBIRD_API_KEY') }),
+        client_envs: JSON.stringify({
+          EBIRD_API_KEY: readEnv('EBIRD_API_KEY'),
+          PHOEBE_BASE_URL: readEnv('PHOEBE_BASE_URL'),
+        }),
       },
       body: JSON.stringify({
         project_name: 'phoebe',
