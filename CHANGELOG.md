@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.0 (2025-12-19)
+
+Full Changelog: [v0.12.3...v0.13.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.3...v0.13.0)
+
+### ⚠ BREAKING CHANGES
+
+* **mcp:** remove deprecated tool schemes
+* **mcp:** **Migration:** To migrate, simply modify the command used to invoke the MCP server. Currently, the only supported tool scheme is code mode. Now, starting the server with just `node /path/to/mcp/server` or `npx package-name` will invoke code tools: changing your command to one of these is likely all you will need to do.
+
+### Chores
+
+* **mcp:** remove deprecated tool schemes ([d246e50](https://github.com/phoebe-bird/phoebe-node/commit/d246e50e7ab1626a11f1bcb1dc08a7151b7d6ea8))
+
 ## 0.12.3 (2025-12-18)
 
 Full Changelog: [v0.12.2...v0.12.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.2...v0.12.3)
