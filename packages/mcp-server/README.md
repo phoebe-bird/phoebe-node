@@ -54,7 +54,7 @@ If you use Claude Code, you can install the MCP server by running the command be
 environment variables in Claude Code's `.claude.json`, which can be found in your home directory.
 
 ```
-claude mcp add --transport stdio phoebe_ebird_api --env EBIRD_API_KEY="Your EBIRD_API_KEY here." -- npx -y phoebe-ebird-mcp
+claude mcp add phoebe_ebird_mcp_api --env EBIRD_API_KEY="Your EBIRD_API_KEY here." -- npx -y phoebe-ebird-mcp
 ```
 
 ## Code Mode
