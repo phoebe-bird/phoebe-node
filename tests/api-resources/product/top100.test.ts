@@ -9,7 +9,11 @@ const client = new Phoebe({
 
 describe('resource top100', () => {
   test('retrieve: only required params', async () => {
-    const responsePromise = client.product.top100.retrieve(1, { regionCode: 'regionCode', y: 0, m: 1 });
+    const responsePromise = client.product.top100.retrieve(1, {
+      regionCode: 'regionCode',
+      y: 0,
+      m: 1,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
