@@ -23,7 +23,13 @@ describe('resource ebird', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.ref.taxonomy.ebird.retrieve(
-        { cat: 'cat', fmt: 'csv', locale: 'locale', species: 'species', version: 'version' },
+        {
+          cat: 'cat',
+          fmt: 'csv',
+          locale: 'locale',
+          species: 'species',
+          version: 'version',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Phoebe.NotFoundError);

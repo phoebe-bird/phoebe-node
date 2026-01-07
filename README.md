@@ -52,7 +52,9 @@ const client = new Phoebe({
   apiKey: process.env['EBIRD_API_KEY'], // This is the default and can be omitted
 });
 
-const info: Phoebe.Ref.Hotspot.InfoRetrieveResponse = await client.ref.hotspot.info.retrieve('L99381');
+const info: Phoebe.Ref.Hotspot.InfoRetrieveResponse = await client.ref.hotspot.info.retrieve(
+  'L99381',
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -149,7 +151,9 @@ const response = await client.ref.hotspot.info.retrieve('L99381').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: info, response: raw } = await client.ref.hotspot.info.retrieve('L99381').withResponse();
+const { data: info, response: raw } = await client.ref.hotspot.info
+  .retrieve('L99381')
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(info.countryCode);
 ```
