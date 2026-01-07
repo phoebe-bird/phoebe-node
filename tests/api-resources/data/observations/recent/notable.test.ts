@@ -24,7 +24,14 @@ describe('resource notable', () => {
     await expect(
       client.data.observations.recent.notable.list(
         'regionCode',
-        { back: 1, detail: 'simple', hotspot: true, maxResults: 1, r: ['string'], sppLocale: 'sppLocale' },
+        {
+          back: 1,
+          detail: 'simple',
+          hotspot: true,
+          maxResults: 1,
+          r: ['string'],
+          sppLocale: 'sppLocale',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Phoebe.NotFoundError);

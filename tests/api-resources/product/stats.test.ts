@@ -9,7 +9,11 @@ const client = new Phoebe({
 
 describe('resource stats', () => {
   test('retrieve: only required params', async () => {
-    const responsePromise = client.product.stats.retrieve(1, { regionCode: 'regionCode', y: 0, m: 1 });
+    const responsePromise = client.product.stats.retrieve(1, {
+      regionCode: 'regionCode',
+      y: 0,
+      m: 1,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,6 +24,10 @@ describe('resource stats', () => {
   });
 
   test('retrieve: required and optional params', async () => {
-    const response = await client.product.stats.retrieve(1, { regionCode: 'regionCode', y: 0, m: 1 });
+    const response = await client.product.stats.retrieve(1, {
+      regionCode: 'regionCode',
+      y: 0,
+      m: 1,
+    });
   });
 });
