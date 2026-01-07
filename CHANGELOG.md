@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.13.1 (2026-01-07)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.0...v0.13.1)
+
+### Bug Fixes
+
+* **mcp:** fix options parsing ([819fa21](https://github.com/phoebe-bird/phoebe-node/commit/819fa21e9770b1adc8450906f55e6839bedf85e0))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([55bae51](https://github.com/phoebe-bird/phoebe-node/commit/55bae5126da7b70ab7a9e466632dd223e6c484c8))
+
 ## 0.13.0 (2026-01-06)
 
 Full Changelog: [v0.12.3...v0.13.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.12.3...v0.13.0)
