@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.2 (2026-01-08)
+
+Full Changelog: [v0.13.1...v0.13.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.1...v0.13.2)
+
+### Bug Fixes
+
+* **mcp:** fix env parsing ([41e4756](https://github.com/phoebe-bird/phoebe-node/commit/41e4756a6dd582fc894f612640e7c7c846b5ebd6))
+
 ## 0.13.1 (2026-01-07)
 
 Full Changelog: [v0.13.0...v0.13.1](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.0...v0.13.1)
