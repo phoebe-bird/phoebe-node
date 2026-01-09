@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.3 (2026-01-09)
+
+Full Changelog: [v0.13.2...v0.13.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.2...v0.13.3)
+
+### Bug Fixes
+
+* **mcp:** update code tool prompt ([9f2a53d](https://github.com/phoebe-bird/phoebe-node/commit/9f2a53d0f3131456452f86455ecc032ceb58631f))
+
 ## 0.13.2 (2026-01-08)
 
 Full Changelog: [v0.13.1...v0.13.2](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.1...v0.13.2)
