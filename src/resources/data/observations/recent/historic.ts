@@ -29,12 +29,12 @@ export interface HistoricListParams {
   regionCode: string;
 
   /**
-   * Path param:
+   * Path param
    */
   y: number;
 
   /**
-   * Path param:
+   * Path param
    */
   m: number;
 
