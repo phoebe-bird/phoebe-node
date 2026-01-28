@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.2",
   "name": "phoebe-ebird-mcp",
-  "version": "0.13.3",
+  "version": "0.13.4",
   "description": "The official MCP Server for the Phoebe API",
   "author": {
     "name": "Phoebe",
