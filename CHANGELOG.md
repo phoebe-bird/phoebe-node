@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.13.4 (2026-01-28)
+
+Full Changelog: [v0.13.3...v0.13.4](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.3...v0.13.4)
+
+### Bug Fixes
+
+* **mcp:** allow falling back for required env variables ([b76ab0b](https://github.com/phoebe-bird/phoebe-node/commit/b76ab0b7a883c9f9d557f078e48003905661ce7a))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([124d271](https://github.com/phoebe-bird/phoebe-node/commit/124d271ac2705894af0f8a1bbaf63afb9c2dbebb))
+* fix typo in descriptions ([089b628](https://github.com/phoebe-bird/phoebe-node/commit/089b628c6ff0b28c276a4abf1720da5a019e4769))
+* **internal:** codegen related update ([aa05865](https://github.com/phoebe-bird/phoebe-node/commit/aa058659234aa17a7fb49bd8909d052aea226ae5))
+* **internal:** codegen related update ([1127a84](https://github.com/phoebe-bird/phoebe-node/commit/1127a84d6cdd2a17497566105d63414bda76c795))
+* **internal:** codegen related update ([0a662ea](https://github.com/phoebe-bird/phoebe-node/commit/0a662eaf8b7cf8e794b1c07c843e8e24c8f4b486))
+* **internal:** codegen related update ([9ac2135](https://github.com/phoebe-bird/phoebe-node/commit/9ac2135f3133400611ad1112d490a6d767eb6b28))
+* **internal:** codegen related update ([0bfb127](https://github.com/phoebe-bird/phoebe-node/commit/0bfb1275da231d6a34d19524ad8774d9446c880e))
+* **internal:** update `actions/checkout` version ([89afe81](https://github.com/phoebe-bird/phoebe-node/commit/89afe81bc33e09f2b560442d18526bfaedd3b860))
+* **internal:** update lock file ([352276b](https://github.com/phoebe-bird/phoebe-node/commit/352276ba74014fed6ac435ae8902d1cf360f203f))
+* **internal:** upgrade babel, qs, js-yaml ([b337606](https://github.com/phoebe-bird/phoebe-node/commit/b33760616d1458ee56c21f990c8c87ce0c8bfa99))
+* **mcp:** add intent param to execute tool ([74dd45e](https://github.com/phoebe-bird/phoebe-node/commit/74dd45e7d2e3e8f9d7a2350305b14273d82b93b4))
+* **mcp:** pass intent param to execute handler ([3b9bdd0](https://github.com/phoebe-bird/phoebe-node/commit/3b9bdd0b6b1d5e7457d14b8464a79cda55ca6522))
+* **mcp:** upgrade dependencies ([597aac1](https://github.com/phoebe-bird/phoebe-node/commit/597aac14508fa033345d41d82d05da0612bfb94b))
+
 ## 0.13.3 (2026-01-09)
 
 Full Changelog: [v0.13.2...v0.13.3](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.2...v0.13.3)
