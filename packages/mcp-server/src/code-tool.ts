@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv, readEnvOrError } from './server';
+import { readEnv, requireValue } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 import { Phoebe } from 'phoebe-ebird';
 
@@ -71,7 +71,10 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          EBIRD_API_KEY: readEnvOrError('EBIRD_API_KEY') ?? client.apiKey ?? undefined,
+          EBIRD_API_KEY: requireValue(
+            readEnv('EBIRD_API_KEY') ?? client.apiKey,
+            'set EBIRD_API_KEY environment variable or provide apiKey client option',
+          ),
           PHOEBE_BASE_URL: readEnv('PHOEBE_BASE_URL') ?? client.baseURL ?? undefined,
         }),
       },
