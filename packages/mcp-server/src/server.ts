@@ -21,7 +21,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'phoebe_ebird_api',
-      version: '0.13.4',
+      version: '0.13.5',
     },
     { capabilities: { tools: {}, logging: {} } },
   );
