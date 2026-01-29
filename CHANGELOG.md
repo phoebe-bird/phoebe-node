@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.6 (2026-01-29)
+
+Full Changelog: [v0.13.5...v0.13.6](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.5...v0.13.6)
+
+### Chores
+
+* **mcp:** up tsconfig lib version to es2022 ([e97ce23](https://github.com/phoebe-bird/phoebe-node/commit/e97ce23eba7302322bfb33e93b054ba8c7fd40da))
+
 ## 0.13.5 (2026-01-29)
 
 Full Changelog: [v0.13.4...v0.13.5](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.4...v0.13.5)
