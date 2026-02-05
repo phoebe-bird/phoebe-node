@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.14.0 (2026-02-05)
+
+Full Changelog: [v0.13.6...v0.14.0](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.6...v0.14.0)
+
+### Features
+
+* **mcp:** add initial server instructions ([0512d0b](https://github.com/phoebe-bird/phoebe-node/commit/0512d0b77122ca75e01b8664b026b09377937408))
+
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([1c93e75](https://github.com/phoebe-bird/phoebe-node/commit/1c93e75addefff5f68ee7e58b60042b3bbb4486f))
+* **client:** restructure abort controller binding ([4071278](https://github.com/phoebe-bird/phoebe-node/commit/407127815a2843a7f9dcd83dc55763ebf1c4b09c))
+* **internal:** refactor flag parsing for MCP servers and add debug flag ([3326c4a](https://github.com/phoebe-bird/phoebe-node/commit/3326c4aa7d31c60e9053d78b383a50b9e5ff44a2))
+* **internal:** support oauth authorization code flow for MCP servers ([701793d](https://github.com/phoebe-bird/phoebe-node/commit/701793d467e96495660fb90df13f67202851e0b8))
+
 ## 0.13.6 (2026-02-03)
 
 Full Changelog: [v0.13.5...v0.13.6](https://github.com/phoebe-bird/phoebe-node/compare/v0.13.5...v0.13.6)
