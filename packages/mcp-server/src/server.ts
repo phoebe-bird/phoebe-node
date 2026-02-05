@@ -57,7 +57,7 @@ export const newMcpServer = async () =>
   new McpServer(
     {
       name: 'phoebe_ebird_api',
-      version: '0.13.6',
+      version: '0.14.0',
     },
     {
       instructions: await getInstructions(),
