@@ -60,7 +60,7 @@ $ yarn link phoebe-ebird
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global phoebe-ebird
+$ pnpm link --global phoebe-ebird
 ```
 
 ## Running tests
