@@ -5,6 +5,9 @@ import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 import { path } from '../../../internal/utils/path';
 
+/**
+ * With the ref/geo end-point you can find a country's or region's neighbours.
+ */
 export class Adjacent extends APIResource {
   /**
    * Get the list of countries or regions that share a border with this one. ####

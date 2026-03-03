@@ -9,6 +9,9 @@ import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 import { path } from '../../../internal/utils/path';
 
+/**
+ * With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+ */
 export class Hotspot extends APIResource {
   geo: GeoAPI.Geo = new GeoAPI.Geo(this._client);
   info: InfoAPI.Info = new InfoAPI.Info(this._client);
