@@ -9,6 +9,9 @@ import { SpecieListParams, SpecieListResponse, Species } from './species';
 import { APIPromise } from '../../../../../core/api-promise';
 import { RequestOptions } from '../../../../../internal/request-options';
 
+/**
+ * The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+ */
 export class Recent extends APIResource {
   species: SpeciesAPI.Species = new SpeciesAPI.Species(this._client);
   notable: NotableAPI.Notable = new NotableAPI.Notable(this._client);

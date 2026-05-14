@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Metadata, asTextContentResult } from './types';
-
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
+import { Metadata, McpRequestContext, asTextContentResult } from './types';
+
+import type { LocalDocsSearch } from './local-docs-search';
 
 export const metadata: Metadata = {
   resource: 'all',
@@ -13,7 +14,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'search_docs',
-  description: 'Search for documentation for how to use the client to interact with the API.',
+  description:
+    'Search SDK documentation to find methods, parameters, and usage examples for interacting with the API. Use this before writing code when you need to discover the right approach.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -39,21 +41,39 @@ export const tool: Tool = {
   },
 };
 
-const docsSearchURL =
-  process.env['DOCS_SEARCH_URL'] || 'https://api.stainless.com/api/projects/phoebe/docs/search';
+let _localSearch: LocalDocsSearch | undefined;
 
-export const handler = async (_: unknown, args: Record<string, unknown> | undefined) => {
-  const body = args as any;
-  const query = new URLSearchParams(body).toString();
-  const result = await fetch(`${docsSearchURL}?${query}`);
+export function setLocalSearch(search: LocalDocsSearch): void {
+  _localSearch = search;
+}
 
-  if (!result.ok) {
-    throw new Error(
-      `${result.status}: ${result.statusText} when using doc search tool. Details: ${await result.text()}`,
-    );
+async function searchLocal(args: Record<string, unknown>): Promise<unknown> {
+  if (!_localSearch) {
+    throw new Error('Local search not initialized');
   }
 
-  return asTextContentResult(await result.json());
+  const query = (args['query'] as string) ?? '';
+  const language = (args['language'] as string) ?? 'typescript';
+  const detail = (args['detail'] as string) ?? 'default';
+
+  return _localSearch.search({
+    query,
+    language,
+    detail,
+    maxResults: 10,
+  }).results;
+}
+
+export const handler = async ({
+  reqContext,
+  args,
+}: {
+  reqContext: McpRequestContext;
+  args: Record<string, unknown> | undefined;
+}) => {
+  const body = args ?? {};
+
+  return asTextContentResult(await searchLocal(body));
 };
 
 export default { metadata, tool, handler };
