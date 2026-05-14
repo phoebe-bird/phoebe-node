@@ -9,6 +9,10 @@ permissions:
 
 jobs:
   promote:
+    # Guard: this workflow file gets propagated to the production repo during
+    # promotion. The guard prevents it from running there (where it would no-op
+    # but still waste a runner).
+    if: endsWith(github.repository, '-staging')
     runs-on: ubuntu-latest
     env:
       PRODUCTION_REPO: phoebe-bird/phoebe-node
