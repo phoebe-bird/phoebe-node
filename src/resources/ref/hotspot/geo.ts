@@ -4,6 +4,9 @@ import { APIResource } from '../../../core/resource';
 import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 
+/**
+ * With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+ */
 export class Geo extends APIResource {
   /**
    * Get the list of hotspots, within a radius of up to 50 kilometers, from a given

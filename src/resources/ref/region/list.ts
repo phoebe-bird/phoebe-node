@@ -5,6 +5,9 @@ import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 import { path } from '../../../internal/utils/path';
 
+/**
+ * The ref/region end-points return information on regions.
+ */
 export class List extends APIResource {
   /**
    * Get the list of sub-regions for a given country or region. #### Notes Not all

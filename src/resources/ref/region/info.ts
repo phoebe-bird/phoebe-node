@@ -5,6 +5,9 @@ import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 import { path } from '../../../internal/utils/path';
 
+/**
+ * The ref/region end-points return information on regions.
+ */
 export class Info extends APIResource {
   /**
    * Get information on the name and geographical area covered by a region.
